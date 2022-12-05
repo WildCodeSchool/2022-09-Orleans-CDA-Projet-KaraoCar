@@ -1,0 +1,10 @@
+{
+  "name": "@libs/typings",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "license": "MIT",
+  "dependencies": {
+    "@nestjs/typeorm": "^9.0.1",
+    "typeorm": "^0.3.10"
+  }
+}

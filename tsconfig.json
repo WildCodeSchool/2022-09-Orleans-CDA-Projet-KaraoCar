@@ -1,0 +1,10 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["workspaces", "@typescript-eslint"],
+  "ignorePatterns": ["**/**/dist/*.{js,ts}"],
+  "rules": {
+    "workspaces/no-relative-imports": "error",
+    "workspaces/require-dependency": "warn"
+  }
+}

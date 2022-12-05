@@ -1,0 +1,36 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "env:cp": "cp ./.env ./apps/frontend/web/.env && cp ./.env ./apps/frontend/mobile/.env && cp ./.env ./apps/backend/api/.env",
+    "watch:env": "nodemon --watch ./.env --exec \"npm run env:cp\"",
+    "build:frontend:web": "npm run build --workspace=apps/frontend/web",
+    "build:backend:api": "docker build -f ./apps/backend/api/Dockerfile -t backend-api .",
+    "build": "concurrently -c \"auto\" \"npm:build:*\"",
+    "dev:frontend:web": "npm run dev --workspace=apps/frontend/web",
+    "dev:frontend:mobile": "npm run dev --workspace=apps/frontend/mobile",
+    "dev:backend:api": "npm run dev --workspace=apps/backend/api",
+    "dev:mobile": "npm run dev:frontend:mobile",
+    "dev:m": "npm run dev:mobile",
+    "d:m": "npm run dev:mobile",
+    "dev": "concurrently -c \"auto\" \"npm:watch:*\" \"npm:dev:backend:*\" \"npm:dev:frontend:*(!mobile)\"",
+    "d": "npm run dev"
+  },
+  "workspaces": [
+    "libs/typings",
+    "apps/backend/api",
+    "apps/frontend/web",
+    "apps/frontend/mobile"
+  ],
+  "devDependencies": {
+    "@types/node": "^18.11.9",
+    "concurrently": "^7.5.0",
+    "nodemon": "^2.0.20"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3"
+  }
+}
