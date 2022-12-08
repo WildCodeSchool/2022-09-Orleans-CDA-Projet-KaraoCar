@@ -11,6 +11,7 @@ services:
 
   web:
     image: nginx:1.23.2-alpine
+    restart: always
     volumes:
       - ./nginx.dev.conf:/etc/nginx/nginx.conf
     ports:
