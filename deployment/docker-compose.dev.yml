@@ -5,6 +5,8 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: adem
+      MYSQL_PASSWORD: azerty
       MYSQL_DATABASE: karaocar
     ports:
       - 3310:3306
