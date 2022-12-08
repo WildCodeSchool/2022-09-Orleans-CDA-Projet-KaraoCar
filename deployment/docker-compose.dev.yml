@@ -8,6 +8,8 @@ services:
       MYSQL_DATABASE: karaocar
     ports:
       - 3310:3306
+    volumes:
+      - ./db:/var/lib/mysql
 
   web:
     image: nginx:1.23.2-alpine
