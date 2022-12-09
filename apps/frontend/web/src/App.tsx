@@ -1,6 +1,4 @@
 import { useEffect, useState } from 'react';
-import './App.css';
-
 import { SomeInterface, User } from '@libs/typings';
 
 function App() {

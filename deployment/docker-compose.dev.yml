@@ -1,0 +1,22 @@
+services:
+  db:
+    image: mysql:8.0.31
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: adem
+      MYSQL_PASSWORD: azerty
+      MYSQL_DATABASE: karaocar
+    ports:
+      - 3310:3306
+    volumes:
+      - ./db:/var/lib/mysql
+
+  web:
+    image: nginx:1.23.2-alpine
+    restart: always
+    volumes:
+      - ./nginx.dev.conf:/etc/nginx/nginx.conf
+    ports:
+      - 80:80
