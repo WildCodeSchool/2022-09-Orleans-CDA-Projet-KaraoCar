@@ -19,4 +19,4 @@ services:
     volumes:
       - ./nginx.dev.conf:/etc/nginx/nginx.conf
     ports:
-      - "80:80"
+      - 80:80

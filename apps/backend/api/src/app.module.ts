@@ -18,7 +18,7 @@ import { AppService } from './app.service';
         username: configService.get('DATABASE_USERNAME'),
         password: configService.get('DATABASE_PASSWORD'),
         database: configService.get('DATABASE_NAME'),
-        entities: [__dirname + '/**/*.entity{.ts,.js}'],
+        entities: [],
         synchronize: true,
       }),
       inject: [ConfigService],
