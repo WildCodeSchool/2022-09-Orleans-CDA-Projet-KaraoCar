@@ -32,7 +32,7 @@ services:
     environment:
       - NODE_ENV=production
     volumes:
-      - web-client-build:/app/apps/frontend/web/dist
+      - web-client-build:/app
 
   web:
     image: nginx:1.23.2-alpine
