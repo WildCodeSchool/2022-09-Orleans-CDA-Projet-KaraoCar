@@ -2,12 +2,8 @@ FROM node:18.12.1-alpine3.17 AS base
 
 ENV NODE_ENV production
 
-WORKDIR /app/apps/frontend
-COPY apps/frontend/web web
-
 WORKDIR /app
-COPY package*.json ./
-COPY libs libs
+COPY apps apps
 
 RUN npm ci
 
