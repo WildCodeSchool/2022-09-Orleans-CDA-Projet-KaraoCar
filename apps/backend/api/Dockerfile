@@ -4,6 +4,7 @@ ENV NODE_ENV production
 
 WORKDIR /app
 COPY apps apps
+COPY libs libs 
 
 RUN npm ci
 
