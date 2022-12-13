@@ -19,8 +19,6 @@ services:
       - db
     env_file:
       - ./nest.env
-    environment:
-      - NODE_ENV=production
     networks:
       - backend
       - db
@@ -29,8 +27,6 @@ services:
     build:
       context: ../
       dockerfile: ./apps/frontend/web/Dockerfile
-    environment:
-      - NODE_ENV=production
     volumes:
       - web-client-build:/app
 

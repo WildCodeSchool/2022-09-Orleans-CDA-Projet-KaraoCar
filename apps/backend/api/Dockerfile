@@ -1,7 +1,5 @@
 FROM node:18.12.1-alpine3.17 AS base
 
-ENV NODE_ENV production
-
 WORKDIR /app
 COPY apps apps
 COPY libs libs 
