@@ -5,7 +5,6 @@ COPY apps/backend/api/src src
 
 WORKDIR /app
 COPY package*.json ./
-COPY tsconfig*.json ./
 COPY libs libs
 
 RUN npm ci

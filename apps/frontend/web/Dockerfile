@@ -8,7 +8,6 @@ COPY apps/frontend/web/public public
 
 WORKDIR /app
 COPY package*.json ./
-COPY tsconfig*.json ./
 COPY libs libs
 
 RUN npm ci
