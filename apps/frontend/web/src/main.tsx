@@ -3,16 +3,8 @@ import ReactDOM from 'react-dom/client';
 import { ChakraProvider } from '@chakra-ui/react';
 import App from './App';
 import theme from './theme';
-import {
-  createBrowserRouter,
-  createRoutesFromElements,
-  Route,
-  RouterProvider,
-} from 'react-router-dom';
-
-const router = createBrowserRouter(
-  createRoutesFromElements(<Route path="/" element={<App />}></Route>)
-);
+import { RouterProvider } from 'react-router-dom';
+import router from './routes/Routes';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
