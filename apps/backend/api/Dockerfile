@@ -1,4 +1,4 @@
-FROM node:18.12-alpine3.17
+FROM node:18.12.1-alpine3.17
 WORKDIR /app/apps/backend/api
 COPY apps/backend/api/package*.json ./
 COPY apps/backend/api/tsconfig*.json ./
