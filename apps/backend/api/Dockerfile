@@ -1,12 +1,16 @@
 FROM node:18.12.1-alpine
-RUN mkdir /app
+WORKDIR /app/apps/backend/api
+COPY apps/backend/api/package*.json ./
+COPY apps/backend/api/tsconfig*.json ./
+COPY apps/backend/api/src src
+
 WORKDIR /app
 COPY package*.json ./
 COPY tsconfig*.json ./
-RUN npm install
-COPY src src
+COPY libs libs
 
-CMD npm run build
+RUN npm ci
 
-WORKDIR /app/dist
-RUN node main.js
+RUN npm run build --workspace=apps/backend/api
+
+CMD node apps/backend/api/dist/main.js
