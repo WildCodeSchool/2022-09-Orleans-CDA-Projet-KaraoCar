@@ -1,4 +1,4 @@
-FROM node:18.12.1-alpine
+FROM node:18.12-alpine3.17
 WORKDIR /app/apps/frontend/web
 COPY apps/frontend/web/package*.json ./
 COPY apps/frontend/web/tsconfig*.json ./
