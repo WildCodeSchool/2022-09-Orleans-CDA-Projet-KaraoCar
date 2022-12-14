@@ -27,4 +27,4 @@ jobs:
           context: ./
           file: ./apps/backend/api/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.DOCKER_HUB_SERVER_PROD_IMAGE_NAME }}:latest, ${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.DOCKER_HUB_SERVER_PROD_IMAGE_NAME }}:${{ github.event.release.name }}
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.DOCKER_HUB_SERVER_PROD_IMAGE_NAME }}:latest, ${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.DOCKER_HUB_SERVER_PROD_IMAGE_NAME }}:${{ github.event.release.name }}, ${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.DOCKER_HUB_SERVER_PROD_IMAGE_NAME }}:${{github.sha}}

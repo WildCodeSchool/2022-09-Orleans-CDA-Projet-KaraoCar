@@ -27,4 +27,4 @@ jobs:
           context: ./
           file: ./apps/frontend/web/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.DOCKER_HUB_CLIENT_PROD_IMAGE_NAME }}:latest, ${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.DOCKER_HUB_CLIENT_PROD_IMAGE_NAME }}:${{ github.event.release.name }}
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.DOCKER_HUB_CLIENT_PROD_IMAGE_NAME }}:latest, ${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.DOCKER_HUB_CLIENT_PROD_IMAGE_NAME }}:${{ github.event.release.name }}, ${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.DOCKER_HUB_CLIENT_PROD_IMAGE_NAME }}:${{github.sha}}
