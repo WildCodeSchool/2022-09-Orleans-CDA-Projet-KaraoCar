@@ -1,0 +1,30 @@
+name: Compile and push front staging image
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      
+      - uses: docker/login-action@v2
+        name: Login to Docker Hub
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+
+      - uses: docker/setup-buildx-action@v2
+        name: Set up Docker Buildx
+
+      - uses: docker/build-push-action@v3
+        name: Build and push
+        with:
+          context: ./
+          file: ./apps/frontend/web/Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.DOCKER_HUB_CLIENT_STAGING_IMAGE_NAME }}:latest, ${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.DOCKER_HUB_CLIENT_STAGING_IMAGE_NAME }}:${{github.sha}}
