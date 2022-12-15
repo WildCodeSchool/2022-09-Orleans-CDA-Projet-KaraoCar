@@ -17,7 +17,10 @@
     "dev:m": "npm run dev:mobile",
     "d:m": "npm run dev:mobile",
     "dev": "concurrently -c \"auto\" \"npm:watch:*\" \"npm:dev:backend:*\" \"npm:dev:frontend:*(!mobile)\"",
-    "d": "npm run dev"
+    "d": "npm run dev",
+    "dc:up": "docker compose -f deployment/docker-compose.dev.yml -p karaocar up --build -d",
+    "dc:down": "docker compose -f deployment/docker-compose.dev.yml -p karaocar down"
+
   },
   "workspaces": [
     "libs/typings",
