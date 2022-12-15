@@ -1,11 +1,19 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { CreateTripSliceDto } from './dto/create-trip-slice.dto';
 import { UpdateTripSliceDto } from './dto/update-trip-slice.dto';
+import { TripSlice } from './entities/trip-slice.entity';
 
 @Injectable()
 export class TripSlicesService {
+  constructor(
+    @InjectRepository(TripSlice)
+    private readonly tripSliceRepository: Repository<TripSlice>,
+  ) {}
+
   create(createTripSliceDto: CreateTripSliceDto) {
-    return 'This action adds a new tripSlice';
+    return this.tripSliceRepository.save(createTripSliceDto);
   }
 
   findAll() {

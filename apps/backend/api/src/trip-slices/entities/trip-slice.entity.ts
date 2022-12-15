@@ -15,19 +15,19 @@ export class TripSlice {
   @Column()
   startingPoint: string;
 
-  @Column()
+  @Column({ default: 0 })
   startingPointLat: number;
 
-  @Column()
+  @Column({ default: 0 })
   startingPointLng: number;
 
   @Column()
   endingPoint: string;
 
-  @Column()
+  @Column({ default: 0 })
   endingPointLat: number;
 
-  @Column()
+  @Column({ default: 0 })
   endingPointLng: number;
 
   @Column()
@@ -48,7 +48,7 @@ export class TripSlice {
   @Column()
   hasTolls: boolean;
 
-  @ManyToOne(() => Trip, (trip: Trip) => trip.tripSlices)
+  @ManyToOne(() => Trip, (trip: Trip) => trip.tripSlices, { cascade: true })
   @JoinColumn()
   trip: Trip;
 }
