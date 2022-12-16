@@ -1,12 +1,20 @@
-import { Button, Container, Flex, Heading, HStack, VStack } from '@chakra-ui/react';
+import { Button, Flex, Heading, HStack, VStack } from '@chakra-ui/react';
 import { useState } from 'react';
 import CarDetails from './CarDetails';
 import Comment from './Comment';
 import Date from './TripDate';
 import RouteDetails from './RouteDetails';
 import Stepper from './Stepper';
+import { useForm, FormProvider, useFormContext } from 'react-hook-form';
+import './trip.css';
 
 const Index = () => {
+  const methods = useForm();
+
+  function onSubmit(values: any) {
+    setStep(step + 1);
+    console.log(values);
+  }
   const [step, setStep] = useState(1);
 
   const removeStep = () => {
@@ -40,16 +48,20 @@ const Index = () => {
     <Flex
       alignItems={'center'}
       flexDirection={'column'}
-      justifyContent={'center'}
+      gap={{ base: '0', md: '4' }}
+      height={'100vh'}
     >
-      <Heading as={'h1'} textAlign={'center'} marginY={'10'}>
+      <Heading as={'h1'} textAlign={'center'} marginY={{ base: '8', md: '12' }}>
         Trip creation
       </Heading>
-      <Stepper step={step} setStep={setStep}/>
-      {formStep(step)}
+      <Stepper step={step} setStep={setStep} />
+      <FormProvider {...methods}>
+        <form onSubmit={methods.handleSubmit(onSubmit)}>{formStep(step)}</form>
+      </FormProvider>
       <HStack marginX={'auto'}>
-      {step > 1 && <Button onClick={() => removeStep()}>Previous</Button>}
-      <Button onClick={() => addStep()}>Next</Button></HStack>
+        {step > 1 && <Button onClick={() => removeStep()}>Previous</Button>}
+        {step > 1 && <Button onClick={() => addStep()}>Next</Button>}
+      </HStack>
     </Flex>
   );
 };
