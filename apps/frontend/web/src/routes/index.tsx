@@ -1,12 +1,24 @@
-import {
-  createBrowserRouter,
-  createRoutesFromElements,
-  Route,
-} from 'react-router-dom';
+import { createBrowserRouter, Outlet } from 'react-router-dom';
 import App from '../App';
+import Navbar from '../components/navbar/Navbar';
 
-const router = createBrowserRouter(
-  createRoutesFromElements(<Route path="/" element={<App />}></Route>)
+const NavLayout = () => (
+  <>
+    <Navbar />
+    <Outlet />
+  </>
 );
+
+const router = createBrowserRouter([
+  {
+    element: <NavLayout />,
+    children: [
+      {
+        path: '/',
+        element: <App />,
+      },
+    ],
+  },
+]);
 
 export default router;

@@ -31,7 +31,6 @@
     "nodemon": "^2.0.20"
   },
   "dependencies": {
-    "@fontsource/lexend-deca": "^4.5.12",
     "dotenv": "^16.0.3"
   }
 }
