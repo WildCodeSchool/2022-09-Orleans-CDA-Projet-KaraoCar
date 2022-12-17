@@ -2,7 +2,6 @@ import {
   Avatar,
   Box,
   Button,
-  Center,
   Flex,
   HStack,
   Image,
@@ -21,9 +20,10 @@ import {
 } from '@chakra-ui/react';
 import { Link, NavLink } from 'react-router-dom';
 import { MdOutlineChat, MdSearch, MdOutlineClose } from 'react-icons/md';
-import { BsCaretDownFill, BsPlusSquare, BsSignpostSplit } from 'react-icons/bs';
+import { BsCaretDownFill, BsSignpostSplit } from 'react-icons/bs';
 import { BiTrip } from 'react-icons/bi';
 import { GiHamburgerMenu } from 'react-icons/gi';
+import { AiOutlinePlus } from 'react-icons/ai';
 
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -58,8 +58,12 @@ const Navbar = () => {
           <HStack>
             {user ? (
               <HStack>
-                <Flex alignItems={'center'} gap={'16px'} display={{ base: 'none', md: 'flex' }}>
-                  <Menu closeOnSelect>
+                <Flex
+                  alignItems={'center'}
+                  gap={'16px'}
+                  display={{ base: 'none', md: 'flex' }}
+                >
+                  <Menu closeOnSelect autoSelect={false}>
                     <MenuButton as={Button} fontSize={'xl'}>
                       <Flex gap={'8px'} alignItems={'center'}>
                         <BiTrip />
@@ -77,7 +81,7 @@ const Navbar = () => {
                               <MdSearch />
                             </Text>
                           }
-                          iconSpacing={'1.5'}
+                          iconSpacing={'12'}
                         >
                           <Text fontSize={'lg'}>Search</Text>
                         </MenuItem>
@@ -86,11 +90,11 @@ const Navbar = () => {
                       <Link to={links.create}>
                         <MenuItem
                           icon={
-                            <Text fontSize={'2xl'}>
-                              <BsPlusSquare />
+                            <Text fontSize={'3xl'}>
+                              <AiOutlinePlus />
                             </Text>
                           }
-                          iconSpacing={'1.5'}
+                          iconSpacing={'12'}
                         >
                           <Text fontSize={'lg'}>Create</Text>
                         </MenuItem>
@@ -103,7 +107,7 @@ const Navbar = () => {
                               <BsSignpostSplit />
                             </Text>
                           }
-                          iconSpacing={'1.5'}
+                          iconSpacing={'12'}
                         >
                           <Text fontSize={'lg'}>My trips</Text>
                         </MenuItem>
@@ -221,8 +225,11 @@ const Navbar = () => {
                             paddingInlineStart={'132px'}
                             borderBlockEnd={'1px solid #263542'}
                           >
-                            <Flex gap={'8px'} alignItems={'center'}>
-                              <MdSearch /> Search
+                            <Flex gap={'8px'}>
+                              <Text as={'span'} fontSize={'3xl'}>
+                                <MdSearch />
+                              </Text>
+                              Search
                             </Flex>
                           </ListItem>
                         </Link>
@@ -232,8 +239,10 @@ const Navbar = () => {
                             paddingInlineStart={'132px'}
                             borderBlockEnd={'1px solid #263542'}
                           >
-                            <Flex gap={'8px'} alignItems={'center'}>
-                              <BsPlusSquare /> Create
+                            <Flex gap={'8px'} alignItems={'bottom'}>
+                            <Text as={'span'} fontSize={'3xl'}>
+                              <AiOutlinePlus /></Text>
+                              Create
                             </Flex>
                           </ListItem>
                         </Link>
@@ -290,7 +299,6 @@ const Navbar = () => {
                   </Link>
                   <Box borderBlockStart={'1px solid #FFFFFF'}></Box>
                 </Flex>
-                
               </>
             )}
           </ModalBody>
