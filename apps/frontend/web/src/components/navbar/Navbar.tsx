@@ -29,7 +29,7 @@ const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   // Replace this with user authentification logic
-  const user = false;
+  const user = true;
 
   const links = {
     home: '/',
@@ -58,7 +58,7 @@ const Navbar = () => {
           <HStack>
             {user ? (
               <HStack>
-                <HStack display={{ base: 'none', md: 'flex' }}>
+                <Flex alignItems={'center'} gap={'16px'} display={{ base: 'none', md: 'flex' }}>
                   <Menu closeOnSelect>
                     <MenuButton as={Button} fontSize={'xl'}>
                       <Flex gap={'8px'} alignItems={'center'}>
@@ -120,7 +120,7 @@ const Navbar = () => {
                       src="/images/profile-placeholder.png"
                     />
                   </NavLink>
-                </HStack>
+                </Flex>
               </HStack>
             ) : (
               <Box display={{ base: 'none', md: 'block' }}>
@@ -157,9 +157,9 @@ const Navbar = () => {
               flexDir={'row-reverse'}
               justifyContent={'space-between'}
               alignItems={'center'}
-              fontSize={'4xl'}
+              fontSize={'2.7rem'}
               paddingInline={'16px'}
-              marginBlockEnd={'16px'}
+              marginBlock={'8px'}
               color={'#FFFFFF'}
               bg={'#394E61'}
             >
@@ -167,7 +167,6 @@ const Navbar = () => {
               {user && (
                 <NavLink to={links.profile} end>
                   <Avatar
-                    marginBlockStart={'16px'}
                     size={'lg'}
                     name="Profile Placeholder"
                     src="/images/profile-placeholder.png"
