@@ -2,6 +2,7 @@ import {
   Avatar,
   Box,
   Button,
+  Center,
   Flex,
   HStack,
   Image,
@@ -20,7 +21,7 @@ import {
 } from '@chakra-ui/react';
 import { Link, NavLink } from 'react-router-dom';
 import { MdOutlineChat, MdSearch, MdOutlineClose } from 'react-icons/md';
-import { BsPlusSquare, BsSignpostSplit } from 'react-icons/bs';
+import { BsCaretDownFill, BsPlusSquare, BsSignpostSplit } from 'react-icons/bs';
 import { BiTrip } from 'react-icons/bi';
 import { GiHamburgerMenu } from 'react-icons/gi';
 
@@ -28,7 +29,7 @@ const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   // Replace this with user authentification logic
-  const user = true;
+  const user = false;
 
   const links = {
     home: '/',
@@ -60,9 +61,12 @@ const Navbar = () => {
                 <HStack display={{ base: 'none', md: 'flex' }}>
                   <Menu closeOnSelect>
                     <MenuButton as={Button} fontSize={'xl'}>
-                      <Flex gap={'8px'} alignItems={'baseline'}>
+                      <Flex gap={'8px'} alignItems={'center'}>
                         <BiTrip />
                         Trips
+                        <Text as={'span'} marginInlineStart={'8px'}>
+                          <BsCaretDownFill />
+                        </Text>
                       </Flex>
                     </MenuButton>
                     <MenuList>
@@ -117,8 +121,6 @@ const Navbar = () => {
                     />
                   </NavLink>
                 </HStack>
-
-                
               </HStack>
             ) : (
               <Box display={{ base: 'none', md: 'block' }}>
@@ -128,13 +130,15 @@ const Navbar = () => {
                   </Button>
                 </NavLink>
                 <NavLink to={links.register} end>
-                  <Button fontSize={'xl'} marginInlineStart={'8px'}>Register</Button>
+                  <Button fontSize={'xl'} marginInlineStart={'8px'}>
+                    Register
+                  </Button>
                 </NavLink>
               </Box>
             )}
             <Box display={{ base: 'flex', md: 'none' }} fontSize={'3xl'}>
-                  <GiHamburgerMenu onClick={() => onOpen()} />
-                </Box>
+              <GiHamburgerMenu onClick={() => onOpen()} />
+            </Box>
           </HStack>
         </HStack>
       </HStack>
@@ -147,13 +151,15 @@ const Navbar = () => {
         autoFocus={false}
       >
         <ModalContent>
-          <ModalBody p={'0'}>
-            <HStack
+          <ModalBody p={'0'} bg={'#394E61'}>
+            <Flex
               h={'80px'}
               flexDir={'row-reverse'}
               justifyContent={'space-between'}
+              alignItems={'center'}
               fontSize={'4xl'}
-              paddingInline={'12px'}
+              paddingInline={'16px'}
+              marginBlockEnd={'16px'}
               color={'#FFFFFF'}
               bg={'#394E61'}
             >
@@ -161,20 +167,17 @@ const Navbar = () => {
               {user && (
                 <NavLink to={links.profile} end>
                   <Avatar
+                    marginBlockStart={'16px'}
                     size={'lg'}
                     name="Profile Placeholder"
                     src="/images/profile-placeholder.png"
                   />
                 </NavLink>
               )}
-            </HStack>
+            </Flex>
             {user ? (
               <>
-                <Flex
-                  flexDir={'column'}
-                  h={'calc(100vh - 80px)'}
-                  color={'#FFFFFF'}
-                >
+                <Flex flexDir={'column'} color={'#FFFFFF'}>
                   <Box borderBlockStart={'1px solid #FFFFFF'}></Box>
                   <Link to={links.message}>
                     <Flex
@@ -182,7 +185,8 @@ const Navbar = () => {
                       gap={'8px'}
                       alignItems={'center'}
                       fontSize={'3xl'}
-                      p={'32px'}
+                      paddingBlock={'24px'}
+                      paddingInlineStart={'80px'}
                       bg={'#394E61'}
                     >
                       <MdOutlineChat />
@@ -192,7 +196,7 @@ const Navbar = () => {
                   <Box borderBlockStart={'1px solid #FFFFFF'}></Box>
                   <Flex
                     flexDirection={'column'}
-                    paddingBlockStart={'32px'}
+                    paddingBlockStart={'24px'}
                     bg={'#394E61'}
                   >
                     <Flex
@@ -200,7 +204,7 @@ const Navbar = () => {
                       gap={'8px'}
                       alignItems={'baseline'}
                       fontSize={'3xl'}
-                      paddingInlineStart={'32px'}
+                      paddingInlineStart={'80px'}
                       paddingBlockEnd={'16px'}
                     >
                       <BiTrip />
@@ -210,43 +214,43 @@ const Navbar = () => {
                       <UnorderedList
                         fontSize={'2xl'}
                         listStyleType={'none'}
-                        marginInlineStart={'0'}
+                        m={'0'}
                       >
-                        <ListItem
-                          paddingBlock={'16px'}
-                          paddingInlineStart={'70px'}
-                          borderBlockEnd={'1px solid #263542'}
-                        >
-                          <Link to={links.search}>
+                        <Link to={links.search}>
+                          <ListItem
+                            paddingBlock={'16px'}
+                            paddingInlineStart={'132px'}
+                            borderBlockEnd={'1px solid #263542'}
+                          >
                             <Flex gap={'8px'} alignItems={'center'}>
                               <MdSearch /> Search
                             </Flex>
-                          </Link>
-                        </ListItem>
-                        <ListItem
-                          paddingBlock={'16px'}
-                          paddingInlineStart={'70px'}
-                          borderBlockEnd={'1px solid #263542'}
-                        >
-                          <Link to={links.create}>
+                          </ListItem>
+                        </Link>
+                        <Link to={links.create}>
+                          <ListItem
+                            paddingBlock={'16px'}
+                            paddingInlineStart={'132px'}
+                            borderBlockEnd={'1px solid #263542'}
+                          >
                             <Flex gap={'8px'} alignItems={'center'}>
                               <BsPlusSquare /> Create
                             </Flex>
-                          </Link>
-                        </ListItem>
-                        <ListItem
-                          paddingBlock={'16px'}
-                          paddingInlineStart={'70px'}
-                          borderBlockEnd={'1px solid #263542'}
-                        >
-                          <Link to={links.myTrips}>
+                          </ListItem>
+                        </Link>
+                        <Link to={links.myTrips}>
+                          <ListItem
+                            paddingBlock={'16px'}
+                            paddingInlineStart={'132px'}
+                          >
                             <Flex gap={'8px'}>
                               <BsSignpostSplit /> My trips
                             </Flex>
-                          </Link>
-                        </ListItem>
+                          </ListItem>
+                        </Link>
                       </UnorderedList>
                     </Box>
+                    <Box borderBlockStart={'1px solid #FFFFFF'}></Box>
                   </Flex>
                 </Flex>
               </>
@@ -264,7 +268,8 @@ const Navbar = () => {
                       gap={'8px'}
                       alignItems={'center'}
                       fontSize={'3xl'}
-                      p={'32px'}
+                      p={'24px'}
+                      paddingInlineStart={'80px'}
                       bg={'#394E61'}
                     >
                       Login
@@ -277,13 +282,16 @@ const Navbar = () => {
                       gap={'8px'}
                       alignItems={'center'}
                       fontSize={'3xl'}
-                      p={'32px'}
+                      p={'24px'}
+                      paddingInlineStart={'80px'}
                       bg={'#394E61'}
                     >
                       Register
                     </Flex>
                   </Link>
+                  <Box borderBlockStart={'1px solid #FFFFFF'}></Box>
                 </Flex>
+                
               </>
             )}
           </ModalBody>
