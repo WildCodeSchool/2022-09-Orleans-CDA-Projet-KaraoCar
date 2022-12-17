@@ -240,8 +240,9 @@ const Navbar = () => {
                             borderBlockEnd={'1px solid #263542'}
                           >
                             <Flex gap={'8px'} alignItems={'bottom'}>
-                            <Text as={'span'} fontSize={'3xl'}>
-                              <AiOutlinePlus /></Text>
+                              <Text as={'span'} fontSize={'3xl'}>
+                                <AiOutlinePlus />
+                              </Text>
                               Create
                             </Flex>
                           </ListItem>
