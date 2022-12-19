@@ -28,7 +28,7 @@ import { AiOutlinePlus } from 'react-icons/ai';
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  // Replace this with user authentification logic
+  // Replace this with user authentication logic
   const user = true;
 
   const links = {
