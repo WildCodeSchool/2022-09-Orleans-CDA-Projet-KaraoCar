@@ -67,7 +67,7 @@ const Navbar = () => {
                     <MenuButton as={Button} fontSize={'xl'}>
                       <Flex gap={'8px'} alignItems={'center'}>
                         <BiTrip />
-                        Trips
+                        {'Trips'}
                         <Text as={'span'} marginInlineStart={'8px'}>
                           <BsCaretDownFill />
                         </Text>
@@ -83,7 +83,7 @@ const Navbar = () => {
                           }
                           iconSpacing={'12'}
                         >
-                          <Text fontSize={'lg'}>Search</Text>
+                          <Text fontSize={'lg'}>{'Search'}</Text>
                         </MenuItem>
                       </Link>
                       <MenuDivider />
@@ -96,7 +96,7 @@ const Navbar = () => {
                           }
                           iconSpacing={'12'}
                         >
-                          <Text fontSize={'lg'}>Create</Text>
+                          <Text fontSize={'lg'}>{'Create'}</Text>
                         </MenuItem>
                       </Link>
                       <MenuDivider />
@@ -109,13 +109,13 @@ const Navbar = () => {
                           }
                           iconSpacing={'12'}
                         >
-                          <Text fontSize={'lg'}>My trips</Text>
+                          <Text fontSize={'lg'}>{'My trips'}</Text>
                         </MenuItem>
                       </Link>
                     </MenuList>
                   </Menu>
                   <Button fontSize={'xl'} leftIcon={<MdOutlineChat />}>
-                    Message
+                    {'Message'}
                   </Button>
                   <NavLink to={links.profile} end>
                     <Avatar
@@ -130,12 +130,12 @@ const Navbar = () => {
               <Box display={{ base: 'none', md: 'block' }}>
                 <NavLink to={links.login} end>
                   <Button variant={'outline'} fontSize={'xl'}>
-                    Login
+                    {'Login'}
                   </Button>
                 </NavLink>
                 <NavLink to={links.register} end>
                   <Button fontSize={'xl'} marginInlineStart={'8px'}>
-                    Register
+                    {'Register'}
                   </Button>
                 </NavLink>
               </Box>
@@ -193,7 +193,7 @@ const Navbar = () => {
                       bg={'#394E61'}
                     >
                       <MdOutlineChat />
-                      Message
+                      {'Message'}
                     </Flex>
                   </Link>
                   <Box borderBlockStart={'1px solid #FFFFFF'}></Box>
@@ -211,7 +211,7 @@ const Navbar = () => {
                       paddingBlockEnd={'16px'}
                     >
                       <BiTrip />
-                      Trips
+                      {'Trips'}
                     </Flex>
                     <Box w={'100%'} bg={'#586b7e'} border={'1px solid #263542'}>
                       <UnorderedList
@@ -229,7 +229,7 @@ const Navbar = () => {
                               <Text as={'span'} fontSize={'3xl'}>
                                 <MdSearch />
                               </Text>
-                              Search
+                              {'Search'}
                             </Flex>
                           </ListItem>
                         </Link>
@@ -243,7 +243,7 @@ const Navbar = () => {
                               <Text as={'span'} fontSize={'3xl'}>
                                 <AiOutlinePlus />
                               </Text>
-                              Create
+                              {'Create'}
                             </Flex>
                           </ListItem>
                         </Link>
@@ -253,7 +253,8 @@ const Navbar = () => {
                             paddingInlineStart={'132px'}
                           >
                             <Flex gap={'8px'}>
-                              <BsSignpostSplit /> My trips
+                              <BsSignpostSplit />
+                              {'My trips'}
                             </Flex>
                           </ListItem>
                         </Link>
@@ -281,7 +282,7 @@ const Navbar = () => {
                       paddingInlineStart={'80px'}
                       bg={'#394E61'}
                     >
-                      Login
+                      {'Login'}
                     </Flex>
                   </Link>
                   <Box borderBlockStart={'1px solid #FFFFFF'}></Box>
@@ -295,7 +296,7 @@ const Navbar = () => {
                       paddingInlineStart={'80px'}
                       bg={'#394E61'}
                     >
-                      Register
+                      {'Register'}
                     </Flex>
                   </Link>
                   <Box borderBlockStart={'1px solid #FFFFFF'}></Box>
