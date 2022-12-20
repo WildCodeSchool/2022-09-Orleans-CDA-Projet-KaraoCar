@@ -49,7 +49,7 @@ const CreateTrip = () => {
       alignItems={'center'}
       flexDirection={'column'}
       gap={{ base: '0', md: '4' }}
-      height={'calc(100vh - 80px)'}
+      height={{md: 'calc(100vh - 80px)'}}
     >
       <Heading as={'h1'} textAlign={'center'} marginY={{ base: '8', md: '12' }}>
         Trip creation

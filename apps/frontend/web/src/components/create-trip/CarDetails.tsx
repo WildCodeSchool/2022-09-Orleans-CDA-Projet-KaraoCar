@@ -1,10 +1,22 @@
-import { Box, VStack } from '@chakra-ui/react';
-import { Dispatch, SetStateAction } from 'react';
+import {
+  Box,
+  Button,
+  FormControl,
+  FormErrorMessage,
+  FormLabel,
+  HStack,
+  Input,
+  Radio,
+  RadioGroup,
+  Stack,
+  Text,
+  VStack,
+} from '@chakra-ui/react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import CarDetailsBackground from './components/CarDetailsBackground';
 import NextButton from './components/NextButton';
 import PreviousButton from './components/PreviousButton';
-import { useFormContext } from 'react-hook-form';
-
+import { Controller, useFormContext } from 'react-hook-form';
 
 const CarDetails = ({
   step,
@@ -13,17 +25,209 @@ const CarDetails = ({
   step: number;
   setStep: Dispatch<SetStateAction<number>>;
 }) => {
-  const { register } = useFormContext();
+  const { control, register, setValue } = useFormContext();
   const errors = useFormContext().formState.errors;
+  const [totalSeat, setTotalSeat] = useState(1);
+  const [price, setPrice] = useState(1);
+
+  const decrementSeats = () => {
+    if (totalSeat > 1) {
+      setTotalSeat(totalSeat - 1);
+      setValue('totalSeat', totalSeat - 1);
+    }
+  };
+
+  const incrementSeats = () => {
+    setTotalSeat(totalSeat + 1);
+    setValue('totalSeat', totalSeat + 1);
+  };
+
+  const decrementPrice = () => {
+    if (price > 0.5) {
+      setPrice(price - 0.5);
+      setValue('price', price - 0.5);
+    }
+  };
+
+  const incrementPrice = () => {
+    setPrice(price + 0.5);
+    setValue('price', price + 0.5);
+  };
 
   return (
-    <>
-      <VStack
-        width={{ base: '320px', md: '420px', lg: '500px' }}
-        height={'100%'}
-      >
-      <PreviousButton step={step} setStep={setStep} />
-      <NextButton />
+    <VStack
+      width={{ base: '320px', md: '420px', lg: '800px' }}
+      height={'100%'}
+      display={'flex'}
+      flexDirection={'column'}
+      marginTop={{base:'0', md: '6'}}
+      justifyContent={'center'}
+      gap={{base: '4', md:'16'}}
+    >
+      <FormControl isInvalid={Boolean(errors.middleSeat)} id="middleSeat">
+        <FormLabel
+          htmlFor="middleSeat"
+          fontSize={{ base: '18', md: '32' }}
+          textAlign={'center'}
+          fontWeight={'regular'}
+          margin={'0'}
+        >
+          Are you keeping the middleseat empty?
+        </FormLabel>
+        <Controller
+          name="middleSeat"
+          control={control}
+          render={({ field }) => (
+            <RadioGroup {...field}>
+              <Stack
+                direction={'row'}
+                justifyContent={'center'}
+                gap={'12'}
+                marginTop={{base: '2', md: '6'}}
+              >
+                <Radio
+                  size={'lg'}
+                  value="true"
+                  fontWeight={'light'}
+                  colorScheme={'slateblue'}
+                >
+                  <Text
+                    fontSize={{ base: '16', md: '22' }}
+                    fontWeight={'light'}
+                  >
+                    Yes
+                  </Text>
+                </Radio>
+                <Radio
+                  size={'lg'}
+                  value="false"
+                  fontWeight={'light'}
+                  colorScheme={'slateblue'}
+                >
+                  <Text
+                    fontSize={{ base: '16', md: '22' }}
+                    fontWeight={'light'}
+                  >
+                    No
+                  </Text>
+                </Radio>
+              </Stack>
+            </RadioGroup>
+          )}
+          rules={{
+            required: { value: true, message: 'This is required.' },
+          }}
+        />
+        <FormErrorMessage justifyContent={'center'}>
+          {errors?.middleSeat && errors.middleSeat.message?.toString()}
+        </FormErrorMessage>
+      </FormControl>
+      <FormControl isInvalid={Boolean(errors.totalSeat)}>
+        <FormLabel
+          htmlFor="totalSeat"
+          fontSize={{ base: '18', md: '32' }}
+          textAlign={'center'}
+          fontWeight={'regular'}
+          margin={'0'}
+        >
+          How many passengers are you taking?
+        </FormLabel>
+        <HStack justifyContent={'center'} marginTop={{base: '2', md: '6'}}>
+          <Button
+            onClick={() => decrementSeats()}
+            height={'48px'}
+            width={'48px'}
+            backgroundColor={'#FEFEFE'}
+            border={'1.5px solid #394E61'}
+            rounded={'8px'}
+          >
+            -
+          </Button>
+          <Input
+            width={'60px'}
+            type={'number'}
+            height={'60px'}
+            rounded={'8px'}
+            textAlign={'center'}
+            id={'totalSeat'}
+            value={totalSeat}
+            {...register('totalSeat', {
+              value: totalSeat,
+              min: { value: 1, message: 'Minimum 1 seat' },
+              required: 'This is required',
+              onChange: (e) => setTotalSeat(Number(e.target.value)),
+            })}
+          />
+          <Button
+            onClick={() => incrementSeats()}
+            height={'48px'}
+            width={'48px'}
+            backgroundColor={'#FEFEFE'}
+            border={'1.5px solid #394E61'}
+            rounded={'8px'}
+          >
+            +
+          </Button>
+        </HStack>
+        <FormErrorMessage justifyContent={'center'}>
+          {errors?.totalSeat && errors.totalSeat.message?.toString()}
+        </FormErrorMessage>
+      </FormControl>
+      <FormControl isInvalid={Boolean(errors.price)}>
+        <FormLabel
+          htmlFor="price"
+          fontSize={{ base: '18', md: '32' }}
+          textAlign={'center'}
+          fontWeight={'regular'}
+          margin={'0'}
+        >
+          How much are you asking for a seat?
+        </FormLabel>
+        <HStack justifyContent={'center'} marginTop={{base: '2', md: '6'}}>
+          <Button
+            onClick={() => decrementPrice()}
+            height={'48px'}
+            width={'48px'}
+            backgroundColor={'#FEFEFE'}
+            border={'1.5px solid #394E61'}
+            rounded={'8px'}
+          >
+            -
+          </Button>
+          <Input
+            width={'60px'}
+            type={'number'}
+            height={'60px'}
+            rounded={'8px'}
+            textAlign={'center'}
+            id={'price'}
+            value={price}
+            {...register('price', {
+              value: price,
+              min: { value: 1, message: 'Minimum 0.5 euros' },
+              required: 'This is required',
+              onChange: (e) => setPrice(Number(e.target.value)),
+            })}
+          />
+          <Button
+            onClick={() => incrementPrice()}
+            height={'48px'}
+            width={'48px'}
+            backgroundColor={'#FEFEFE'}
+            border={'1.5px solid #394E61'}
+            rounded={'8px'}
+          >
+            +
+          </Button>
+        </HStack>
+        <FormErrorMessage justifyContent={'center'}>
+          {errors?.price && errors.price.message?.toString()}
+        </FormErrorMessage>
+      </FormControl>
+      <HStack gap={'12'}>
+        <PreviousButton step={step} setStep={setStep} />
+        <NextButton />
+      </HStack>
       <Box
         display={{ base: 'none', lg: 'block' }}
         position={'absolute'}
@@ -33,8 +237,7 @@ const CarDetails = ({
       >
         <CarDetailsBackground />
       </Box>
-      </VStack>
-    </>
+    </VStack>
   );
 };
 
