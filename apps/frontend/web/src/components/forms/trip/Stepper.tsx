@@ -9,7 +9,6 @@ const Stepper = ({ step }: { step: number }) => {
         width={'100%'}
         alignItems={'center'}
         justifyContent={'center'}
-        marginBottom={{ base: '0', md: '12' }}
       >
         <VStack
           boxSize={'12'}

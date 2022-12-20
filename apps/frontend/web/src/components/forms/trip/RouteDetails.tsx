@@ -13,6 +13,8 @@ import {
 } from '@chakra-ui/react';
 import { Dispatch, SetStateAction } from 'react';
 import { useFormContext, Controller } from 'react-hook-form';
+import NextButton from './components/NextButton';
+import PreviousButton from './components/PreviousButton';
 
 const RouteDetails = ({
   step,
@@ -98,32 +100,8 @@ const RouteDetails = ({
           display={{ base: 'block', md: 'none' }}
         />
         <HStack justifyContent={'center'} gap={'12'}>
-          <Button
-            width={{ base: '125px', md: '150px' }}
-            height={{ base: '50px', md: '60px' }}
-            backgroundColor={'#FEFEFE'}
-            colorScheme={'blue'}
-            color={'394E61'}
-            onClick={() => setStep(step - 1)}
-            fontSize={{ base: '18', md: '24' }}
-            border={'2px solid #394E61'}
-            shadow={'0px 2px 2px rgba(0, 0, 0, 0.25)'}
-          >
-            Previous
-          </Button>
-          <Button
-            width={{ base: '125px', md: '150px' }}
-            height={{ base: '50px', md: '60px' }}
-            backgroundColor={'#394E61'}
-            colorScheme={'blue'}
-            color={'white'}
-            isLoading={isSubmitting}
-            type="submit"
-            fontSize={{ base: '18', md: '24' }}
-            shadow={'0px 2px 2px rgba(0, 0, 0, 0.25)'}
-          >
-            Next
-          </Button>
+          <PreviousButton step={step} setStep={setStep}/>
+          <NextButton />
         </HStack>
       </FormControl>
       <Image // to replace with google maps
