@@ -3,6 +3,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import entities from './typeorm';
 import { UsersModule } from './users/users.module';
 
 @Module({
@@ -20,7 +21,7 @@ import { UsersModule } from './users/users.module';
         password: configService.get('DATABASE_PASSWORD'),
         database: configService.get('DATABASE_NAME'),
         synchronize: /true/.test(configService.get('DATABASE_SYNCHRONIZE')),
-        entities: [],
+        entities: entities,
       }),
       inject: [ConfigService],
     }),
