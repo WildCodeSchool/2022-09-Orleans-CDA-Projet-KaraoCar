@@ -5,15 +5,15 @@ const Stepper = ({ step }: { step: number }) => {
     <>
       <Flex width={'100%'} alignItems={'center'} justifyContent={'center'}>
         <VStack
-          boxSize={'12'}
+          boxSize={{ base: '8', md: '12' }}
           bgColor={step >= 1 ? '#394E61' : 'white'}
           rounded={'100%'}
           justifyContent={'center'}
-          border={'1px solid #8E8E8E'}
+          border={'2px solid #8E8E8E'}
         >
           <Text
             color={step >= 1 ? 'white' : '#838383'}
-            fontSize={'xl'}
+            fontSize={{ base: 'md', md: 'xl' }}
             fontWeight={'bold'}
           >
             1
@@ -21,14 +21,14 @@ const Stepper = ({ step }: { step: number }) => {
         </VStack>
         {step > 1 ? (
           <Box
-            width={{ base: '50px', md: '70px', lg: '120px' }}
+            width={{ base: '70px', lg: '120px' }}
             zIndex={'-1'}
             height={'3px'}
             backgroundColor={`${step > 1 && '#394E61'}`}
           ></Box>
         ) : (
           <Box
-            width={{ base: '50px', md: '70px', lg: '120px' }}
+            width={{ base: '70px', lg: '120px' }}
             zIndex={'-1'}
             height={'1px'}
             backgroundColor={'#384E61'}
@@ -36,16 +36,16 @@ const Stepper = ({ step }: { step: number }) => {
         )}
 
         <VStack
-          boxSize={'12'}
+          boxSize={{ base: '8', md: '12' }}
           bgColor={step >= 2 ? '#394E61' : 'white'}
           rounded={'100%'}
           justifyContent={'center'}
-          border={'1px solid #8E8E8E'}
+          border={'2px solid #8E8E8E'}
           marginLeft={'0'}
         >
           <Text
             color={step >= 2 ? 'white' : '#838383'}
-            fontSize={'xl'}
+            fontSize={{ base: 'md', md: 'xl' }}
             fontWeight={'bold'}
           >
             2
@@ -53,14 +53,14 @@ const Stepper = ({ step }: { step: number }) => {
         </VStack>
         {step > 2 ? (
           <Box
-            width={{ base: '50px', md: '70px', lg: '120px' }}
+            width={{ base: '70px', lg: '120px' }}
             zIndex={'-1'}
             height={'3px'}
             backgroundColor={`${step > 2 && '#394E61'}`}
           ></Box>
         ) : (
           <Box
-            width={{ base: '50px', md: '70px', lg: '120px' }}
+            width={{ base: '70px', lg: '120px' }}
             zIndex={'-1'}
             height={'1px'}
             backgroundColor={'#384E61'}
@@ -68,16 +68,16 @@ const Stepper = ({ step }: { step: number }) => {
         )}
 
         <VStack
-          boxSize={'12'}
+          boxSize={{ base: '8', md: '12' }}
           bgColor={step >= 3 ? '#394E61' : 'white'}
           rounded={'100%'}
           justifyContent={'center'}
-          border={'1px solid #8E8E8E'}
+          border={'2px solid #8E8E8E'}
           marginLeft={'0'}
         >
           <Text
             color={step >= 3 ? 'white' : '#838383'}
-            fontSize={'xl'}
+            fontSize={{ base: 'md', md: 'xl' }}
             fontWeight={'bold'}
           >
             3
@@ -85,30 +85,30 @@ const Stepper = ({ step }: { step: number }) => {
         </VStack>
         {step > 3 ? (
           <Box
-            width={{ base: '50px', md: '70px', lg: '120px' }}
+            width={{ base: '70px', lg: '120px' }}
             zIndex={'-1'}
             height={'3px'}
             backgroundColor={`${step > 3 && '#394E61'}`}
           ></Box>
         ) : (
           <Box
-            width={{ base: '50px', md: '70px', lg: '120px' }}
+            width={{ base: '70px', lg: '120px' }}
             zIndex={'-1'}
             height={'1px'}
             backgroundColor={'#384E61'}
           ></Box>
         )}
         <VStack
-          boxSize={'12'}
+          boxSize={{ base: '8', md: '12' }}
           bgColor={step >= 4 ? '#394E61' : 'white'}
           rounded={'100%'}
           justifyContent={'center'}
-          border={'1px solid #8E8E8E'}
+          border={'2px solid #8E8E8E'}
           marginLeft={'0'}
         >
           <Text
             color={step >= 4 ? 'white' : '#838383'}
-            fontSize={'xl'}
+            fontSize={{ base: 'md', md: 'xl' }}
             fontWeight={'bold'}
           >
             4
