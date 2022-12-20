@@ -15,7 +15,7 @@ const Index = () => {
     setStep(step + 1);
     console.log(values);
   }
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(2);
 
   const removeStep = () => {
     if (step - 1 >= 1) {
@@ -34,7 +34,7 @@ const Index = () => {
       case 1:
         return <Date />;
       case 2:
-        return <RouteDetails />;
+        return <RouteDetails step={step} setStep={setStep} />;
       case 3:
         return <CarDetails />;
       case 4:
@@ -59,8 +59,8 @@ const Index = () => {
         <form onSubmit={methods.handleSubmit(onSubmit)}>{formStep(step)}</form>
       </FormProvider>
       <HStack marginX={'auto'}>
-        {step > 1 && <Button onClick={() => removeStep()}>Previous</Button>}
-        {step > 1 && <Button onClick={() => addStep()}>Next</Button>}
+        {step > 2 && <Button onClick={() => removeStep()}>Previous</Button>}
+        {step > 2 && <Button onClick={() => addStep()}>Next</Button>}
       </HStack>
     </Flex>
   );
