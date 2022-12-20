@@ -2,12 +2,15 @@ import { Box, chakra, Flex, Text, VStack } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { Dispatch, SetStateAction } from 'react';
 
-const Stepper = ({ step, setStep}: {step: number, setStep: Dispatch<SetStateAction<number>>} ) => {
-  const ChakraBox = chakra(motion.div);
-
+const Stepper = ({ step }: { step: number }) => {
   return (
     <>
-      <Flex width={'100%'} alignItems={'center'} justifyContent={'center'} marginBottom={'12'}>
+      <Flex
+        width={'100%'}
+        alignItems={'center'}
+        justifyContent={'center'}
+        marginBottom={{ base: '0', md: '12' }}
+      >
         <VStack
           boxSize={'12'}
           bgColor={step >= 1 ? '#394E61' : 'white'}
@@ -25,13 +28,18 @@ const Stepper = ({ step, setStep}: {step: number, setStep: Dispatch<SetStateActi
         </VStack>
         {step > 1 ? (
           <Box
-          width={{ base: '50px', md: '70px', lg: '120px'}}
+            width={{ base: '50px', md: '70px', lg: '120px' }}
             zIndex={'-1'}
             height={'3px'}
             backgroundColor={`${step > 1 && '#394E61'}`}
           ></Box>
         ) : (
-          <Box width={{ base: '50px', md: '70px', lg: '120px'}} zIndex={'-1'} height={'1px'} backgroundColor={'#384E61'}></Box>
+          <Box
+            width={{ base: '50px', md: '70px', lg: '120px' }}
+            zIndex={'-1'}
+            height={'1px'}
+            backgroundColor={'#384E61'}
+          ></Box>
         )}
 
         <VStack
@@ -52,13 +60,18 @@ const Stepper = ({ step, setStep}: {step: number, setStep: Dispatch<SetStateActi
         </VStack>
         {step > 2 ? (
           <Box
-          width={{ base: '50px', md: '70px', lg: '120px'}}
+            width={{ base: '50px', md: '70px', lg: '120px' }}
             zIndex={'-1'}
             height={'3px'}
             backgroundColor={`${step > 2 && '#394E61'}`}
           ></Box>
         ) : (
-          <Box width={{ base: '50px', md: '70px', lg: '120px'}} zIndex={'-1'} height={'1px'} backgroundColor={'#384E61'}></Box>
+          <Box
+            width={{ base: '50px', md: '70px', lg: '120px' }}
+            zIndex={'-1'}
+            height={'1px'}
+            backgroundColor={'#384E61'}
+          ></Box>
         )}
 
         <VStack
@@ -79,13 +92,18 @@ const Stepper = ({ step, setStep}: {step: number, setStep: Dispatch<SetStateActi
         </VStack>
         {step > 3 ? (
           <Box
-          width={{ base: '50px', md: '70px', lg: '120px'}}
+            width={{ base: '50px', md: '70px', lg: '120px' }}
             zIndex={'-1'}
             height={'3px'}
             backgroundColor={`${step > 3 && '#394E61'}`}
           ></Box>
         ) : (
-          <Box width={{ base: '50px', md: '70px', lg: '120px'}} zIndex={'-1'} height={'1px'} backgroundColor={'#384E61'}></Box>
+          <Box
+            width={{ base: '50px', md: '70px', lg: '120px' }}
+            zIndex={'-1'}
+            height={'1px'}
+            backgroundColor={'#384E61'}
+          ></Box>
         )}
         <VStack
           boxSize={'12'}

@@ -1,4 +1,4 @@
-import { Button, Flex, Heading, HStack, VStack } from '@chakra-ui/react';
+import { Button, calc, Flex, Heading, HStack, VStack } from '@chakra-ui/react';
 import { useState } from 'react';
 import CarDetails from './CarDetails';
 import Comment from './Comment';
@@ -49,15 +49,22 @@ const Index = () => {
       alignItems={'center'}
       flexDirection={'column'}
       gap={{ base: '0', md: '4' }}
-      height={'100vh'}
+      height={'calc(100vh - 80px)'}
     >
       <Heading as={'h1'} textAlign={'center'} marginY={{ base: '8', md: '12' }}>
         Trip creation
       </Heading>
-      <Stepper step={step} setStep={setStep} />
-      <FormProvider {...methods}>
-        <form onSubmit={methods.handleSubmit(onSubmit)}>{formStep(step)}</form>
-      </FormProvider>
+      <Stepper step={step} />
+        <FormProvider {...methods}>
+          <form
+            onSubmit={methods.handleSubmit(onSubmit)}
+            style={{ height: '100%' }}
+          >
+            <HStack height={'100%'} marginTop={{ base: '6', md: '18' }} justifyContent={'center'} alignItems={'center'}>
+              {formStep(step)}
+            </HStack>
+          </form>
+        </FormProvider>
       <HStack marginX={'auto'}>
         {step > 2 && <Button onClick={() => removeStep()}>Previous</Button>}
         {step > 2 && <Button onClick={() => addStep()}>Next</Button>}
