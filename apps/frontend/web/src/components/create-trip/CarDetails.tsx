@@ -6,13 +6,15 @@ import {
   FormLabel,
   HStack,
   Input,
+  InputGroup,
+  InputRightElement,
   Radio,
   RadioGroup,
   Stack,
   Text,
   VStack,
 } from '@chakra-ui/react';
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import CarDetailsBackground from './components/CarDetailsBackground';
 import NextButton from './components/NextButton';
 import PreviousButton from './components/PreviousButton';
@@ -28,7 +30,7 @@ const CarDetails = ({
   const { control, register, setValue } = useFormContext();
   const errors = useFormContext().formState.errors;
   const [totalSeat, setTotalSeat] = useState(1);
-  const [price, setPrice] = useState(1);
+  const [price, setPrice] = useState(8);
 
   const decrementSeats = () => {
     if (totalSeat > 1) {
@@ -60,9 +62,9 @@ const CarDetails = ({
       height={'100%'}
       display={'flex'}
       flexDirection={'column'}
-      marginTop={{base:'0', md: '6'}}
+      marginTop={{ base: '0', md: '6' }}
       justifyContent={'center'}
-      gap={{base: '4', md:'16'}}
+      gap={{ base: '4', md: '16' }}
     >
       <FormControl isInvalid={Boolean(errors.middleSeat)} id="middleSeat">
         <FormLabel
@@ -83,7 +85,7 @@ const CarDetails = ({
                 direction={'row'}
                 justifyContent={'center'}
                 gap={'12'}
-                marginTop={{base: '2', md: '6'}}
+                marginTop={{ base: '2', md: '6' }}
               >
                 <Radio
                   size={'lg'}
@@ -132,7 +134,7 @@ const CarDetails = ({
         >
           How many passengers are you taking?
         </FormLabel>
-        <HStack justifyContent={'center'} marginTop={{base: '2', md: '6'}}>
+        <HStack justifyContent={'center'} marginTop={{ base: '2', md: '6' }}>
           <Button
             onClick={() => decrementSeats()}
             height={'48px'}
@@ -183,7 +185,7 @@ const CarDetails = ({
         >
           How much are you asking for a seat?
         </FormLabel>
-        <HStack justifyContent={'center'} marginTop={{base: '2', md: '6'}}>
+        <HStack justifyContent={'center'} marginTop={{ base: '2', md: '6' }}>
           <Button
             onClick={() => decrementPrice()}
             height={'48px'}
@@ -194,26 +196,36 @@ const CarDetails = ({
           >
             -
           </Button>
-          <Input
-            width={'60px'}
-            type={'number'}
-            height={'60px'}
-            rounded={'8px'}
-            textAlign={'center'}
-            id={'price'}
-            value={price}
-            {...register('price', {
-              value: price,
-              min: { value: 1, message: 'Minimum 0.5 euros' },
-              required: 'This is required',
-              onChange: (e) => setPrice(Number(e.target.value)),
-            })}
-          />
+          <HStack justifyContent={'center'}>
+            <InputGroup>
+              <Input
+                width={'80px'}
+                type={'number'}
+                height={'60px'}
+                rounded={'8px'}
+                textAlign={'center'}
+                id={'price'}
+                value={price}
+                {...register('price', {
+                  value: price,
+                  min: { value: 1, message: 'Minimum 0.5 euros' },
+                  required: 'This is required',
+                  onChange: (e) => setPrice(Number(e.target.value)),
+                })}
+              />
+              <InputRightElement
+                children={'€'}
+                fontSize={'22'}
+                height={'100%'}
+                roundedTopEnd={'8px'}
+                roundedBottomEnd={'8px'}
+              />
+            </InputGroup>
+          </HStack>
           <Button
             onClick={() => incrementPrice()}
             height={'48px'}
             width={'48px'}
-            backgroundColor={'#FEFEFE'}
             border={'1.5px solid #394E61'}
             rounded={'8px'}
           >
