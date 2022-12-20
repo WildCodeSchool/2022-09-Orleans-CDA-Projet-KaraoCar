@@ -25,7 +25,6 @@ const RouteDetails = ({
 }) => {
   const { control } = useFormContext();
   const errors = useFormContext().formState.errors;
-  const isSubmitting = useFormContext().formState.isSubmitting;
 
   return (
     <>

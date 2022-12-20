@@ -1,11 +1,11 @@
-import { Button, calc, Flex, Heading, HStack, VStack } from '@chakra-ui/react';
+import { Button, Flex, Heading, HStack } from '@chakra-ui/react';
 import { useState } from 'react';
 import CarDetails from './CarDetails';
 import Comment from './Comment';
 import Date from './TripDate';
 import RouteDetails from './RouteDetails';
 import Stepper from './Stepper';
-import { useForm, FormProvider, useFormContext } from 'react-hook-form';
+import { useForm, FormProvider } from 'react-hook-form';
 import './trip.css';
 
 const Index = () => {

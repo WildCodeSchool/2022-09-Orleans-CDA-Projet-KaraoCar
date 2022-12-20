@@ -1,15 +1,9 @@
-import { Box, chakra, Flex, Text, VStack } from '@chakra-ui/react';
-import { motion } from 'framer-motion';
-import { Dispatch, SetStateAction } from 'react';
+import { Box, Flex, Text, VStack } from '@chakra-ui/react';
 
 const Stepper = ({ step }: { step: number }) => {
   return (
     <>
-      <Flex
-        width={'100%'}
-        alignItems={'center'}
-        justifyContent={'center'}
-      >
+      <Flex width={'100%'} alignItems={'center'} justifyContent={'center'}>
         <VStack
           boxSize={'12'}
           bgColor={step >= 1 ? '#394E61' : 'white'}
