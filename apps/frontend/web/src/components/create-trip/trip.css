@@ -6,5 +6,5 @@ h1 {
 }
 
 * {
-    font-family: 'Lexend Deca', sans-serif;
+    font-family: 'Lexend Deca', sans-serif !important;
 }

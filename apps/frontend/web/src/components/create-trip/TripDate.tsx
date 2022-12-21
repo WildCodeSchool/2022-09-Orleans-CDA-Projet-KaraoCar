@@ -25,7 +25,7 @@ export default function TripDate() {
         justifyContent={'start'}
         marginBottom={{ base: '6', md: '6' }}
         gap={{ base: '2', md: '6' }}
-        marginTop={{base: '0', md: '6'}}
+        marginTop={{ base: '0', md: '6' }}
       >
         <FormControl isInvalid={Boolean(errors.startingPoint)}>
           <FormLabel

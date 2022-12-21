@@ -238,6 +238,7 @@ const CarDetails = ({
             height={'48px'}
             width={'48px'}
             border={'1.5px solid #394E61'}
+            backgroundColor={'#FEFEFE'}
             rounded={'8px'}
           >
             +
