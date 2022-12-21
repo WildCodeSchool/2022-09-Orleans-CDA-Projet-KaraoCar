@@ -99,7 +99,7 @@ export default function TripDate() {
                 id="date"
                 fontSize={{ base: '18', md: '24' }}
                 fontWeight={'light'}
-                placeholder='03/03/2022'
+                placeholder="03/03/2022"
                 {...register('date', {
                   required: 'This is required',
                 })}

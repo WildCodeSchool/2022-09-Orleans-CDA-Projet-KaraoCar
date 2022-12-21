@@ -218,7 +218,7 @@ const CarDetails = ({
               />
               <InputRightElement
                 children={'€'}
-                fontSize={{ base: '18',md:'22'}}
+                fontSize={{ base: '18', md: '22' }}
                 height={'100%'}
                 roundedTopEnd={'8px'}
                 roundedBottomEnd={'8px'}

@@ -10,7 +10,7 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import { Dispatch, SetStateAction, useState } from 'react';
-import {  useFormContext } from 'react-hook-form';
+import { useFormContext } from 'react-hook-form';
 import PreviousButton from './components/PreviousButton';
 
 const Comment = ({
@@ -32,7 +32,6 @@ const Comment = ({
     'Metal',
   ]);
 
-  
   return (
     <VStack
       width={{ base: '320px', md: '420px', lg: '800px' }}
@@ -42,18 +41,26 @@ const Comment = ({
       marginTop={{ base: '0', md: '6' }}
       justifyContent={'center'}
       gap={{ base: '4', md: '4' }}
-      marginBottom={{base: '6', md: '0'}}
+      marginBottom={{ base: '6', md: '0' }}
     >
       <FormControl isInvalid={Boolean(errors.musicalStyles)} id="musicalStyles">
-        <FormLabel htmlFor="musicalStyles"
+        <FormLabel
+          htmlFor="musicalStyles"
           fontSize={{ base: '18', md: '32' }}
           textAlign={'center'}
           fontWeight={'regular'}
-          marginBottom={'6'}>Musical styles</FormLabel>
-        <Stack spacing={5} direction={{base: 'column', md: 'row'}} justifyContent={'center'}>
+          marginBottom={'6'}
+        >
+          Musical styles
+        </FormLabel>
+        <Stack
+          spacing={5}
+          direction={{ base: 'column', md: 'row' }}
+          justifyContent={'center'}
+        >
           {musicalStyles.map((style, index) => (
             <Checkbox
-            size={'lg'}
+              size={'lg'}
               colorScheme="slateblue"
               value={index}
               key={index}

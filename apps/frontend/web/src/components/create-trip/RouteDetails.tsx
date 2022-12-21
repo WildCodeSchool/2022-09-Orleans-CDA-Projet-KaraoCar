@@ -31,9 +31,13 @@ const RouteDetails = ({
       <HStack
         height={{ base: '100%', md: '400px' }}
         display={'flex'}
-        marginTop={{base:'6', md: '24'}}
+        marginTop={{ base: '6', md: '24' }}
       >
-        <VStack width={{ base: '320px', md: '420px', lg: '500px' }} height={'100%'} justifyContent={'space-between'}>
+        <VStack
+          width={{ base: '320px', md: '420px', lg: '500px' }}
+          height={'100%'}
+          justifyContent={'space-between'}
+        >
           <FormControl
             isInvalid={Boolean(errors.itineraryUrl)}
             id="itineraryUrl"
@@ -51,7 +55,6 @@ const RouteDetails = ({
             <Controller
               name="itineraryUrl"
               control={control}
-              
               render={({ field }) => (
                 <RadioGroup marginLeft={'6'} {...field} marginBottom={'4'}>
                   <Stack>
@@ -99,7 +102,7 @@ const RouteDetails = ({
             height={'100%'}
             rounded={'8px'}
             fit={'cover'}
-            display={{ base: 'block', md: 'none' }}            
+            display={{ base: 'block', md: 'none' }}
           />
           <HStack justifyContent={'center'} gap={'12'} paddingTop={'4'}>
             <PreviousButton step={step} setStep={setStep} />
