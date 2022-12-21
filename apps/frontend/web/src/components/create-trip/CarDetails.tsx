@@ -66,9 +66,9 @@ const CarDetails = ({
       justifyContent={'center'}
       gap={{ base: '4', md: '16' }}
     >
-      <FormControl isInvalid={Boolean(errors.middleSeat)} id="middleSeat">
+      <FormControl isInvalid={Boolean(errors.middleseat)} id="middleseat">
         <FormLabel
-          htmlFor="middleSeat"
+          htmlFor="middleseat"
           fontSize={{ base: '18', md: '32' }}
           textAlign={'center'}
           fontWeight={'regular'}
@@ -77,7 +77,7 @@ const CarDetails = ({
           Are you keeping the middleseat empty?
         </FormLabel>
         <Controller
-          name="middleSeat"
+          name="middleseat"
           control={control}
           render={({ field }) => (
             <RadioGroup {...field}>
@@ -121,7 +121,7 @@ const CarDetails = ({
           }}
         />
         <FormErrorMessage justifyContent={'center'}>
-          {errors?.middleSeat && errors.middleSeat.message?.toString()}
+          {errors?.middleseat && errors.middleseat.message?.toString()}
         </FormErrorMessage>
       </FormControl>
       <FormControl isInvalid={Boolean(errors.totalSeat)}>
@@ -199,23 +199,26 @@ const CarDetails = ({
           <HStack justifyContent={'center'}>
             <InputGroup>
               <Input
-                width={'80px'}
+                width={'100px'}
                 type={'number'}
                 height={'60px'}
                 rounded={'8px'}
                 textAlign={'center'}
                 id={'price'}
                 value={price}
+                fontSize={'18'}
+                fontWeight={'light'}
+                z-index={'100'}
                 {...register('price', {
                   value: price,
-                  min: { value: 1, message: 'Minimum 0.5 euros' },
+                  min: { value: 0.5, message: 'Minimum 0.5 euros' },
                   required: 'This is required',
                   onChange: (e) => setPrice(Number(e.target.value)),
                 })}
               />
               <InputRightElement
                 children={'€'}
-                fontSize={'22'}
+                fontSize={{ base: '18',md:'22'}}
                 height={'100%'}
                 roundedTopEnd={'8px'}
                 roundedBottomEnd={'8px'}
