@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   Checkbox,
   FormControl,
@@ -11,6 +12,7 @@ import {
 } from '@chakra-ui/react';
 import { Dispatch, SetStateAction, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
+import CommentBackground from './components/CommentBackground';
 import PreviousButton from './components/PreviousButton';
 
 const Comment = ({
@@ -91,6 +93,7 @@ const Comment = ({
           placeholder="Cats are welcome!"
           fontSize={{ base: '16', md: '20' }}
           fontWeight={'light'}
+          backgroundColor={'#FEFEFE'}
           {...register('comment', {})}
         />
         <FormErrorMessage>
@@ -113,6 +116,15 @@ const Comment = ({
           Publish ride
         </Button>
       </HStack>
+      <Box
+        display={{ base: 'none', lg: 'block' }}
+        position={'absolute'}
+        bottom={'0'}
+        left={'00'}
+        zIndex={'-100'}
+      >
+        <CommentBackground />
+      </Box>
     </VStack>
   );
 };
