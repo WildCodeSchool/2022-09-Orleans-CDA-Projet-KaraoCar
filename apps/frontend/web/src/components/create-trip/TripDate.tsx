@@ -1,4 +1,4 @@
-import { useFormContext } from 'react-hook-form';
+import { useForm, useFormContext } from 'react-hook-form';
 import {
   FormErrorMessage,
   FormLabel,
@@ -7,7 +7,6 @@ import {
   HStack,
   Box,
   VStack,
-  Stack,
 } from '@chakra-ui/react';
 import NextButton from './components/NextButton';
 import RouteDetailsBackground from './components/RouteDetailsBackground';
@@ -23,10 +22,9 @@ export default function TripDate() {
         height={'100%'}
         display={'flex'}
         flexDirection={'column'}
-        marginTop={{ base: '0', md: '6' }}
         justifyContent={'start'}
         marginBottom={{ base: '6', md: '6' }}
-        gap={{ base: '2', md: '2' }}
+        gap={{ base: '2', md: '6' }}
       >
         <FormControl isInvalid={Boolean(errors.startingPoint)}>
           <FormLabel
@@ -42,12 +40,12 @@ export default function TripDate() {
             border={'2px solid #394E61'}
             height={{ base: '55px', md: '70px' }}
             id="startingPoint"
-            placeholder="3 rue de la république, 45000 Orléans"
+            placeholder="Orléans"
             fontSize={{ base: '18', md: '24' }}
             fontWeight={'light'}
             {...register('startingPoint', {
               required: 'This is required',
-              minLength: { value: 4, message: 'Minimum length should be 4' },
+              maxLength: { value: 255, message: 'Maximum length is 255' },
             })}
           />
           <FormErrorMessage maxHeight={'10'}>
@@ -69,12 +67,12 @@ export default function TripDate() {
             border={'2px solid #394E61'}
             height={{ base: '55px', md: '70px' }}
             id="endingPoint"
-            placeholder="23 rue Colbert, 37000 Tours"
+            placeholder="Tours"
             fontSize={{ base: '18', md: '24' }}
             fontWeight={'light'}
             {...register('endingPoint', {
               required: 'This is required',
-              minLength: { value: 4, message: 'Minimum length should be 4' },
+              maxLength: { value: 255, message: 'Maximum length is 255' },
             })}
           />
           <FormErrorMessage maxHeight={'10'}>
@@ -101,9 +99,11 @@ export default function TripDate() {
                 id="date"
                 fontSize={{ base: '18', md: '24' }}
                 fontWeight={'light'}
+                placeholder='03/03/2022'
                 {...register('date', {
                   required: 'This is required',
                 })}
+                min={new Date().toISOString().split('T')[0]}
               />
 
               <Input

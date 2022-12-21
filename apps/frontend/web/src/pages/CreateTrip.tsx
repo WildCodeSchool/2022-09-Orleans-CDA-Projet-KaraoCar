@@ -1,4 +1,4 @@
-import { Flex, Heading, HStack } from '@chakra-ui/react';
+import { Box, Flex, Heading, HStack } from '@chakra-ui/react';
 import { useState } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import CarDetails from '../components/create-trip/CarDetails';
@@ -10,38 +10,7 @@ import '../components/create-trip/trip.css';
 
 const CreateTrip = () => {
   const methods = useForm();
-  const [step, setStep] = useState(1);
-  const middleseat = methods.getValues('middleseat');
-  const musicalStyles = methods.getValues('musicalStyles');
-  const comment = methods.getValues('comment');
-  const startingPoint = methods.getValues('startingPoint');
-  const endingPoint = methods.getValues('endingPoint');
-
-  const date = methods.getValues('date');
-  const time = methods.getValues('time');
-  const totalSeat = methods.getValues('totalSeat');
-  const price = methods.getValues('price');
-  const dateTime = date + ' ' + time;
-  const dateTimeToDate = new Date(dateTime);
-  const itineraryUrl = methods.getValues('itineraryUrl');
-  const endingDateTime = new Date(dateTimeToDate.getTime() + 6000000); // to replace with google api values
-
-  const tripSlice = {
-    trip: {
-      carId: 1, // to replace once user part is done
-      middleseat: middleseat,
-      musicId: 3,
-      comment: comment,
-    },
-    startingPoint: startingPoint,
-    endingPoint: endingPoint,
-    startingDateTime: dateTime,
-    endingDateTime: endingDateTime,
-    totalSeat: totalSeat,
-    price: price,
-    itineraryUrl: itineraryUrl,
-    hasTolls: false, // to replace with google api values
-  };
+  const [step, setStep] = useState(2);
 
   function onSubmit() {
     if (step < 4) {
@@ -52,9 +21,37 @@ const CreateTrip = () => {
     }
   }
 
-  console.log(tripSlice);
-
   async function createTripSlice() {
+    const middleseat = methods.getValues('middleseat');
+    const musicalStyles = methods.getValues('musicalStyles');
+    const comment = methods.getValues('comment');
+    const startingPoint = methods.getValues('startingPoint');
+    const endingPoint = methods.getValues('endingPoint');
+
+    const date = methods.getValues('date');
+    const time = methods.getValues('time');
+    const totalSeat = methods.getValues('totalSeat');
+    const price = methods.getValues('price');
+    const dateTime = date + ' ' + time;
+    const dateTimeToDate = new Date(dateTime);
+    const itineraryUrl = methods.getValues('itineraryUrl');
+    const endingDateTime = new Date(dateTimeToDate.getTime() + 6000000);
+    const tripSlice = {
+      trip: {
+        carId: 1, // to replace once user part is done
+        middleseat: middleseat,
+        musicId: 3,
+        comment: comment,
+      },
+      startingPoint: startingPoint,
+      endingPoint: endingPoint,
+      startingDateTime: dateTime,
+      endingDateTime: endingDateTime,
+      totalSeat: totalSeat,
+      price: price,
+      itineraryUrl: itineraryUrl,
+      hasTolls: false, // to replace with google api values
+    }; // to replace with google api values
     try {
       const req = await fetch('http://localhost/api/trip-slices', {
         method: 'POST',
@@ -99,19 +96,11 @@ const CreateTrip = () => {
       </Heading>
       <Stepper step={step} />
       <FormProvider {...methods}>
-        <form
-          onSubmit={methods.handleSubmit(onSubmit)}
-          style={{ height: '100%' }}
-        >
-          <HStack
-            height={'100%'}
-            marginTop={{ base: '6', md: '18' }}
-            justifyContent={'center'}
-            alignItems={'center'}
-          >
+        <HStack height={'100%'} marginTop={{ base: '6', md: '18' }}>
+          <Box as={'form'} onSubmit={methods.handleSubmit(onSubmit)}>
             {formStep(step)}
-          </HStack>
-        </form>
+          </Box>
+        </HStack>
       </FormProvider>
     </Flex>
   );
