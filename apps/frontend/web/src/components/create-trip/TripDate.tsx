@@ -7,6 +7,7 @@ import {
   HStack,
   Box,
   VStack,
+  Stack,
 } from '@chakra-ui/react';
 import NextButton from './components/NextButton';
 import RouteDetailsBackground from './components/RouteDetailsBackground';
@@ -20,14 +21,14 @@ export default function TripDate() {
       <VStack
         width={{ base: '320px', md: '420px', lg: '500px' }}
         height={'100%'}
+        display={'flex'}
+        flexDirection={'column'}
+        marginTop={{ base: '0', md: '6' }}
+        justifyContent={'start'}
+        marginBottom={{ base: '6', md: '6' }}
+        gap={{ base: '2', md: '2' }}
       >
-        <FormControl
-          isInvalid={Boolean(
-            errors.startingPoint || errors.endingPoint || errors.date
-          )}
-          marginBottom={{ base: '6', md: '12' }}
-          marginTop={{ base: '6', md: '8' }}
-        >
+        <FormControl isInvalid={Boolean(errors.startingPoint)}>
           <FormLabel
             htmlFor="startingPoint"
             fontSize={{ base: '18', md: '24' }}
@@ -49,15 +50,17 @@ export default function TripDate() {
               minLength: { value: 4, message: 'Minimum length should be 4' },
             })}
           />
-          <FormErrorMessage>
+          <FormErrorMessage maxHeight={'10'}>
             {errors.startingPoint && errors.startingPoint.message?.toString()}
           </FormErrorMessage>
+        </FormControl>
+        <FormControl isInvalid={Boolean(errors.endingPoint)}>
           <FormLabel
             htmlFor="endingPoint"
             fontSize={{ base: '18', md: '24' }}
             textAlign={'center'}
             fontWeight={'regular'}
-            marginTop={{ base: '6', md: '20' }}
+            marginTop={{ base: '6', md: '6' }}
           >
             Where are going to?
           </FormLabel>
@@ -74,45 +77,54 @@ export default function TripDate() {
               minLength: { value: 4, message: 'Minimum length should be 4' },
             })}
           />
-          <FormErrorMessage>
+          <FormErrorMessage maxHeight={'10'}>
             {errors.endingPoint && errors.endingPoint.message?.toString()}
           </FormErrorMessage>
-          <FormLabel
-            htmlFor="date"
-            fontSize={{ base: '18', md: '24' }}
-            textAlign={'center'}
-            fontWeight={'regular'}
-            marginTop={{ base: '6', md: '20' }}
-          >
-            When are you going?
-          </FormLabel>
-          <HStack>
-            <Input
-              backgroundColor={'#F6F6F6'}
-              border={'2px solid #394E61'}
-              type="date"
-              height={{ base: '55px', md: '70px' }}
-              id="date"
-              fontSize={{ base: '18', md: '24' }}
-              fontWeight={'light'}
-              {...register('date', {
-                required: 'This is required',
-              })}
-            />
-            <Input
-              backgroundColor={'#F6F6F6'}
-              border={'2px solid #394E61'}
-              type="time"
-              height={{ base: '55px', md: '70px' }}
-              id="date"
-              fontSize={{ base: '18', md: '24' }}
-              fontWeight={'light'}
-              {...register('time', {
-                required: 'This is required',
-              })}
-            />{' '}
-          </HStack>
         </FormControl>
+        <VStack width={'100%'}>
+          <FormControl isInvalid={Boolean(errors.date)} marginBottom={'6'}>
+            <FormLabel
+              htmlFor="date"
+              fontSize={{ base: '18', md: '24' }}
+              textAlign={'center'}
+              fontWeight={'regular'}
+              marginTop={{ base: '6', md: '6' }}
+            >
+              When are you going?
+            </FormLabel>
+            <HStack width={'100%'}>
+              <Input
+                backgroundColor={'#F6F6F6'}
+                border={'2px solid #394E61'}
+                type="date"
+                height={{ base: '55px', md: '70px' }}
+                id="date"
+                fontSize={{ base: '18', md: '24' }}
+                fontWeight={'light'}
+                {...register('date', {
+                  required: 'This is required',
+                })}
+              />
+
+              <Input
+                backgroundColor={'#F6F6F6'}
+                border={'2px solid #394E61'}
+                type="time"
+                height={{ base: '55px', md: '70px' }}
+                id="time"
+                fontSize={{ base: '18', md: '24' }}
+                fontWeight={'light'}
+                {...register('time', {
+                  required: 'This is required',
+                })}
+              />
+            </HStack>
+            <FormErrorMessage maxHeight={'10'}>
+              {errors.date && errors.date.message?.toString()}
+            </FormErrorMessage>
+          </FormControl>
+        </VStack>
+
         <NextButton />
       </VStack>
       <Box

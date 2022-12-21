@@ -10,7 +10,7 @@ import '../components/create-trip/trip.css';
 
 const CreateTrip = () => {
   const methods = useForm();
-  const [step, setStep] = useState(3);
+  const [step, setStep] = useState(1);
   const middleseat = methods.getValues('middleseat');
   const musicalStyles = methods.getValues('musicalStyles');
   const comment = methods.getValues('comment');
@@ -92,7 +92,7 @@ const CreateTrip = () => {
       alignItems={'center'}
       flexDirection={'column'}
       gap={{ base: '0', md: '4' }}
-      height={{ md: 'calc(100vh - 80px)' }}
+      minHeight={{ md: 'calc(100vh - 80px)' }}
     >
       <Heading as={'h1'} textAlign={'center'} marginY={{ base: '8', md: '12' }}>
         Trip creation
