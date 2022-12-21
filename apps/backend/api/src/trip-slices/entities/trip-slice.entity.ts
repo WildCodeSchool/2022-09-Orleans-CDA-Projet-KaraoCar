@@ -48,7 +48,9 @@ export class TripSlice {
   @Column()
   hasTolls: boolean;
 
-  @ManyToOne(() => Trip, (trip: Trip) => trip.tripSlices, { cascade: true })
+  @ManyToOne(() => Trip, (trip: Trip) => trip.tripSlices, {
+    cascade: ['insert', 'update'],
+  })
   @JoinColumn()
   trip: Trip;
 }
