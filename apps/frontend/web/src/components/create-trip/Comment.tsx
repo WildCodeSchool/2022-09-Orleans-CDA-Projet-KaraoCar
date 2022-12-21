@@ -46,7 +46,7 @@ const Comment = ({
       <FormControl isInvalid={Boolean(errors.musicalStyles)} id="musicalStyles">
         <FormLabel
           htmlFor="musicalStyles"
-          fontSize={{ base: '18', md: '32' }}
+          fontSize={{ base: '18', md: '24' }}
           textAlign={'center'}
           fontWeight={'regular'}
           marginBottom={'6'}
@@ -77,7 +77,7 @@ const Comment = ({
       <FormControl isInvalid={Boolean(errors.comment)}>
         <FormLabel
           htmlFor="comment"
-          fontSize={{ base: '18', md: '32' }}
+          fontSize={{ base: '18', md: '24' }}
           textAlign={'center'}
           fontWeight={'regular'}
           marginTop={{ base: '6', md: '20' }}
@@ -89,12 +89,9 @@ const Comment = ({
           height={{ base: '140px', md: '240px' }}
           id="comment"
           placeholder="Cats are welcome!"
-          fontSize={{ base: '18', md: '24' }}
+          fontSize={{ base: '16', md: '20' }}
           fontWeight={'light'}
-          {...register('comment', {
-            required: 'This is required',
-            minLength: { value: 4, message: 'Minimum length should be 4' },
-          })}
+          {...register('comment', {})}
         />
         <FormErrorMessage>
           {errors.comment && errors.comment.message?.toString()}

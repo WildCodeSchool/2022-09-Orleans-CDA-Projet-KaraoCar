@@ -41,7 +41,7 @@ export default function TripDate() {
             height={{ base: '55px', md: '70px' }}
             id="startingPoint"
             placeholder="Orléans"
-            fontSize={{ base: '18', md: '24' }}
+            fontSize={{ base: '16', md: '20' }}
             fontWeight={'light'}
             {...register('startingPoint', {
               required: 'This is required',
@@ -68,7 +68,7 @@ export default function TripDate() {
             height={{ base: '55px', md: '70px' }}
             id="endingPoint"
             placeholder="Tours"
-            fontSize={{ base: '18', md: '24' }}
+            fontSize={{ base: '16', md: '20' }}
             fontWeight={'light'}
             {...register('endingPoint', {
               required: 'This is required',

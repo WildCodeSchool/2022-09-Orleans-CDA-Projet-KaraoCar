@@ -18,7 +18,7 @@ import { Dispatch, SetStateAction, useState } from 'react';
 import CarDetailsBackground from './components/CarDetailsBackground';
 import NextButton from './components/NextButton';
 import PreviousButton from './components/PreviousButton';
-import { Controller, useFormContext } from 'react-hook-form';
+import { Controller, useForm, useFormContext } from 'react-hook-form';
 
 const CarDetails = ({
   step,
@@ -31,6 +31,13 @@ const CarDetails = ({
   const errors = useFormContext().formState.errors;
   const [totalSeat, setTotalSeat] = useState(1);
   const [price, setPrice] = useState(8);
+
+  useForm({
+    defaultValues: {
+      totalSeat: 1,
+      price: 8,
+    },
+  });
 
   const decrementSeats = () => {
     if (totalSeat > 1) {
@@ -69,7 +76,7 @@ const CarDetails = ({
       <FormControl isInvalid={Boolean(errors.middleseat)} id="middleseat">
         <FormLabel
           htmlFor="middleseat"
-          fontSize={{ base: '18', md: '32' }}
+          fontSize={{ base: '18', md: '24' }}
           textAlign={'center'}
           fontWeight={'regular'}
           margin={'0'}
@@ -94,7 +101,7 @@ const CarDetails = ({
                   colorScheme={'slateblue'}
                 >
                   <Text
-                    fontSize={{ base: '16', md: '22' }}
+                    fontSize={{ base: '16', md: '20' }}
                     fontWeight={'light'}
                   >
                     Yes
@@ -107,7 +114,7 @@ const CarDetails = ({
                   colorScheme={'slateblue'}
                 >
                   <Text
-                    fontSize={{ base: '16', md: '22' }}
+                    fontSize={{ base: '16', md: '20' }}
                     fontWeight={'light'}
                   >
                     No
@@ -127,7 +134,7 @@ const CarDetails = ({
       <FormControl isInvalid={Boolean(errors.totalSeat)}>
         <FormLabel
           htmlFor="totalSeat"
-          fontSize={{ base: '18', md: '32' }}
+          fontSize={{ base: '18', md: '24' }}
           textAlign={'center'}
           fontWeight={'regular'}
           margin={'0'}
@@ -152,6 +159,7 @@ const CarDetails = ({
             rounded={'8px'}
             textAlign={'center'}
             id={'totalSeat'}
+            fontSize={{ base: '16', md: '20' }}
             value={totalSeat}
             {...register('totalSeat', {
               value: totalSeat,
@@ -178,7 +186,7 @@ const CarDetails = ({
       <FormControl isInvalid={Boolean(errors.price)}>
         <FormLabel
           htmlFor="price"
-          fontSize={{ base: '18', md: '32' }}
+          fontSize={{ base: '18', md: '24' }}
           textAlign={'center'}
           fontWeight={'regular'}
           margin={'0'}
@@ -206,7 +214,7 @@ const CarDetails = ({
                 textAlign={'center'}
                 id={'price'}
                 value={price}
-                fontSize={'18'}
+                fontSize={{ base: '16', md: '20' }}
                 fontWeight={'light'}
                 z-index={'100'}
                 {...register('price', {
@@ -218,7 +226,7 @@ const CarDetails = ({
               />
               <InputRightElement
                 children={'€'}
-                fontSize={{ base: '18', md: '22' }}
+                fontSize={{ base: '16', md: '20' }}
                 height={'100%'}
                 roundedTopEnd={'8px'}
                 roundedBottomEnd={'8px'}

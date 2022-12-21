@@ -44,7 +44,7 @@ const RouteDetails = ({
           >
             <FormLabel
               htmlFor="itineraryUrl"
-              fontSize={{ base: '18', md: '32' }}
+              fontSize={{ base: '18', md: '24' }}
               textAlign={'start'}
               fontWeight={'regular'}
               marginBottom={'6'}
@@ -56,33 +56,22 @@ const RouteDetails = ({
               name="itineraryUrl"
               control={control}
               render={({ field }) => (
-                <RadioGroup marginLeft={'6'} {...field} marginBottom={'4'}>
+                <RadioGroup
+                  marginLeft={'6'}
+                  {...field}
+                  marginBottom={'4'}
+                  fontWeight={'light'}
+                  fontSize={{ base: '16', md: '20' }}
+                  colorScheme={'slateblue'}
+                >
                   <Stack>
-                    <Radio
-                      size={'lg'}
-                      value="1"
-                      fontSize={{ base: '18', md: '24' }}
-                      fontWeight={'light'}
-                      colorScheme={'slateblue'}
-                    >
+                    <Radio size={'lg'} value="1">
                       First
                     </Radio>
-                    <Radio
-                      size={'lg'}
-                      value="2"
-                      fontSize={{ base: '18', md: '24' }}
-                      fontWeight={'light'}
-                      colorScheme={'slateblue'}
-                    >
+                    <Radio size={'lg'} value="2">
                       Second
                     </Radio>
-                    <Radio
-                      size={'lg'}
-                      value="3"
-                      fontSize={{ base: '18', md: '24' }}
-                      fontWeight={'light'}
-                      colorScheme={'slateblue'}
-                    >
+                    <Radio size={'lg'} value="3">
                       Third
                     </Radio>
                   </Stack>
