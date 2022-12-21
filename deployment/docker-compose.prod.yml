@@ -11,9 +11,11 @@ services:
       - db
 
   nest:
-    build:
-      context: ../
-      dockerfile: ./apps/backend/api/Dockerfile
+    # build:
+    #   context: ../
+    #   dockerfile: ./apps/backend/api/Dockerfile
+    # To replace with the correct path of your server image
+    # image: dockerhub-username/nest-image
     restart: always
     depends_on:
       - db
@@ -24,9 +26,11 @@ services:
       - db
 
   client: 
-    build:
-      context: ../
-      dockerfile: ./apps/frontend/web/Dockerfile
+    # build:
+    #   context: ../
+    #   dockerfile: ./apps/frontend/web/Dockerfile
+    # To replace with the correct path of your server image
+    # image: dockerhub-username/client-image
     volumes:
       - web-client-build:/app
 

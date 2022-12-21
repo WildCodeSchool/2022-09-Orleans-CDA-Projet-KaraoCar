@@ -1,4 +1,5 @@
 import { extendTheme } from '@chakra-ui/react';
+import { ButtonTheme } from './components/button';
 
 const config = {
   initialColorMode: 'light',
@@ -11,6 +12,13 @@ const theme = extendTheme({
     slateblue: {
       500: '#394E61',
     },
+  },
+  fonts: {
+    heading: `'Lexend Deca', sans-serif`,
+    body: `'Lexend Deca', sans-serif`,
+  },
+  components: {
+    Button: ButtonTheme,
   },
 });
 
