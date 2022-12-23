@@ -1,5 +1,12 @@
+import { MusicalStyle } from 'src/musical-styles/entities/musical-style.entity';
 import { TripSlice } from 'src/trip-slices/entities/trip-slice.entity';
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  ManyToMany,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
 export class Trip {
@@ -12,8 +19,12 @@ export class Trip {
   @Column()
   middleseat: boolean;
 
-  @Column()
-  musicId: number;
+  @ManyToMany(
+    () => MusicalStyle,
+    (musicalStyle: MusicalStyle) => musicalStyle.trips,
+    { cascade: ['insert', 'update'] },
+  )
+  musicalStyles: MusicalStyle[];
 
   @Column()
   comment: string;
