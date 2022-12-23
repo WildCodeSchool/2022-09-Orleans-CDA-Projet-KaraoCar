@@ -46,12 +46,12 @@ const MusicalStyles = ({
         border={'2px solid #394E61'}
         shadow={'0px 2px 2px rgba(0, 0, 0, 0.25)'}
       >
-        Musical Styles
+        {'Musical Styles'}
       </Button>
       <Modal isOpen={isOpen} onClose={onClose} size={'2xl'}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Pick your style(s)!</ModalHeader>
+          <ModalHeader>{'Pick your style(s)!'}</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>            
           </ModalBody>
@@ -68,9 +68,9 @@ const MusicalStyles = ({
               fontSize={{ base: '18', md: '24' }}
               shadow={'0px 2px 2px rgba(0, 0, 0, 0.25)'}
             >
-              Next
+              {'Next'}
             </Button>
-            <Button onClick={onClose}>Cancel</Button>
+            <Button onClick={onClose}>{'Cancel'}</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

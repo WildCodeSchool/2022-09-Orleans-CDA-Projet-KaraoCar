@@ -10,7 +10,7 @@ import '../components/create-trip/trip.css';
 
 const CreateTrip = () => {
   const methods = useForm();
-  const [step, setStep] = useState(2);
+  const [step, setStep] = useState(1);
 
   function onSubmit() {
     if (step < 4) {
@@ -35,7 +35,7 @@ const CreateTrip = () => {
     const dateTime = date + ' ' + time;
     const dateTimeToDate = new Date(dateTime);
     const itineraryUrl = methods.getValues('itineraryUrl');
-    const endingDateTime = new Date(dateTimeToDate.getTime() + 6000000);
+    const endingDateTime = new Date(dateTimeToDate.getTime() + 6000000); // to replace with google api values
     const tripSlice = {
       trip: {
         carId: 1, // to replace once user part is done
@@ -51,7 +51,7 @@ const CreateTrip = () => {
       price: price,
       itineraryUrl: itineraryUrl,
       hasTolls: false, // to replace with google api values
-    }; // to replace with google api values
+    };
     try {
       const req = await fetch('http://localhost/api/trip-slices', {
         method: 'POST',
@@ -60,10 +60,8 @@ const CreateTrip = () => {
         },
         body: JSON.stringify(tripSlice),
       });
-      const status = await req.status;
-      if (status === 201) {
-        alert('Tripslice created');
-      }
+      const status = req.status;
+      status === 201 && alert('Tripslice created');
     } catch (err) {
       console.error(err);
     }
@@ -92,7 +90,7 @@ const CreateTrip = () => {
       minHeight={{ md: 'calc(100vh - 80px)' }}
     >
       <Heading as={'h1'} textAlign={'center'} marginY={{ base: '8', md: '12' }}>
-        Trip creation
+        {'Trip creation'}
       </Heading>
       <Stepper step={step} />
       <FormProvider {...methods}>

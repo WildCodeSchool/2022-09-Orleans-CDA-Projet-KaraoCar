@@ -50,7 +50,7 @@ const RouteDetails = ({
               marginBottom={'6'}
               justifySelf={'start'}
             >
-              What is your route?
+              {'What is your route?'}
             </FormLabel>
             <Controller
               name="itineraryUrl"
@@ -66,13 +66,13 @@ const RouteDetails = ({
                 >
                   <Stack>
                     <Radio size={'lg'} value="1">
-                      First
+                      {'First'}
                     </Radio>
                     <Radio size={'lg'} value="2">
-                      Second
+                      {'Second'}
                     </Radio>
                     <Radio size={'lg'} value="3">
-                      Third
+                      {'Third'}
                     </Radio>
                   </Stack>
                 </RadioGroup>

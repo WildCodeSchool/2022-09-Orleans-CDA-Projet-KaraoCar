@@ -53,7 +53,7 @@ const Comment = ({
           fontWeight={'regular'}
           marginBottom={'6'}
         >
-          Musical styles
+          {'Musical styles'}
         </FormLabel>
         <Stack
           spacing={5}
@@ -84,7 +84,7 @@ const Comment = ({
           fontWeight={'regular'}
           marginTop={{ base: '6', md: '20' }}
         >
-          Anything to add about your ride?
+          {'Anything to add about your ride?'}
         </FormLabel>
         <Textarea
           border={'2px solid #394E61'}
@@ -110,10 +110,10 @@ const Comment = ({
           color={'white'}
           isLoading={isSubmitting}
           type="submit"
-          fontSize={{ base: '18', md: '24' }}
+          fontSize={{ base: '18', md: '22' }}
           shadow={'0px 2px 2px rgba(0, 0, 0, 0.25)'}
         >
-          Publish ride
+          {'Publish ride'}
         </Button>
       </HStack>
       <Box

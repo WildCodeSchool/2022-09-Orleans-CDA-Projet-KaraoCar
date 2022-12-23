@@ -34,7 +34,7 @@ export default function TripDate() {
             textAlign={'center'}
             fontWeight={'regular'}
           >
-            Where are you leaving from?
+           {'Where are you leaving from?'}
           </FormLabel>
           <Input
             backgroundColor={'#F6F6F6'}
@@ -61,7 +61,7 @@ export default function TripDate() {
             fontWeight={'regular'}
             marginTop={{ base: '6', md: '6' }}
           >
-            Where are going to?
+           {'Where are going to?'}
           </FormLabel>
           <Input
             backgroundColor={'#F6F6F6'}
@@ -89,7 +89,7 @@ export default function TripDate() {
               fontWeight={'regular'}
               marginTop={{ base: '6', md: '6' }}
             >
-              When are you going?
+              {'When are you going?'}
             </FormLabel>
             <HStack width={'100%'}>
               <Input

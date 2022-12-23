@@ -16,7 +16,7 @@ const Stepper = ({ step }: { step: number }) => {
             fontSize={{ base: 'md', md: 'xl' }}
             fontWeight={'bold'}
           >
-            1
+            {'1'}
           </Text>
         </VStack>
         {step > 1 ? (
@@ -48,7 +48,7 @@ const Stepper = ({ step }: { step: number }) => {
             fontSize={{ base: 'md', md: 'xl' }}
             fontWeight={'bold'}
           >
-            2
+            {'2'}
           </Text>
         </VStack>
         {step > 2 ? (
@@ -80,7 +80,7 @@ const Stepper = ({ step }: { step: number }) => {
             fontSize={{ base: 'md', md: 'xl' }}
             fontWeight={'bold'}
           >
-            3
+            {'3'}
           </Text>
         </VStack>
         {step > 3 ? (
@@ -111,7 +111,7 @@ const Stepper = ({ step }: { step: number }) => {
             fontSize={{ base: 'md', md: 'xl' }}
             fontWeight={'bold'}
           >
-            4
+            {'4'}
           </Text>
         </VStack>
       </Flex>

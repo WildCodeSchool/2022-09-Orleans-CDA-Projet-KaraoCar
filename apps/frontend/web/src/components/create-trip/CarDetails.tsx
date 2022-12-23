@@ -81,7 +81,7 @@ const CarDetails = ({
           fontWeight={'regular'}
           margin={'0'}
         >
-          Are you keeping the middleseat empty?
+          {'Are you keeping the middleseat empty?'}
         </FormLabel>
         <Controller
           name="middleseat"
@@ -104,7 +104,7 @@ const CarDetails = ({
                     fontSize={{ base: '16', md: '20' }}
                     fontWeight={'light'}
                   >
-                    Yes
+                    {'Yes'}
                   </Text>
                 </Radio>
                 <Radio
@@ -117,7 +117,7 @@ const CarDetails = ({
                     fontSize={{ base: '16', md: '20' }}
                     fontWeight={'light'}
                   >
-                    No
+                    {'No'}
                   </Text>
                 </Radio>
               </Stack>
@@ -139,10 +139,11 @@ const CarDetails = ({
           fontWeight={'regular'}
           margin={'0'}
         >
-          How many passengers are you taking?
+          {'How many passengers are you taking?'}
         </FormLabel>
         <HStack justifyContent={'center'} marginTop={{ base: '2', md: '6' }}>
           <Button
+            variant={'outline'}
             onClick={() => decrementSeats()}
             height={'48px'}
             width={'48px'}
@@ -169,6 +170,7 @@ const CarDetails = ({
             })}
           />
           <Button
+            variant={'outline'}
             onClick={() => incrementSeats()}
             height={'48px'}
             width={'48px'}
@@ -191,7 +193,7 @@ const CarDetails = ({
           fontWeight={'regular'}
           margin={'0'}
         >
-          How much are you asking for a seat?
+          {'How much are you asking for a seat?'}
         </FormLabel>
         <HStack justifyContent={'center'} marginTop={{ base: '2', md: '6' }}>
           <Button
@@ -201,6 +203,7 @@ const CarDetails = ({
             backgroundColor={'#FEFEFE'}
             border={'1.5px solid #394E61'}
             rounded={'8px'}
+            variant={'outline'}
           >
             -
           </Button>
@@ -240,6 +243,7 @@ const CarDetails = ({
             border={'1.5px solid #394E61'}
             backgroundColor={'#FEFEFE'}
             rounded={'8px'}
+            variant={'outline'}
           >
             +
           </Button>
