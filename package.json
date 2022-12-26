@@ -5,6 +5,9 @@
   "license": "MIT",
   "private": true,
   "scripts": {
+    "prepare": "husky install",
+    "format": "npx prettier --write .",
+    "format:check": "npx prettier --check .",
     "env:cp": "cp ./.env ./apps/frontend/web/.env && cp ./.env ./apps/frontend/mobile/.env && cp ./.env ./apps/backend/api/.env",
     "watch:env": "nodemon --watch ./.env --exec \"npm run env:cp\"",
     "build:frontend:web": "npm run build --workspace=apps/frontend/web",
@@ -28,6 +31,7 @@
   "devDependencies": {
     "@types/node": "^18.11.9",
     "concurrently": "^7.5.0",
+    "husky": "^8.0.2",
     "nodemon": "^2.0.20"
   },
   "dependencies": {
