@@ -8,16 +8,17 @@ const Login = () => {
   const handleSubmit = (event: any) => {
     event.preventDefault();
 
-    
     fetch('http://localhost:3333/api/auth/login', {
       method: 'POST',
       body: JSON.stringify({ username, password }),
       headers: {
         'Content-Type': 'application/json',
       },
-    })
-      .then((response) => response.json())
-      .then((data) => {
+    }).then(response => response.json()
+    ).then((data) => {
+        localStorage.setItem('access', data.access);
+        localStorage.setItem('refresh', data.refresh);
+        console.log(localStorage);
         // , store auth token
         if (data.success) {
           // on success

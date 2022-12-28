@@ -11,11 +11,15 @@ function App() {
   useEffect(() => {
     const abortController = new AbortController();
     const go = async () => {
-      const response = await fetch(`/api/some-route`, {
-        signal: abortController.signal,
-      });
-      const data = await response.json();
-      setSomeData(data);
+      try {
+        const response = await fetch(`/api/some-route`, {
+          signal: abortController.signal,
+        });
+        const data = await response.json();
+        setSomeData(data);
+      } catch (error) {
+        console.log(error);
+      } 
     };
 
     go();

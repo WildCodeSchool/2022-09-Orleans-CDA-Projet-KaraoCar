@@ -13,10 +13,8 @@ export class AuthService {
     if (userDB) {
       const matched = comparePasswords(password, userDB.password);
       if (matched) {
-        console.log('User Validation Sucess');
-        return userDB;
+        return { success: true };
       } else {
-        console.log('Fail');
         return null;
       }
     }
