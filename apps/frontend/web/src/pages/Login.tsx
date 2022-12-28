@@ -16,13 +16,13 @@ const Login = () => {
       },
     }).then(response => response.json()
     ).then((data) => {
-        localStorage.setItem('access', data.access);
-        localStorage.setItem('refresh', data.refresh);
-        console.log(localStorage);
-        // , store auth token
-        if (data.success) {
-          // on success
+      console.log(data);
+        if (data.token) {
+          localStorage.setItem('token', data.token);
+          console.log("SUCCESS")
+          // TODO: redirection to another page
         } else {
+          console.log("ERROR")
           // on fail
           setError(data.error);
         }
