@@ -1,3 +1,4 @@
+import { JwtStrategy } from './jwt.strategy';
 import { User } from '../typeorm';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Module } from '@nestjs/common';
@@ -29,6 +30,7 @@ import { jwtConstants } from './constants';
       useClass: UsersService,
     },
     LocalStrategy,
+    JwtStrategy,
   ],
 })
 export class AuthModule {}
