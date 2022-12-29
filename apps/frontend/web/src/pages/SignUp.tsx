@@ -68,7 +68,7 @@ function SignupForm() {
 } */
 return (
     <Stack minH={'100vh'} direction={{ base: 'column', md: 'row' }}>
-      <Flex flex={1} backgroundColor={'#E4F2FF'}>
+        <Flex flex={1} direction={'column'} align={'center'} justify={'center'} backgroundColor={'#E4F2FF'}>
         <Heading fontSize={'40px'} alignSelf={'center'} >
           Already have an account?
         </Heading>
