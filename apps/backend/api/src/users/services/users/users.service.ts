@@ -44,4 +44,8 @@ export class UsersService {
   findUserByUsername(username: string) {
     return this.userRepository.findOneBy({ username });
   }
+
+  findUserByEmail(email: string) {
+    return this.userRepository.findOneBy({ email });
+  }
 }

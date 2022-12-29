@@ -11,7 +11,7 @@ import {
 } from '@chakra-ui/react';
 
 const Login = () => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
@@ -22,7 +22,7 @@ const Login = () => {
     console.log('handle')
     fetch('http://localhost:3333/api/auth/login', {
       method: 'POST',
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({ email, password }),
       headers: {
         'Content-Type': 'application/json',
       },
@@ -73,7 +73,7 @@ const Login = () => {
           </Heading>
           <form  onSubmit={handleSubmit}>
           <FormControl>
-            <FormLabel fontSize={'25px'}>Username</FormLabel>
+            <FormLabel fontSize={'25px'}>Email</FormLabel>
             <Input
               rounded={'8px'}
               border={'1px solid #000000'}
@@ -82,9 +82,9 @@ const Login = () => {
               height={'50px'}
               width={'500px'}
               fontSize={'25px'}
-              type="username"
-              value={username}
-              onChange={(event) => setUsername(event.target.value)}
+              type="email"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
             />
             <FormLabel fontSize={'25px'}>Password</FormLabel>
             <Input

@@ -10,15 +10,19 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  async validateUser(username: string, password: string): Promise<any> {
-    const userDB = await this.userService.findUserByUsername(username);
+  async validateUser(email: string, password: string): Promise<any> {
+    console.log('coucou');
+    const userDB = await this.userService.findUserByEmail(email);
+    console.log(userDB, 'user', password);
     const matched = comparePasswords(password, userDB.password);
+    console.log(matched);
     if (userDB && matched) {
       const { password, ...result } = userDB;
       return result;
     }
     return null;
   }
+
   async login(user: any) {
     const payload = { username: user.username, sub: user.userId };
     return {
