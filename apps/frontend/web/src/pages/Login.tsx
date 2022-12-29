@@ -19,7 +19,7 @@ const Login = () => {
     event.preventDefault(); */
   const handleSubmit = (event: any) => {
     event.preventDefault();
-
+    console.log('handle')
     fetch('http://localhost:3333/api/auth/login', {
       method: 'POST',
       body: JSON.stringify({ username, password }),
@@ -71,7 +71,8 @@ const Login = () => {
           <Heading fontSize={'50px'} marginBottom={'5rem'} alignSelf={'center'}>
             Log in to your account
           </Heading>
-          <FormControl onSubmit={handleSubmit}>
+          <form  onSubmit={handleSubmit}>
+          <FormControl>
             <FormLabel fontSize={'25px'}>Username</FormLabel>
             <Input
               rounded={'8px'}
@@ -112,6 +113,7 @@ const Login = () => {
               </Button>
             </Stack>
           </FormControl>
+          </form>
         </Stack>
       </Flex>
       <Flex
