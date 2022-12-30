@@ -26,4 +26,40 @@ export class User {
     default: '',
   })
   password: string;
+
+  @Column({
+    nullable: false,
+    default: '',
+  })
+  confirm_password: string;
+
+  @Column({
+    nullable: true,
+    default: '',
+  })
+  description: string;
+
+  @Column({
+    nullable: true,
+    default: '',
+  })
+  photo: string;
+
+  @Column({
+    nullable: true,
+    default: null,
+  })
+  birthday: Date;
+
+  @Column({
+    nullable: true,
+    default: null,
+  })
+  created_at: Date;
+
+  @Column({
+    nullable: true,
+    default: null,
+  })
+  deleted_at: Date;
 }

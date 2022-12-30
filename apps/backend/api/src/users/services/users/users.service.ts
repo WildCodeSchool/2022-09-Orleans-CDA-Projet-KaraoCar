@@ -36,8 +36,13 @@ export class UsersService {
 
   createUser(CreateUserDto: CreateUserDto) {
     const password = encodePassword(CreateUserDto.password);
+    //const confirm_password = encodePassword(CreateUserDto.confirm_password);
     console.log(password);
-    const newUser = this.userRepository.create({ ...CreateUserDto, password });
+    const newUser = this.userRepository.create({
+      ...CreateUserDto,
+      password,
+      // confirm_password,
+    });
     return this.userRepository.save(newUser);
   }
 
