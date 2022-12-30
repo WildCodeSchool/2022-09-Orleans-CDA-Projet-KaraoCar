@@ -9,6 +9,7 @@ import {
   Input,
   Stack,
   Link,
+  Icon,
 } from '@chakra-ui/react';
 
 function SignupForm() {
@@ -77,6 +78,8 @@ function SignupForm() {
         </Heading>
         <Link href="/login">
           <Button
+          mt={4}
+          rightIcon={<Icon name="arrow-forward" />}
             border={'1px solid #000000'}
             backgroundColor={'#fff'}
             marginTop={'2rem'}
@@ -164,6 +167,8 @@ function SignupForm() {
             </FormControl>
             <Stack spacing={6}>
               <Button
+              mt={4}
+              rightIcon={<Icon name="arrow-forward" />}
                 marginTop={'2rem'}
                 height={'40px'}
                 width={'300px'}

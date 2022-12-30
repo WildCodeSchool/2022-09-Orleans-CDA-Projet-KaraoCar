@@ -9,6 +9,7 @@ import {
   Stack,
   Text,
   Link,
+  Icon,
 } from '@chakra-ui/react';
 
 const Login = () => {
@@ -100,6 +101,8 @@ const Login = () => {
               />
               <Stack spacing={6}>
                 <Button
+                  mt={4}
+                  rightIcon={<Icon name="arrow-forward" />}
                   marginTop={'2rem'}
                   height={'40px'}
                   width={'300px'}
@@ -132,6 +135,8 @@ const Login = () => {
         </Text>
         <Link href="/signup">
           <Button
+            mt={4}
+            rightIcon={<Icon name="arrow-forward" />}
             border={'1px solid #000000'}
             backgroundColor={'#fff'}
             marginTop={'2rem'}
