@@ -10,6 +10,8 @@ import {
   Text,
   Link,
   Icon,
+  Box,
+  Img,
 } from '@chakra-ui/react';
 
 const Login = () => {
@@ -105,7 +107,7 @@ const Login = () => {
                   rightIcon={<Icon name="arrow-forward" />}
                   marginTop={'2rem'}
                   height={'40px'}
-                  width={'300px'}
+                  width={'200px'}
                   rounded={'8px'}
                   type="submit"
                   backgroundColor={'#394E61'}
@@ -122,6 +124,9 @@ const Login = () => {
           </form>
         </Stack>
       </Flex>
+      <Box position="fixed" top="70%" left="63%" transform="translate(-50%, -50%)">
+      <Img src="/loginimage.svg" />
+    </Box>
       <Flex
         flex={1}
         direction={'column'}
@@ -141,11 +146,10 @@ const Login = () => {
             rightIcon={<Icon name="arrow-forward" />}
             border={'1px solid #000000'}
             backgroundColor={'#fff'}
-            
             _hover={{ backgroundColor: '#394E61', textColor: 'white'}}
             marginTop={'2rem'}
             height={'40px'}
-            width={'300px'}
+            width={'200px'}
             rounded={'8px'}
             type="submit"
             variant="solid"
