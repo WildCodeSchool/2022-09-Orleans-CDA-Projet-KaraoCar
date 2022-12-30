@@ -25,20 +25,20 @@ function SignupForm() {
     fetch('http://localhost:3333/api/users/create', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ email, password })
+      body: JSON.stringify({ email, password }),
     })
-      .then(response => {
+      .then((response) => {
         if (!response.ok) {
           throw new Error('Signup failed');
         }
         return response.json();
       })
-      .then(data => {
+      .then((data) => {
         // go to page
       })
-      .catch(error => {
+      .catch((error) => {
         setError(error.message);
       });
   };
@@ -66,10 +66,16 @@ function SignupForm() {
     </form>
   );
 } */
-return (
+  return (
     <Stack minH={'100vh'} direction={{ base: 'column', md: 'row' }}>
-        <Flex flex={1} direction={'column'} align={'center'} justify={'center'} backgroundColor={'#E4F2FF'}>
-        <Heading fontSize={'40px'} alignSelf={'center'} >
+      <Flex
+        flex={1}
+        direction={'column'}
+        align={'center'}
+        justify={'center'}
+        backgroundColor={'#E4F2FF'}
+      >
+        <Heading fontSize={'40px'} alignSelf={'center'}>
           Already have an account?
         </Heading>
         <Button
@@ -91,95 +97,92 @@ return (
           <Heading fontSize={'50px'} marginBottom={'5rem'} alignSelf={'center'}>
             Create Your Account
           </Heading>
-          <Grid templateColumns="1fr 1fr" gap={6}>
-          <FormControl id="email">
-            <FormLabel fontSize={'25px'}>Firstname</FormLabel>
-            
-            <Input
-              rounded={'8px'}
-              border={'1px solid #000000'}
-              backgroundColor={'#fff'}
-              borderColor={'black'}
-              height={'50px'}
-              width={'350px'}
-              fontSize={'25px'}
-              type="username"
-            />
-          </FormControl>
-          <FormControl id="email">
-            <FormLabel fontSize={'25px'}>Lastname</FormLabel>
-            
-            <Input
-              rounded={'8px'}
-              border={'1px solid #000000'}
-              backgroundColor={'#fff'}
-              borderColor={'black'}
-              height={'50px'}
-              width={'350px'}
-              fontSize={'25px'}
-              type="username"
-            />
-          </FormControl>
-      </Grid>
-          <FormControl id="email">
-            <FormLabel fontSize={'25px'}>Email address</FormLabel>
-            
-            <Input
-              rounded={'8px'}
-              border={'1px solid #000000'}
-              backgroundColor={'#fff'}
-              borderColor={'black'}
-              height={'50px'}
-              width={'700px'}
-              fontSize={'25px'}
-              type="username"
-            />
-          </FormControl>
-          <FormControl id="password">
-            <FormLabel fontSize={'25px'}>Password</FormLabel>
-            <Input
-              rounded={'8px'}
-              border={'1px solid #000000'}
-              height={'50px'}
-              width={'700px'}
-              fontSize={'25px'}
-              type="password"
-            />
-          </FormControl>
-          <FormControl id="email">
-            <FormLabel fontSize={'25px'}>Confirm Password</FormLabel>
-            
-            <Input
-              rounded={'8px'}
-              border={'1px solid #000000'}
-              backgroundColor={'#fff'}
-              borderColor={'black'}
-              height={'50px'}
-              width={'700px'}
-              fontSize={'25px'}
-              type="username"
-            />
-          </FormControl>
-          <Stack spacing={6}>
-            <Button
-              marginTop={'2rem'}
-              height={'40px'}
-              width={'300px'}
-              rounded={'8px'}
-              type="submit"
-              backgroundColor={'#394E61'}
-              textColor={'#fff'}
-              variant="solid"
-              alignSelf={'center'}
-            >
-              Create your account
-            </Button>
-          </Stack>
+          <form onSubmit={handleSubmit}>
+            <Grid templateColumns="1fr 1fr" gap={6}>
+              <FormControl>
+                <FormLabel fontSize={'25px'}>Firstname</FormLabel>
+                <Input
+                  rounded={'8px'}
+                  border={'1px solid #000000'}
+                  backgroundColor={'#fff'}
+                  borderColor={'black'}
+                  height={'50px'}
+                  width={'350px'}
+                  fontSize={'25px'}
+                  type="username"
+                />
+              </FormControl>
+              <FormControl>
+                <FormLabel fontSize={'25px'}>Lastname</FormLabel>
+                <Input
+                  rounded={'8px'}
+                  border={'1px solid #000000'}
+                  backgroundColor={'#fff'}
+                  borderColor={'black'}
+                  height={'50px'}
+                  width={'350px'}
+                  fontSize={'25px'}
+                  type="username"
+                />
+              </FormControl>
+            </Grid>
+            <FormControl>
+              <FormLabel fontSize={'25px'}>Email address</FormLabel>
+              <Input
+                rounded={'8px'}
+                border={'1px solid #000000'}
+                backgroundColor={'#fff'}
+                borderColor={'black'}
+                height={'50px'}
+                width={'700px'}
+                fontSize={'25px'}
+                type="username"
+              />
+            </FormControl>
+            <FormControl>
+              <FormLabel fontSize={'25px'}>Password</FormLabel>
+              <Input
+                rounded={'8px'}
+                border={'1px solid #000000'}
+                height={'50px'}
+                width={'700px'}
+                fontSize={'25px'}
+                type="password"
+              />
+            </FormControl>
+            <FormControl>
+              <FormLabel fontSize={'25px'}>Confirm Password</FormLabel>
+              <Input
+                rounded={'8px'}
+                border={'1px solid #000000'}
+                backgroundColor={'#fff'}
+                borderColor={'black'}
+                height={'50px'}
+                width={'700px'}
+                fontSize={'25px'}
+                type="username"
+              />
+            </FormControl>
+            <Stack spacing={6}>
+              <Button
+                marginTop={'2rem'}
+                height={'40px'}
+                width={'300px'}
+                rounded={'8px'}
+                type="submit"
+                backgroundColor={'#394E61'}
+                textColor={'#fff'}
+                variant="solid"
+                alignSelf={'center'}
+              >
+                Create your account
+              </Button>
+            </Stack>
+          </form>
         </Stack>
       </Flex>
-      
     </Stack>
   );
-};
+}
 
 export default SignupForm;
