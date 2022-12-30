@@ -82,6 +82,7 @@ function SignupForm() {
           rightIcon={<Icon name="arrow-forward" />}
             border={'1px solid #000000'}
             backgroundColor={'#fff'}
+            _hover={{ backgroundColor: '#394E61', textColor: 'white'}}
             marginTop={'2rem'}
             height={'40px'}
             width={'300px'}
@@ -175,6 +176,7 @@ function SignupForm() {
                 rounded={'8px'}
                 type="submit"
                 backgroundColor={'#394E61'}
+                _hover={{ backgroundColor: '#E4F2FF', textColor: 'black'}}
                 textColor={'#fff'}
                 variant="solid"
                 alignSelf={'center'}
