@@ -8,6 +8,7 @@ import {
   Input,
   Stack,
   Text,
+  Link,
 } from '@chakra-ui/react';
 
 const Login = () => {
@@ -19,7 +20,7 @@ const Login = () => {
     event.preventDefault(); */
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    console.log('handle')
+    console.log('handle');
     fetch('http://localhost:3333/api/auth/login', {
       method: 'POST',
       body: JSON.stringify({ email, password }),
@@ -71,48 +72,48 @@ const Login = () => {
           <Heading fontSize={'50px'} marginBottom={'5rem'} alignSelf={'center'}>
             Log in to your account
           </Heading>
-          <form  onSubmit={handleSubmit}>
-          <FormControl>
-            <FormLabel fontSize={'25px'}>Email</FormLabel>
-            <Input
-              rounded={'8px'}
-              border={'1px solid #000000'}
-              backgroundColor={'#fff'}
-              borderColor={'black'}
-              height={'50px'}
-              width={'500px'}
-              fontSize={'25px'}
-              type="email"
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-            />
-            <FormLabel fontSize={'25px'}>Password</FormLabel>
-            <Input
-              rounded={'8px'}
-              border={'1px solid #000000'}
-              height={'50px'}
-              width={'500px'}
-              fontSize={'25px'}
-              type="password"
-              value={password}
-              onChange={(event) => setPassword(event.target.value)}
-            />
-            <Stack spacing={6}>
-              <Button
-                marginTop={'2rem'}
-                height={'40px'}
-                width={'300px'}
+          <form onSubmit={handleSubmit}>
+            <FormControl>
+              <FormLabel fontSize={'25px'}>Email</FormLabel>
+              <Input
                 rounded={'8px'}
-                type="submit"
-                backgroundColor={'#394E61'}
-                textColor={'#fff'}
-                variant="solid"
-                alignSelf={'center'}
-              >
-                Login
-              </Button>
-            </Stack>
-          </FormControl>
+                border={'1px solid #000000'}
+                backgroundColor={'#fff'}
+                borderColor={'black'}
+                height={'50px'}
+                width={'500px'}
+                fontSize={'25px'}
+                type="email"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+              />
+              <FormLabel fontSize={'25px'}>Password</FormLabel>
+              <Input
+                rounded={'8px'}
+                border={'1px solid #000000'}
+                height={'50px'}
+                width={'500px'}
+                fontSize={'25px'}
+                type="password"
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+              />
+              <Stack spacing={6}>
+                <Button
+                  marginTop={'2rem'}
+                  height={'40px'}
+                  width={'300px'}
+                  rounded={'8px'}
+                  type="submit"
+                  backgroundColor={'#394E61'}
+                  textColor={'#fff'}
+                  variant="solid"
+                  alignSelf={'center'}
+                >
+                  Login
+                </Button>
+              </Stack>
+            </FormControl>
           </form>
         </Stack>
       </Flex>
@@ -129,19 +130,21 @@ const Login = () => {
         <Text alignSelf={'center'}>
           Sign up and discover the joys of singing during your trip
         </Text>
-        <Button
-          border={'1px solid #000000'}
-          backgroundColor={'#fff'}
-          marginTop={'2rem'}
-          height={'40px'}
-          width={'300px'}
-          rounded={'8px'}
-          type="submit"
-          variant="solid"
-          alignSelf={'center'}
-        >
-          Sign Up
-        </Button>
+        <Link href="/signup">
+          <Button
+            border={'1px solid #000000'}
+            backgroundColor={'#fff'}
+            marginTop={'2rem'}
+            height={'40px'}
+            width={'300px'}
+            rounded={'8px'}
+            type="submit"
+            variant="solid"
+            alignSelf={'center'}
+          >
+            Sign Up
+          </Button>
+        </Link>
       </Flex>
     </Stack>
   );

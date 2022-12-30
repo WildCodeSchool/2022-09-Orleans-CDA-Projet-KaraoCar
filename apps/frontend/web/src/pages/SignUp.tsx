@@ -8,10 +8,7 @@ import {
   Heading,
   Input,
   Stack,
-  Image,
-  extendTheme,
-  Center,
-  Text,
+  Link,
 } from '@chakra-ui/react';
 
 function SignupForm() {
@@ -78,19 +75,21 @@ function SignupForm() {
         <Heading fontSize={'40px'} alignSelf={'center'}>
           Already have an account?
         </Heading>
-        <Button
-          border={'1px solid #000000'}
-          backgroundColor={'#fff'}
-          marginTop={'2rem'}
-          height={'40px'}
-          width={'300px'}
-          rounded={'8px'}
-          type="submit"
-          variant="solid"
-          alignSelf={'center'}
-        >
-          Login
-        </Button>
+        <Link href="/login">
+          <Button
+            border={'1px solid #000000'}
+            backgroundColor={'#fff'}
+            marginTop={'2rem'}
+            height={'40px'}
+            width={'300px'}
+            rounded={'8px'}
+            type="submit"
+            variant="solid"
+            alignSelf={'center'}
+          >
+            Login
+          </Button>
+        </Link>
       </Flex>
       <Flex p={10} flex={2} align={'center'} justify={'center'}>
         <Stack spacing={20} w={'full'} maxW={'md'}>
