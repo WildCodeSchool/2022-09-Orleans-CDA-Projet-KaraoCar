@@ -72,7 +72,13 @@ const Login = () => {
     <Stack minH={'100vh'} direction={{ base: 'column', md: 'row' }}>
       <Flex p={10} flex={2} align={'center'} justify={'center'}>
         <Stack spacing={20} w={'full'} maxW={'md'}>
-          <Heading fontSize={'50px'} marginBottom={'5rem'} alignSelf={'center'}>
+          <Heading
+            fontSize={'50px'}
+            marginBottom={'5rem'}
+            alignSelf={'center'}
+            fontFamily={'Lexend Deca'}
+            fontWeight={900}
+          >
             Log in to your account
           </Heading>
           <form onSubmit={handleSubmit}>
@@ -111,11 +117,10 @@ const Login = () => {
                   rounded={'8px'}
                   type="submit"
                   backgroundColor={'#394E61'}
-                  _hover={{ backgroundColor: '#E4F2FF', textColor: 'black'}}
+                  _hover={{ backgroundColor: '#E4F2FF', textColor: 'black' }}
                   textColor={'#fff'}
                   variant="solid"
                   alignSelf={'center'}
-                  
                 >
                   Login
                 </Button>
@@ -124,9 +129,14 @@ const Login = () => {
           </form>
         </Stack>
       </Flex>
-      <Box position="fixed" top="70%" left="63%" transform="translate(-50%, -50%)">
-      <Img src="/loginimage.svg" />
-    </Box>
+      <Box
+        position="fixed"
+        top="70%"
+        left="63%"
+        transform="translate(-50%, -50%)"
+      >
+        <Img src="/loginimage.svg" />
+      </Box>
       <Flex
         flex={1}
         direction={'column'}
@@ -134,10 +144,15 @@ const Login = () => {
         justify={'center'}
         backgroundColor={'#E4F2FF'}
       >
-        <Heading fontSize={'40px'} alignSelf={'center'}>
+        <Heading
+          fontSize={'40px'}
+          alignSelf={'center'}
+          fontFamily={'Lexend Deca'}
+          fontWeight={900}
+        >
           New Here?
         </Heading>
-        <Text alignSelf={'center'}>
+        <Text alignSelf={'center'} fontFamily={'Lexend Deca'}>
           Sign up and discover the joys of singing during your trip
         </Text>
         <Link href="/signup">
@@ -146,7 +161,7 @@ const Login = () => {
             rightIcon={<Icon name="arrow-forward" />}
             border={'1px solid #000000'}
             backgroundColor={'#fff'}
-            _hover={{ backgroundColor: '#394E61', textColor: 'white'}}
+            _hover={{ backgroundColor: '#394E61', textColor: 'white' }}
             marginTop={'2rem'}
             height={'40px'}
             width={'200px'}
