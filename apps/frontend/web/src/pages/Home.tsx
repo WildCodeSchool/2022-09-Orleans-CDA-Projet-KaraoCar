@@ -1,4 +1,17 @@
-import { Box, Flex } from '@chakra-ui/react';
+import {
+  Box,
+  Card,
+  CardBody,
+  Center,
+  Flex,
+  Heading,
+  Image,
+  Text,
+} from '@chakra-ui/react';
+import EnvironmentSvg from '../assets/undraw_environment.svg';
+import SavingsSvg from '../assets/undraw_saving.svg';
+import FeedBackSvg from '../assets/undraw_feedback.svg';
+
 const InlineCard = ({
   image,
   title,
@@ -36,6 +49,51 @@ const InlineCard = ({
   );
 };
 
+const ColumnCard = ({
+  imgSrc,
+  headingText,
+  descText,
+}: {
+  imgSrc: string;
+  headingText: string;
+  descText: string;
+}) => {
+  return (
+    <Card w={{ base: '100%', lg: '30%' }}>
+      <CardBody
+        p={'0'}
+        border={'1px solid #AAAAAA'}
+        borderTopRadius={'md'}
+        shadow={'xl'}
+      >
+        <Image
+          src={imgSrc}
+          alt={imgSrc}
+          borderTopRadius={'md'}
+          w={'100%'}
+          h={'300px'}
+          objectFit={'cover'}
+        />
+        <Flex
+          h={'calc(100% - 300px - 10px)'}
+          paddingBlock={'20px'}
+          flexDirection={'column'}
+          justifyContent={'space-between'}
+        >
+          <Heading size={'center'} textAlign={'center'} paddingInline={'10px'} fontSize={'3xl'}>
+            {headingText}
+          </Heading>
+          <Box paddingInline={'20px'} marginBlockStart={'10px'}>
+            <Text border={'1px solid #AAAAAA'} padding={'20px'}>
+              {descText}
+            </Text>
+          </Box>
+        </Flex>
+      </CardBody>
+    </Card>
+  );
+};
+
 const Home = () => {
   return (
     <>
@@ -47,6 +105,7 @@ const Home = () => {
         fontSize={'2rem'}
         fontWeight={'semibold'}
         backgroundColor={'#91dCEF'}
+        textAlign={'center'}
       >
         {'Give voice to your journeys!'}
       </Flex>
@@ -123,6 +182,58 @@ const Home = () => {
         />
         
       </Flex>
+      <Center
+        w={'100%'}
+        h={'80px'}
+        backgroundColor={'#394E61'}
+        color={'#FFFFFF'}
+      >
+        <Heading size="lg" as={'h1'}>
+          {'Traveling without karaoke will never be the same!'}
+        </Heading>
+      </Center>
+      <Box w={'90%'} m={'auto'}>
+        <Flex
+          justifyContent={'space-between'}
+          w={'100%'}
+          paddingBlockStart={'150px'}
+          paddingBlockEnd={'90px'}
+          marginInline={'auto'}
+        >
+          <Heading size="lg" as={'h1'}>
+            {'They’ve adopted it:'}
+          </Heading>
+          <Image src={FeedBackSvg} h={'130px'} />
+        </Flex>
+        <Flex
+          flexDirection={{ base: 'column', lg: 'row' }}
+          justifyContent={{ base: 'initial', lg: 'space-between' }}
+          alignItems={{ base: 'center', lg: 'initial' }}
+          gap={'10'}
+        >
+          <ColumnCard
+            imgSrc={'/images/feedback-jean-charles.jpg'}
+            headingText={'Jean-Charles: I love singing while travelling'}
+            descText={
+              'A little bit more infos lorem fdeo deka coresds A little bit more infos lorem fdeo deka coresds'
+            }
+          />
+          <ColumnCard
+            imgSrc={'/images/feedback-claudette.jpg'}
+            headingText={'Claudette: Best app to meet people!'}
+            descText={
+              'A little bit more infos lorem fdeo deka coresds A little bit more infos lorem fdeo deka coresds'
+            }
+          />
+          <ColumnCard
+            imgSrc={'/images/feedback-brian.jpg'}
+            headingText={'Brian: KaraoCar is the best'}
+            descText={
+              'A little bit more infos lorem fdeo deka coresds A little bit more infos lorem fdeo deka coresds'
+            }
+          />
+        </Flex>
+      </Box>
     </>
   );
 };
