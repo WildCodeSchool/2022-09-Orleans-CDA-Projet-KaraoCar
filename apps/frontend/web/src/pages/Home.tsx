@@ -26,14 +26,25 @@ const InlineCard = ({
   return (
     <Flex
       flexDirection={'column'}
-      w={{base: '80%', lg: '30%'}}
+      w={{ base: '80%', lg: '30%' }}
       justifyContent={'stretch'}
       marginInline={'24px'}
       marginBlock={'48px'}
     >
       <Flex gap={'5'} flexGrow={'1'}>
-        <Image src={image} w={'40%'} h={'80%'} alt={'card image'} alignSelf={'end'} objectFit={'contain'}/>
-        <Flex paddingInlineStart={'10px'} flexDirection={'column'} justifyContent={'space-between'}>
+        <Image
+          src={image}
+          w={'40%'}
+          h={'80%'}
+          alt={'card image'}
+          alignSelf={'end'}
+          objectFit={'contain'}
+        />
+        <Flex
+          paddingInlineStart={'10px'}
+          flexDirection={'column'}
+          justifyContent={'space-between'}
+        >
           <Heading size="lg" as={'h1'} marginBlockEnd={'20px'}>
             {title}
           </Heading>
@@ -41,7 +52,10 @@ const InlineCard = ({
         </Flex>
       </Flex>
       <Flex flexDirection={'column'} justifyContent={'end'}>
-        <Text paddingBlock={'15px'} borderBottom={{base: 'none', lg: '1px solid #000000'}}>
+        <Text
+          paddingBlock={'15px'}
+          borderBottom={{ base: 'none', lg: '1px solid #000000' }}
+        >
           {footerText}
         </Text>
       </Flex>
@@ -80,7 +94,12 @@ const ColumnCard = ({
           flexDirection={'column'}
           justifyContent={'space-between'}
         >
-          <Heading size={'center'} textAlign={'center'} paddingInline={'10px'} fontSize={'3xl'}>
+          <Heading
+            size={'center'}
+            textAlign={'center'}
+            paddingInline={'10px'}
+            fontSize={'3xl'}
+          >
             {headingText}
           </Heading>
           <Box paddingInline={'20px'} marginBlockStart={'10px'}>
@@ -139,25 +158,28 @@ const Home = () => {
           </Box>
         </Flex>
       </Box>
-        {/* WIP: It's made in an another US <SearchBar /> Replace the placeholder below*/}
-        <Box
-          position={'absolute'}
-          top={{base: 'calc(311px + 80px + 75px - 150px)', lg: 'calc(622px + 80px - 27px)'}}
-          left={'0'}
-          right={'0'}
-          margin={'auto'}
-          h={{base: '300px' , lg: '55px'}}
-          w={{base: '80%' , lg: '70%'}}
-          backgroundColor={'#FFFFFF'}
-          borderRadius={'6'}
-          shadow={'md'}
-        ></Box>
+      {/* WIP: It's made in an another US <SearchBar /> Replace the placeholder below*/}
+      <Box
+        position={'absolute'}
+        top={{
+          base: 'calc(311px + 80px + 75px - 150px)',
+          lg: 'calc(622px + 80px - 27px)',
+        }}
+        left={'0'}
+        right={'0'}
+        margin={'auto'}
+        h={{ base: '300px', lg: '55px' }}
+        w={{ base: '80%', lg: '70%' }}
+        backgroundColor={'#FFFFFF'}
+        borderRadius={'6'}
+        shadow={'md'}
+      ></Box>
       <Flex
         flexDirection={{ base: 'column', lg: 'row' }}
         justifyContent={{ base: 'initial', lg: 'space-around' }}
         alignItems={{ base: 'center', lg: 'initial' }}
         w={'100%'}
-        paddingBlock={{base: '75px', lg: '150px'}}
+        paddingBlock={{ base: '75px', lg: '150px' }}
       >
         <InlineCard
           image={SavingsSvg}
@@ -169,7 +191,12 @@ const Home = () => {
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do'
           }
         />
-        <Box display={{base: 'block', lg: 'none'}} h={'1px'} w={'60%'} borderBottom={'1px solid #000000'}></Box>
+        <Box
+          display={{ base: 'block', lg: 'none' }}
+          h={'1px'}
+          w={'60%'}
+          borderBottom={'1px solid #000000'}
+        ></Box>
         <InlineCard
           image={EnvironmentSvg}
           title={'Help the planet!'}
@@ -180,7 +207,6 @@ const Home = () => {
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do'
           }
         />
-        
       </Flex>
       <Center
         w={'100%'}
