@@ -44,6 +44,19 @@ const Home = () => {
           </Box>
         </Flex>
       </Box>
+        {/* WIP: It's made in an another US <SearchBar /> Replace the placeholder below*/}
+        <Box
+          position={'absolute'}
+          top={{base: 'calc(311px + 80px + 75px - 150px)', lg: 'calc(622px + 80px - 27px)'}}
+          left={'0'}
+          right={'0'}
+          margin={'auto'}
+          h={{base: '300px' , lg: '55px'}}
+          w={{base: '80%' , lg: '70%'}}
+          backgroundColor={'#FFFFFF'}
+          borderRadius={'6'}
+          shadow={'md'}
+        ></Box>
     </>
   );
 };
