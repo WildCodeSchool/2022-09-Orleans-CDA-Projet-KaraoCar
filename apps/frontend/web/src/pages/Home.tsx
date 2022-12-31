@@ -1,4 +1,40 @@
 import { Box, Flex } from '@chakra-ui/react';
+const InlineCard = ({
+  image,
+  title,
+  bodyText,
+  footerText,
+}: {
+  image: string;
+  title: string;
+  bodyText: string;
+  footerText: string;
+}) => {
+  return (
+    <Flex
+      flexDirection={'column'}
+      w={{base: '80%', lg: '30%'}}
+      justifyContent={'stretch'}
+      marginInline={'24px'}
+      marginBlock={'48px'}
+    >
+      <Flex gap={'5'} flexGrow={'1'}>
+        <Image src={image} w={'40%'} h={'80%'} alt={'card image'} alignSelf={'end'} objectFit={'contain'}/>
+        <Flex paddingInlineStart={'10px'} flexDirection={'column'} justifyContent={'space-between'}>
+          <Heading size="lg" as={'h1'} marginBlockEnd={'20px'}>
+            {title}
+          </Heading>
+          <Text>{bodyText}</Text>
+        </Flex>
+      </Flex>
+      <Flex flexDirection={'column'} justifyContent={'end'}>
+        <Text paddingBlock={'15px'} borderBottom={{base: 'none', lg: '1px solid #000000'}}>
+          {footerText}
+        </Text>
+      </Flex>
+    </Flex>
+  );
+};
 
 const Home = () => {
   return (
@@ -57,6 +93,36 @@ const Home = () => {
           borderRadius={'6'}
           shadow={'md'}
         ></Box>
+      <Flex
+        flexDirection={{ base: 'column', lg: 'row' }}
+        justifyContent={{ base: 'initial', lg: 'space-around' }}
+        alignItems={{ base: 'center', lg: 'initial' }}
+        w={'100%'}
+        paddingBlock={{base: '75px', lg: '150px'}}
+      >
+        <InlineCard
+          image={SavingsSvg}
+          title={'Save money on gas!'}
+          bodyText={
+            'Lorem ipsum dolor sit ame consectetur adipiscing elit, sed do adipiscing elit, consectetur adipiscing elit'
+          }
+          footerText={
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do'
+          }
+        />
+        <Box display={{base: 'block', lg: 'none'}} h={'1px'} w={'60%'} borderBottom={'1px solid #000000'}></Box>
+        <InlineCard
+          image={EnvironmentSvg}
+          title={'Help the planet!'}
+          bodyText={
+            'Lorem ipsum dolor sit ame consectetur adipiscing elit, sed do adipiscing elit, consectetur adipiscing elit'
+          }
+          footerText={
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do'
+          }
+        />
+        
+      </Flex>
     </>
   );
 };
