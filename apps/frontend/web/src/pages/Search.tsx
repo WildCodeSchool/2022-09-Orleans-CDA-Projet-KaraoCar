@@ -1,8 +1,5 @@
-import { Box, Button, ButtonGroup, Center, Divider, Flex, FormControl, Heading, HStack, Input, InputGroup, InputLeftElement, Radio, RadioGroup, Select, Text, VStack } from "@chakra-ui/react"
-import { BsCalendar3, BsGeoFill, BsPeopleFill } from "react-icons/bs";
-import { GoSearch } from "react-icons/go";
-import { SlDirection } from "react-icons/sl";
-import { HiMusicNote } from "react-icons/hi";
+import { Box, Center, Heading, HStack, VStack } from "@chakra-ui/react"
+
 import SearchBar from "../theme/components/searchBar";
 
 const Search = () => {
