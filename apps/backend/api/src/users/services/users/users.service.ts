@@ -1,6 +1,11 @@
+import { CreateUserDto } from 'src/users/dto/CreateUser.dto';
 import { User as UserEntity } from '../../../typeorm';
-import { CreateUserDto } from './../../dto/CreateUser.dto';
-import { Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  ConflictException,
+  Injectable,
+  InternalServerErrorException,
+} from '@nestjs/common';
 import { plainToClass } from 'class-transformer';
 import { SerializedUser, User } from '../../types';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -34,16 +39,28 @@ export class UsersService {
     return this.users.find((user) => user.id === id);
   }
 
-  createUser(CreateUserDto: CreateUserDto) {
+  async createUser(CreateUserDto: CreateUserDto) {
+    if (CreateUserDto.password !== CreateUserDto.confirm_password) {
+      throw new BadRequestException(
+        'Password and confirm password do not match',
+      );
+    }
     const password = encodePassword(CreateUserDto.password);
-    //const confirm_password = encodePassword(CreateUserDto.confirm_password);
     console.log(password);
-    const newUser = this.userRepository.create({
-      ...CreateUserDto,
-      password,
-      // confirm_password,
-    });
-    return this.userRepository.save(newUser);
+    try {
+      const newUser = this.userRepository.create({
+        ...CreateUserDto,
+        password,
+      });
+
+      return await this.userRepository.save(newUser);
+    } catch (error) {
+      if (error.code === 'ER_DUP_ENTRY') {
+        throw new ConflictException('Email already exists');
+      } else {
+        throw new InternalServerErrorException();
+      }
+    }
   }
 
   findUserByUsername(username: string) {
