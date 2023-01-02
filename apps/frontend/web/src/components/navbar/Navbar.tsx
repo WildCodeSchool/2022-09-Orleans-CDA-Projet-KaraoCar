@@ -46,8 +46,11 @@ const Navbar = () => {
     <>
       <HStack
         as={'nav'}
+        position={'sticky'}
+        top={'0'}
         h={'80px'}
         w={'100%'}
+        backgroundColor={'#fdfdff'}
         paddingInline={'12px'}
         shadow={'md'}
       >
