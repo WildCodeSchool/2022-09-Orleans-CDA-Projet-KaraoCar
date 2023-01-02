@@ -1,6 +1,8 @@
+import { MusicalStyle } from 'src/musical-styles/entities/musical-style.entity';
+
 export class CreateTripDto {
   carId: number;
   middleseat: boolean;
-  musicId: number;
+  musicalStyles: MusicalStyle[];
   comment: string;
 }

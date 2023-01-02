@@ -1,19 +1,27 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { CreateMusicalStyleDto } from './dto/create-musical-style.dto';
 import { UpdateMusicalStyleDto } from './dto/update-musical-style.dto';
+import { MusicalStyle } from './entities/musical-style.entity';
 
 @Injectable()
 export class MusicalStylesService {
+  constructor(
+    @InjectRepository(MusicalStyle)
+    private readonly musicalStyleRepository: Repository<MusicalStyle>,
+  ) {}
+
   create(createMusicalStyleDto: CreateMusicalStyleDto) {
-    return 'This action adds a new musicalStyle';
+    return this.musicalStyleRepository.save(createMusicalStyleDto);
   }
 
   findAll() {
-    return `This action returns all musicalStyles`;
+    return this.musicalStyleRepository.find();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} musicalStyle`;
+    return this.musicalStyleRepository.findOne({ where: [{ id: id }] });
   }
 
   update(id: number, updateMusicalStyleDto: UpdateMusicalStyleDto) {

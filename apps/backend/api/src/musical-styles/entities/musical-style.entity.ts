@@ -6,11 +6,9 @@ export class MusicalStyle {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ nullable: true })
   name: string;
 
-  @ManyToMany(() => Trip, (trip: Trip) => trip.musicalStyles, {
-    cascade: ['insert', 'update'],
-  })
+  @ManyToMany(() => Trip, (trip: Trip) => trip.musicalStyles)
   trips: Trip[];
 }

@@ -3,6 +3,7 @@ import { TripSlice } from 'src/trip-slices/entities/trip-slice.entity';
 import {
   Column,
   Entity,
+  JoinTable,
   ManyToMany,
   OneToMany,
   PrimaryGeneratedColumn,
@@ -24,6 +25,11 @@ export class Trip {
     (musicalStyle: MusicalStyle) => musicalStyle.trips,
     { cascade: ['insert', 'update'] },
   )
+  @JoinTable({
+    name: 'trip_musical_style',
+    joinColumn: { name: 'tripId', referencedColumnName: 'id' },
+    inverseJoinColumn: { name: 'musicalStyleId', referencedColumnName: 'id' },
+  })
   musicalStyles: MusicalStyle[];
 
   @Column()
