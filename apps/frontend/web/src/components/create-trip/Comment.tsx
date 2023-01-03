@@ -15,6 +15,7 @@ import { useFormContext } from 'react-hook-form';
 import CommentBackground from './components/CommentBackground';
 import PreviousButton from './components/PreviousButton';
 import { IoCarSportSharp } from 'react-icons/io5';
+import { MusicalStyle } from '@libs/typings/src/interfaces/MusicalStyle';
 
 const Comment = ({
   step,
@@ -23,15 +24,10 @@ const Comment = ({
   step: number;
   setStep: Dispatch<SetStateAction<number>>;
 }) => {
-  const { register, setValue, getValues } = useFormContext();
+  const { register } = useFormContext();
   const isSubmitting = useFormContext().formState.isSubmitting;
   const errors = useFormContext().formState.errors;
   const [musicalStyles, setMusicalStyles] = useState<MusicalStyle[]>([]);
-
-  interface MusicalStyle {
-    id: number;
-    name: string;
-  }
 
   const fetchMusicalStyles = async () => {
     try {
@@ -74,17 +70,17 @@ const Comment = ({
           justifyContent={'center'}
         >
           {musicalStyles.map((style) => (
-            <Checkbox
-              size={'lg'}
-              colorScheme="slateblue"
-              key={style.id}
-              value={style.id}
-              {...register('musicalStyles', {
-                required: 'Please select at least one musical style',
-              })}
-            >
-              {style.name}
-            </Checkbox>
+              <Checkbox
+                size={'lg'}
+                colorScheme="slateblue"
+                key={style.id}
+                value={style.id}
+                {...register('musicalStyles', {
+                  required: 'Please select at least one musical style',
+                })}
+              >
+                {style.name}
+              </Checkbox>
           ))}
         </Stack>
         <FormErrorMessage justifyContent={'center'}>

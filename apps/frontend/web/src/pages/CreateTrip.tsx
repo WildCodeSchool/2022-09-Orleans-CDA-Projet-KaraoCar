@@ -7,6 +7,7 @@ import RouteDetails from '../components/create-trip/RouteDetails';
 import Stepper from '../components/create-trip/Stepper';
 import TripDate from '../components/create-trip/TripDate';
 import '../components/create-trip/trip.css';
+import { MusicalStyle } from '@libs/typings/src/interfaces/MusicalStyle';
 
 const CreateTrip = () => {
   const methods = useForm();
@@ -37,16 +38,14 @@ const CreateTrip = () => {
     const dateTimeToDate = new Date(dateTime);
     const itineraryUrl = methods.getValues('itineraryUrl');
     const endingDateTime = new Date(dateTimeToDate.getTime() + 6000000); // to replace with google api values
-    const music = [
-      {
-        id: 1,
-        name: 'Rock',
-      },
-      {
-        id: 2,
-        name: 'Pop',
-      },
-    ];
+    const music: MusicalStyle[] = [];
+
+    for (let i = 0; i < musicalStyles.length; i++) {
+      const musicStyle = {
+        id: parseInt(musicalStyles[i],10),
+      };
+      music.push(musicStyle);
+    }
 
     const tripSlice = {
       trip: {
