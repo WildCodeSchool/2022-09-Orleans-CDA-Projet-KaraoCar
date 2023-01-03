@@ -9,7 +9,7 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
     @Inject('AUTH_SERVICE') private readonly authService: AuthService,
   ) {
     super({
-      usernameField: 'email', // Use the email field for authentication
+      usernameField: 'email',
     });
   }
 
