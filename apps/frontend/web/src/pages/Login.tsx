@@ -13,14 +13,14 @@ import {
   Box,
   Img,
 } from '@chakra-ui/react';
+import { AiOutlineEnter } from 'react-icons/ai';
+import { HiUserAdd } from 'react-icons/hi';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  /*const handleSubmit = (event: any) => {
-    event.preventDefault(); */
   const handleSubmit = (event: any) => {
     event.preventDefault();
     console.log('handle');
@@ -45,29 +45,6 @@ const Login = () => {
         }
       });
   };
-  // Working Form
-  // return (
-  //   <form onSubmit={handleSubmit}>
-  //     <label htmlFor="username">username:</label>
-  //     <input
-  //       type="username"
-  //       id="username"
-  //       value={username}
-  //       onChange={(event) => setusername(event.target.value)}
-  //     />
-  //     <br />
-  //     <label htmlFor="password">Password:</label>
-  //     <input
-  //       type="password"
-  //       id="password"
-  //       value={password}
-  //       onChange={(event) => setPassword(event.target.value)}
-  //     />
-  //     <br />
-  //     {error && <div className="error">{error}</div>}
-  //     <button type="submit">Log in</button>
-  //   </form>
-  // );
   return (
     <Stack minH={'100vh'} direction={{ base: 'column', md: 'row' }}>
       <Flex p={10} flex={2} align={'center'} justify={'center'}>
@@ -110,10 +87,10 @@ const Login = () => {
               <Stack spacing={6}>
                 <Button
                   mt={4}
-                  rightIcon={<Icon name="arrow-forward" />}
+                  rightIcon={<AiOutlineEnter size={'20px'} />}
                   marginTop={'2rem'}
-                  height={'40px'}
-                  width={'200px'}
+                  height={'45px'}
+                  width={'170px'}
                   rounded={'8px'}
                   type="submit"
                   backgroundColor={'#394E61'}
@@ -158,7 +135,7 @@ const Login = () => {
         <Link href="/signup">
           <Button
             mt={4}
-            rightIcon={<Icon name="arrow-forward" />}
+            rightIcon={<HiUserAdd size={'20px'} />}
             border={'1px solid #000000'}
             backgroundColor={'#fff'}
             _hover={{ backgroundColor: '#394E61', textColor: 'white' }}

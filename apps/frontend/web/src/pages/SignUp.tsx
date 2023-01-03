@@ -11,6 +11,8 @@ import {
   Link,
   Icon,
 } from '@chakra-ui/react';
+import { HiUserAdd } from 'react-icons/hi';
+import { AiOutlineEnter } from 'react-icons/ai';
 
 function SignupForm() {
   const [firstname, setFirstname] = useState('');
@@ -70,7 +72,7 @@ function SignupForm() {
         <Link href="/login">
           <Button
             mt={4}
-            rightIcon={<Icon name="arrow-forward" />}
+            rightIcon={<AiOutlineEnter size={'20px'} />}
             border={'1px solid #000000'}
             backgroundColor={'#fff'}
             _hover={{ backgroundColor: '#394E61', textColor: 'white' }}
@@ -176,7 +178,7 @@ function SignupForm() {
             <Stack spacing={6}>
               <Button
                 mt={4}
-                rightIcon={<Icon name="arrow-forward" />}
+                rightIcon={<HiUserAdd size={'20px'}/>}
                 marginTop={'2rem'}
                 height={'40px'}
                 width={'200px'}
