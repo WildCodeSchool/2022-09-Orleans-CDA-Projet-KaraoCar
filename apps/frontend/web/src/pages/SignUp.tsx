@@ -13,8 +13,11 @@ import {
 } from '@chakra-ui/react';
 
 function SignupForm() {
-  const [email, setEmail] = useState('');
+  const [firstname, setFirstname] = useState('');
+  const [lastname, setLastname] = useState('');
   const [password, setPassword] = useState('');
+  const [confirm_password, setConfirm_password] = useState('');
+  const [email, setEmail] = useState('');
   const [error, setError] = useState('');
 
   const handleSubmit = (event: React.FormEvent) => {
@@ -25,7 +28,13 @@ function SignupForm() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({
+        firstname,
+        lastname,
+        email,
+        password,
+        confirm_password,
+      }),
     })
       .then((response) => {
         if (!response.ok) {
@@ -41,29 +50,6 @@ function SignupForm() {
       });
   };
 
-  /* return (
-    <form onSubmit={handleSubmit}>
-      {error && <p>{error}</p>}
-      <label htmlFor="email">Email:</label>
-      <input
-        type="email"
-        id="email"
-        value={email}
-        onChange={event => setEmail(event.target.value)}
-      />
-      <br />
-      <label htmlFor="password">Password:</label>
-      <input
-        type="password"
-        id="password"
-        value={password}
-        onChange={event => setPassword(event.target.value)}
-      />
-      <br />
-      <button type="submit">Sign Up</button>
-    </form>
-  );
-} */
   return (
     <Stack minH={'100vh'} direction={{ base: 'column', md: 'row' }}>
       <Flex
@@ -102,8 +88,13 @@ function SignupForm() {
       </Flex>
       <Flex p={10} flex={2} align={'center'} justify={'center'}>
         <Stack spacing={20} w={'full'} maxW={'md'}>
-          <Heading fontSize={'50px'} marginBottom={'5rem'} alignSelf={'center'}fontFamily={'Lexend Deca'}
-            fontWeight={900}>
+          <Heading
+            fontSize={'50px'}
+            marginBottom={'5rem'}
+            alignSelf={'center'}
+            fontFamily={'Lexend Deca'}
+            fontWeight={900}
+          >
             Create Your Account
           </Heading>
           <form onSubmit={handleSubmit}>
@@ -118,7 +109,9 @@ function SignupForm() {
                   height={'50px'}
                   width={'350px'}
                   fontSize={'25px'}
-                  type="username"
+                  type="string"
+                  onChange={(event) => setFirstname(event.target.value)}
+                  placeholder={'John'}
                 />
               </FormControl>
               <FormControl>
@@ -131,7 +124,9 @@ function SignupForm() {
                   height={'50px'}
                   width={'350px'}
                   fontSize={'25px'}
-                  type="username"
+                  type="string"
+                  onChange={(event) => setLastname(event.target.value)}
+                  placeholder={'Doe'}
                 />
               </FormControl>
             </Grid>
@@ -145,7 +140,9 @@ function SignupForm() {
                 height={'50px'}
                 width={'700px'}
                 fontSize={'25px'}
-                type="username"
+                type="email"
+                onChange={(event) => setEmail(event.target.value)}
+                placeholder={'Johndoe@gmail.com'}
               />
             </FormControl>
             <FormControl>
@@ -157,6 +154,8 @@ function SignupForm() {
                 width={'700px'}
                 fontSize={'25px'}
                 type="password"
+                onChange={(event) => setPassword(event.target.value)}
+                placeholder={'**********'}
               />
             </FormControl>
             <FormControl>
@@ -169,7 +168,9 @@ function SignupForm() {
                 height={'50px'}
                 width={'700px'}
                 fontSize={'25px'}
-                type="username"
+                type="password"
+                onChange={(event) => setConfirm_password(event.target.value)}
+                placeholder={'**********'}
               />
             </FormControl>
             <Stack spacing={6}>
