@@ -100,9 +100,9 @@ function SignupForm() {
             Create Your Account
           </Heading>
           <form onSubmit={handleSubmit}>
-            <Grid templateColumns="1fr 1fr" gap={6}>
+            <Grid templateColumns="1fr 1fr" gap={40}>
               <FormControl>
-                <FormLabel fontSize={'25px'}>Firstname</FormLabel>
+                <FormLabel fontSize={'20px'}>Firstname</FormLabel>
                 <Input
                   rounded={'8px'}
                   border={'1px solid #000000'}
@@ -117,7 +117,7 @@ function SignupForm() {
                 />
               </FormControl>
               <FormControl>
-                <FormLabel fontSize={'25px'}>Lastname</FormLabel>
+                <FormLabel fontSize={'20px'}>Lastname</FormLabel>
                 <Input
                   rounded={'8px'}
                   border={'1px solid #000000'}
@@ -133,14 +133,16 @@ function SignupForm() {
               </FormControl>
             </Grid>
             <FormControl>
-              <FormLabel fontSize={'25px'}>Email address</FormLabel>
+              <FormLabel fontSize={'20px'} marginTop={'1rem'}>
+                Email address
+              </FormLabel>
               <Input
                 rounded={'8px'}
                 border={'1px solid #000000'}
                 backgroundColor={'#fff'}
                 borderColor={'black'}
                 height={'50px'}
-                width={'700px'}
+                width={'740px'}
                 fontSize={'25px'}
                 type="email"
                 onChange={(event) => setEmail(event.target.value)}
@@ -148,12 +150,14 @@ function SignupForm() {
               />
             </FormControl>
             <FormControl>
-              <FormLabel fontSize={'25px'}>Password</FormLabel>
+              <FormLabel fontSize={'20px'} marginTop={'1rem'}>
+                Password
+              </FormLabel>
               <Input
                 rounded={'8px'}
                 border={'1px solid #000000'}
                 height={'50px'}
-                width={'700px'}
+                width={'740px'}
                 fontSize={'25px'}
                 type="password"
                 onChange={(event) => setPassword(event.target.value)}
@@ -161,14 +165,16 @@ function SignupForm() {
               />
             </FormControl>
             <FormControl>
-              <FormLabel fontSize={'25px'}>Confirm Password</FormLabel>
+              <FormLabel fontSize={'20px'} marginTop={'1rem'}>
+                Confirm Password
+              </FormLabel>
               <Input
                 rounded={'8px'}
                 border={'1px solid #000000'}
                 backgroundColor={'#fff'}
                 borderColor={'black'}
                 height={'50px'}
-                width={'700px'}
+                width={'740px'}
                 fontSize={'25px'}
                 type="password"
                 onChange={(event) => setConfirm_password(event.target.value)}
@@ -178,7 +184,7 @@ function SignupForm() {
             <Stack spacing={6}>
               <Button
                 mt={4}
-                rightIcon={<HiUserAdd size={'20px'}/>}
+                rightIcon={<HiUserAdd size={'20px'} />}
                 marginTop={'2rem'}
                 height={'40px'}
                 width={'200px'}

@@ -60,7 +60,7 @@ const Login = () => {
           </Heading>
           <form onSubmit={handleSubmit}>
             <FormControl>
-              <FormLabel fontSize={'25px'}>Email</FormLabel>
+              <FormLabel fontSize={'20px'}>Email</FormLabel>
               <Input
                 rounded={'8px'}
                 border={'1px solid #000000'}
@@ -73,7 +73,9 @@ const Login = () => {
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
               />
-              <FormLabel fontSize={'25px'}>Password</FormLabel>
+              <FormLabel fontSize={'20px'} marginTop={'1rem'}>
+                Password
+              </FormLabel>
               <Input
                 rounded={'8px'}
                 border={'1px solid #000000'}
