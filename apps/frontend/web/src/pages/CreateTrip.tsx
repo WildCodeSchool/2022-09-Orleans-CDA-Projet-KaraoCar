@@ -42,7 +42,7 @@ const CreateTrip = () => {
 
     for (let i = 0; i < musicalStyles.length; i++) {
       const musicStyle = {
-        id: parseInt(musicalStyles[i],10),
+        id: parseInt(musicalStyles[i], 10),
       };
       music.push(musicStyle);
     }
@@ -60,7 +60,7 @@ const CreateTrip = () => {
       endingDateTime: endingDateTime,
       totalSeat: totalSeat,
       price: price,
-      itineraryUrl: itineraryUrl,
+      itineraryUrl: itineraryUrl, // to replace with google api values
       hasTolls: false, // to replace with google api values
     };
     try {
