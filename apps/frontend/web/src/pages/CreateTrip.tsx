@@ -11,10 +11,9 @@ import { MusicalStyle } from '@libs/typings/src/interfaces/MusicalStyle';
 
 const CreateTrip = () => {
   const methods = useForm();
-  const [step, setStep] = useState(4);
+  const [step, setStep] = useState(3);
 
-  function onSubmit(values: any) {
-    console.log(values);
+  function onSubmit() {
     if (step < 4) {
       setStep(step + 1);
     }
@@ -71,6 +70,8 @@ const CreateTrip = () => {
         },
         body: JSON.stringify(tripSlice),
       });
+      const resp = await req.json();
+      console.log(resp.message);
       const status = req.status;
       status === 201 && alert('Tripslice created');
     } catch (err) {

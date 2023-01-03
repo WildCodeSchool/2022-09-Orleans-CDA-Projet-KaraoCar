@@ -1,10 +1,10 @@
 import {
-  Box,
   Button,
   FormControl,
   FormErrorMessage,
   FormLabel,
   HStack,
+  Image,
   Input,
   InputGroup,
   InputRightElement,
@@ -15,10 +15,10 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import { Dispatch, SetStateAction, useState } from 'react';
-import CarDetailsBackground from './components/CarDetailsBackground';
 import NextButton from './components/NextButton';
 import PreviousButton from './components/PreviousButton';
 import { Controller, useForm, useFormContext } from 'react-hook-form';
+import backgroundImage from '../../assets/undraw_trip_date_background.svg';
 
 const CarDetails = ({
   step,
@@ -256,15 +256,14 @@ const CarDetails = ({
         <PreviousButton step={step} setStep={setStep} />
         <NextButton />
       </HStack>
-      <Box
+      <Image
+        src={backgroundImage}
         display={{ base: 'none', lg: 'block' }}
         position={'absolute'}
         bottom={'0'}
         left={'00'}
         zIndex={'-100'}
-      >
-        <CarDetailsBackground />
-      </Box>
+      />
     </VStack>
   );
 };

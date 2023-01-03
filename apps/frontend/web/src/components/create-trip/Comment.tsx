@@ -6,16 +6,17 @@ import {
   FormErrorMessage,
   FormLabel,
   HStack,
+  Image,
   Stack,
   Textarea,
   VStack,
 } from '@chakra-ui/react';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
-import CommentBackground from './components/CommentBackground';
 import PreviousButton from './components/PreviousButton';
 import { IoCarSportSharp } from 'react-icons/io5';
 import { MusicalStyle } from '@libs/typings/src/interfaces/MusicalStyle';
+import backgroundImage from '../../assets/undraw_comment_background.svg';
 
 const Comment = ({
   step,
@@ -70,17 +71,17 @@ const Comment = ({
           justifyContent={'center'}
         >
           {musicalStyles.map((style) => (
-              <Checkbox
-                size={'lg'}
-                colorScheme="slateblue"
-                key={style.id}
-                value={style.id}
-                {...register('musicalStyles', {
-                  required: 'Please select at least one musical style',
-                })}
-              >
-                {style.name}
-              </Checkbox>
+            <Checkbox
+              size={'lg'}
+              colorScheme="slateblue"
+              key={style.id}
+              value={style.id}
+              {...register('musicalStyles', {
+                required: 'Please select at least one musical style',
+              })}
+            >
+              {style.name}
+            </Checkbox>
           ))}
         </Stack>
         <FormErrorMessage justifyContent={'center'}>
@@ -129,15 +130,14 @@ const Comment = ({
           {'Publish'}
         </Button>
       </HStack>
-      <Box
+      <Image
         display={{ base: 'none', lg: 'block' }}
         position={'absolute'}
         bottom={'0'}
         left={'00'}
         zIndex={'-100'}
-      >
-        <CommentBackground />
-      </Box>
+        src={backgroundImage}
+      />
     </VStack>
   );
 };

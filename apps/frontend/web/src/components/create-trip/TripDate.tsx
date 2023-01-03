@@ -1,15 +1,15 @@
-import { useForm, useFormContext } from 'react-hook-form';
+import { useFormContext } from 'react-hook-form';
 import {
   FormErrorMessage,
   FormLabel,
   FormControl,
   Input,
   HStack,
-  Box,
   VStack,
+  Image,
 } from '@chakra-ui/react';
 import NextButton from './components/NextButton';
-import RouteDetailsBackground from './components/RouteDetailsBackground';
+import backgroundImage from '../../assets/undraw_trip_date_background.svg';
 
 export default function TripDate() {
   const { register } = useFormContext();
@@ -34,7 +34,7 @@ export default function TripDate() {
             textAlign={'center'}
             fontWeight={'regular'}
           >
-           {'Where are you leaving from?'}
+            {'Where are you leaving from?'}
           </FormLabel>
           <Input
             backgroundColor={'#F6F6F6'}
@@ -61,7 +61,7 @@ export default function TripDate() {
             fontWeight={'regular'}
             marginTop={{ base: '6', md: '6' }}
           >
-           {'Where are going to?'}
+            {'Where are going to?'}
           </FormLabel>
           <Input
             backgroundColor={'#F6F6F6'}
@@ -125,18 +125,16 @@ export default function TripDate() {
             </FormErrorMessage>
           </FormControl>
         </VStack>
-
         <NextButton />
       </VStack>
-      <Box
+      <Image
+        src={backgroundImage}
         display={{ base: 'none', lg: 'block' }}
         position={'absolute'}
         bottom={'0'}
         right={'00'}
         zIndex={'-100'}
-      >
-        <RouteDetailsBackground />
-      </Box>
+      />
     </>
   );
 }
