@@ -98,7 +98,6 @@ const RouteDetails = ({
             <NextButton />
           </HStack>
         </VStack>
-
         <Image // to replace with google maps
           src={'./images/map.webp'}
           height={'100%'}

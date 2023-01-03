@@ -10,10 +10,11 @@ import {
   Textarea,
   VStack,
 } from '@chakra-ui/react';
-import { Dispatch, SetStateAction, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import CommentBackground from './components/CommentBackground';
 import PreviousButton from './components/PreviousButton';
+import { IoCarSportSharp } from 'react-icons/io5';
 
 const Comment = ({
   step,
@@ -22,17 +23,29 @@ const Comment = ({
   step: number;
   setStep: Dispatch<SetStateAction<number>>;
 }) => {
-  const { register, setValue } = useFormContext();
+  const { register, setValue, getValues } = useFormContext();
   const isSubmitting = useFormContext().formState.isSubmitting;
   const errors = useFormContext().formState.errors;
-  const [musicalStyles, setMusicalStyles] = useState([
-    'Rock',
-    'Pop',
-    'Jazz',
-    'Hip Hop',
-    'Rap',
-    'Metal',
-  ]);
+  const [musicalStyles, setMusicalStyles] = useState<MusicalStyle[]>([]);
+
+  interface MusicalStyle {
+    id: number;
+    name: string;
+  }
+
+  const fetchMusicalStyles = async () => {
+    try {
+      const response = await fetch('/api/musical-styles');
+      const data = await response.json();
+      setMusicalStyles(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchMusicalStyles();
+  }, []);
 
   return (
     <VStack
@@ -42,7 +55,7 @@ const Comment = ({
       flexDirection={'column'}
       marginTop={{ base: '0', md: '6' }}
       justifyContent={'center'}
-      gap={{ base: '4', md: '4' }}
+      gap={'4'}
       marginBottom={{ base: '6', md: '0' }}
     >
       <FormControl isInvalid={Boolean(errors.musicalStyles)} id="musicalStyles">
@@ -60,15 +73,17 @@ const Comment = ({
           direction={{ base: 'column', md: 'row' }}
           justifyContent={'center'}
         >
-          {musicalStyles.map((style, index) => (
+          {musicalStyles.map((style) => (
             <Checkbox
               size={'lg'}
               colorScheme="slateblue"
-              value={index}
-              key={index}
-              {...register('musicalStyles', {})}
+              key={style.id}
+              value={style.id}
+              {...register('musicalStyles', {
+                required: 'Please select at least one musical style',
+              })}
             >
-              {style}
+              {style.name}
             </Checkbox>
           ))}
         </Stack>
@@ -112,8 +127,10 @@ const Comment = ({
           type="submit"
           fontSize={{ base: '18', md: '22' }}
           shadow={'0px 2px 2px rgba(0, 0, 0, 0.25)'}
+          rightIcon={<IoCarSportSharp size={'24'} />}
+          gap={{ base: '0', md: '4' }}
         >
-          {'Publish ride'}
+          {'Publish'}
         </Button>
       </HStack>
       <Box

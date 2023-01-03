@@ -10,9 +10,10 @@ import '../components/create-trip/trip.css';
 
 const CreateTrip = () => {
   const methods = useForm();
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(4);
 
-  function onSubmit() {
+  function onSubmit(values: any) {
+    console.log(values);
     if (step < 4) {
       setStep(step + 1);
     }
@@ -36,11 +37,22 @@ const CreateTrip = () => {
     const dateTimeToDate = new Date(dateTime);
     const itineraryUrl = methods.getValues('itineraryUrl');
     const endingDateTime = new Date(dateTimeToDate.getTime() + 6000000); // to replace with google api values
+    const music = [
+      {
+        id: 1,
+        name: 'Rock',
+      },
+      {
+        id: 2,
+        name: 'Pop',
+      },
+    ];
+
     const tripSlice = {
       trip: {
         carId: 1, // to replace once user part is done
         middleseat: middleseat,
-        musicId: 3,
+        musicalStyles: music,
         comment: comment,
       },
       startingPoint: startingPoint,
@@ -94,7 +106,11 @@ const CreateTrip = () => {
       </Heading>
       <Stepper step={step} />
       <FormProvider {...methods}>
-        <HStack height={'100%'} marginTop={{ base: '6', md: '18' }}>
+        <HStack
+          height={'100%'}
+          marginTop={{ base: '6', md: '18' }}
+          marginBlockEnd={{ base: '6', md: '0' }}
+        >
           <Box as={'form'} onSubmit={methods.handleSubmit(onSubmit)}>
             {formStep(step)}
           </Box>
