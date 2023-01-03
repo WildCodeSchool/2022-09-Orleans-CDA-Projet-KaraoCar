@@ -32,8 +32,8 @@ export class UsersController {
 
   @UseInterceptors(ClassSerializerInterceptor)
   @Get('/username/:username')
-  getByUsername(@Param('username') username: string) {
-    const user = this.userService.getUserByUsername(username);
+  getByUsername(@Param('firstname') firstname: string) {
+    const user = this.userService.getUserByUsername(firstname);
     if (user) return new SerializedUser(user);
     else throw new HttpException('User not found', HttpStatus.BAD_REQUEST);
   }

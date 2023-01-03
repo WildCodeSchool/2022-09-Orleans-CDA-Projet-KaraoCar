@@ -22,7 +22,7 @@ export class UsersService {
   private users: User[] = [
     {
       id: 1,
-      username: 'anson',
+      firstname: 'John',
       password: 'anson',
     },
   ];
@@ -31,8 +31,8 @@ export class UsersService {
     return this.users.map((user) => plainToClass(SerializedUser, user));
   }
 
-  getUserByUsername(username: string) {
-    return this.users.find((user) => user.username === username);
+  getUserByUsername(firstname: string) {
+    return this.users.find((user) => user.firstname === firstname);
   }
 
   getUserById(id: number) {
@@ -63,8 +63,8 @@ export class UsersService {
     }
   }
 
-  findUserByUsername(username: string) {
-    return this.userRepository.findOneBy({ username });
+  findUserByUsername(firstname: string) {
+    return this.userRepository.findOneBy({ firstname });
   }
 
   findUserByEmail(email: string) {
