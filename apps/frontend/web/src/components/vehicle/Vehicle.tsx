@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Flex, Text, Image, Box, Heading, Button } from '@chakra-ui/react';
+import ModalForm from './VehicleModal';
 
 interface Car {
   type: string;
@@ -11,6 +12,7 @@ interface Car {
 
 const Vehicle: React.FC = () => {
   const [car, setCar] = useState<Car | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -21,8 +23,7 @@ const Vehicle: React.FC = () => {
     fetchData();
   }, []);
 
-  //   return <div>Loading...</div>;
-  // }
+  const toggleModal = () => setIsModalOpen(!isModalOpen);
 
   return (
     <Box
@@ -45,28 +46,31 @@ const Vehicle: React.FC = () => {
             </Text>
             <Text marginBottom={'15px'}>
               Type: <br></br>
-              {'SUV'}
+              {car ? car.type : 'Loading...'}
             </Text>
             <Text marginBottom={'15px'}>
-              Number plate:<br></br> {'23323'}{' '}
+              Number plate:<br></br> {car ? car.numberPlate : 'Loading...'}{' '}
             </Text>
             <Text marginBottom={'15px'}>
               Seats: <br></br>
-              {'2'}
+              {car ? car.seats : 'Loading...'}
             </Text>
             <Text marginBottom={'15px'}>
               Year: <br></br>
-              {'1995'}
+              {car ? car.year : 'Loading...'}
             </Text>
             <Text marginBottom={'15px'}>
-              Color:<br></br> {'Blue'}
+              Color:<br></br> {car ? car.color : 'Loading...'}
             </Text>
             <Box position="absolute" bottom="3" right="380">
-              <Button variant="outline">Edit</Button>
+              <Button variant="outline" onClick={toggleModal}>
+                Edit
+              </Button>
             </Box>
           </Box>
         </Box>
       </Flex>
+      <ModalForm isOpen={isModalOpen} onClose={toggleModal} />
     </Box>
   );
 };
