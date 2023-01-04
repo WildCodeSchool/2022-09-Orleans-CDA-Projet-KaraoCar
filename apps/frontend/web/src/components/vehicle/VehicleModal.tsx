@@ -67,7 +67,7 @@ const ModalForm: React.FC<ModalFormProps> = ({ isOpen, onClose }) => {
               <Input width={'600px'} type="date" />
             </FormControl>
             <FormControl>
-              <FormLabel>Color</FormLabel>
+              <FormLabel marginTop="0.5rem">Color</FormLabel>
               <Input width={'600px'}placeholder={'Blue'} type="text" />
             </FormControl>
             <FormLabel marginTop="1rem">Image</FormLabel>
