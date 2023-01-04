@@ -1,48 +1,48 @@
-import { Column, Entity, PrimaryGeneratedColumn, Unique } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
 export class User {
   @PrimaryGeneratedColumn({
-    type: 'bigint',
+    type: 'int',
     name: 'user_id',
   })
   id: number;
 
   @Column({
     nullable: false,
-    default: '',
   })
   firstname: string;
 
   @Column({
     nullable: false,
-    default: '',
   })
   lastname: string;
 
   @Column({
-    name: 'email',
     nullable: false,
-    default: '',
     unique: true,
   })
   email: string;
 
   @Column({
     nullable: false,
-    default: '',
   })
   password: string;
 
   @Column({
     nullable: true,
-    default: '',
+    default: null,
   })
   description: string;
 
   @Column({
     nullable: true,
-    default: '',
+    default: null,
   })
   photo: string;
 
@@ -52,7 +52,7 @@ export class User {
   })
   birthday: Date;
 
-  @Column({
+  @CreateDateColumn({
     nullable: true,
     default: null,
   })
