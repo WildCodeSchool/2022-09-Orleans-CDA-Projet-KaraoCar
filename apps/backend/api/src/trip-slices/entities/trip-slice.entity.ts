@@ -1,4 +1,4 @@
-import { Trip } from 'src/trips/entities/trip.entity';
+import { Trip } from '../../trips/entities/trip.entity';
 import {
   Column,
   Entity,

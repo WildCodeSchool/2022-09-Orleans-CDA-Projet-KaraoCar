@@ -1,5 +1,5 @@
-import { MusicalStyle } from 'src/musical-styles/entities/musical-style.entity';
-import { TripSlice } from 'src/trip-slices/entities/trip-slice.entity';
+import { MusicalStyle } from '../../musical-styles/entities/musical-style.entity';
+import { TripSlice } from '../../trip-slices/entities/trip-slice.entity';
 import {
   Column,
   Entity,

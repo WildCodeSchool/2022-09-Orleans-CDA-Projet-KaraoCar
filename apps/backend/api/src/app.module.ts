@@ -3,11 +3,11 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { Trip } from './trips/entities/trip.entity';
 import { TripsModule } from './trips/trips.module';
 import { TripSlicesModule } from './trip-slices/trip-slices.module';
-import { TripSlice } from './trip-slices/entities/trip-slice.entity';
 import { MusicalStylesModule } from './musical-styles/musical-styles.module';
+import { Trip } from './trips/entities/trip.entity';
+import { TripSlice } from './trip-slices/entities/trip-slice.entity';
 import { MusicalStyle } from './musical-styles/entities/musical-style.entity';
 
 @Module({
