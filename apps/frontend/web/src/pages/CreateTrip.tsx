@@ -10,7 +10,6 @@ import {
   List,
   ListIcon,
   ListItem,
-  Text,
 } from '@chakra-ui/react';
 import { useState } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
@@ -89,7 +88,6 @@ const CreateTrip = () => {
       });
       const resp = await req.json();
       setServerErrors(resp.message);
-      console.log(serverErrors);
       const status = req.status;
       status === 201 && setCreated(true);
     } catch (err) {
@@ -123,7 +121,7 @@ const CreateTrip = () => {
           status="success"
           variant="subtle"
           textAlign="center"
-          width={{base: '95%', md:'50%'}}
+          width={{ base: '95%', md: '50%' }}
           rounded={'8'}
           height={'250px'}
         >
