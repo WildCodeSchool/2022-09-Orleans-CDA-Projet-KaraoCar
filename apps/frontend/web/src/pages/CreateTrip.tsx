@@ -7,7 +7,10 @@ import {
   Flex,
   Heading,
   HStack,
-  VStack,
+  List,
+  ListIcon,
+  ListItem,
+  Text,
 } from '@chakra-ui/react';
 import { useState } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
@@ -17,15 +20,15 @@ import RouteDetails from '../components/create-trip/RouteDetails';
 import Stepper from '../components/create-trip/Stepper';
 import TripDate from '../components/create-trip/TripDate';
 import { MusicalStyle } from '@libs/typings/src/interfaces/MusicalStyle';
-import { redirect } from 'react-router-dom';
+import { RxCrossCircled } from 'react-icons/rx';
 
 const CreateTrip = () => {
   const methods = useForm({ mode: 'onBlur' });
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(4);
   const [isCreated, setCreated] = useState(false);
+  const [serverErrors, setServerErrors] = useState<string[]>([]);
 
-  function onSubmit(values: any) {
-    console.log(values);
+  function onSubmit() {
     if (step < 4) {
       setStep(step + 1);
     }
@@ -84,7 +87,8 @@ const CreateTrip = () => {
         body: JSON.stringify(tripSlice),
       });
       const resp = await req.json();
-      console.log(resp.message);
+      setServerErrors(resp.message);
+      console.log(serverErrors);
       const status = req.status;
       status === 201 && setCreated(true);
     } catch (err) {
@@ -110,26 +114,28 @@ const CreateTrip = () => {
   if (isCreated) {
     return (
       <HStack justifyContent={'center'}>
-      <Alert
-      marginTop={'2'}
-        flexDirection={'column'}
-        alignItems={'center'}
-        justifyContent={'center'}
-        status="success"
-        variant="subtle"
-        textAlign="center"
-        height="220px"
-        width={'50%'}
-      >
-        <AlertIcon boxSize="40px" mr={0} />
-        <AlertTitle mt={4} mb={1} fontSize="lg">
-          Trip created!
-        </AlertTitle>
-        <AlertDescription maxWidth="sm">
-          Thanks for submitting your trip and for using KaraoCar! Have a
-          wonderful day!
-        </AlertDescription>
-      </Alert>
+        <Alert
+          marginTop={'2'}
+          flexDirection={'column'}
+          alignItems={'center'}
+          justifyContent={'center'}
+          status="success"
+          variant="subtle"
+          textAlign="center"
+          height="220px"
+          width={'50%'}
+          rounded={'8'}
+        >
+          <AlertIcon boxSize="40px" mr={0} />
+          <AlertTitle mt={4} mb={1} fontSize="lg">
+            {'Trip created!'}
+          </AlertTitle>
+          <AlertDescription maxWidth="md">
+            {
+              'Thanks for submitting your trip and for using KaraoCar, our team wishes you a wonderful day!'
+            }
+          </AlertDescription>
+        </Alert>
       </HStack>
     );
   }
@@ -144,6 +150,35 @@ const CreateTrip = () => {
       <Heading as={'h1'} textAlign={'center'} marginY={{ base: '8', md: '12' }}>
         {'Trip creation'}
       </Heading>
+      {serverErrors.length > 0 && (
+        <HStack justifyContent={'center'}>
+          <Alert
+            rounded={'8'}
+            status="error"
+            variant="subtle"
+            flexDirection="column"
+            alignItems="center"
+            justifyContent="center"
+            mb={{ base: '8', md: '12' }}
+            mx={{ base: '4', md: '0' }}
+          >
+            <AlertIcon boxSize="40px" mr={0} mt={'2'} />
+            <AlertTitle mt={4} mb={2} fontSize="lg" fontWeight={'bold'}>
+              {'There was an error submitting your trip'}
+            </AlertTitle>
+            <AlertDescription maxWidth={'xl'}>
+              <List>
+                {serverErrors.map((error, index) => (
+                  <ListItem m={'2'} key={index} fontWeight={'light'}>
+                    <ListIcon as={RxCrossCircled} color={'red.500'}></ListIcon>
+                    {error}
+                  </ListItem>
+                ))}
+              </List>
+            </AlertDescription>
+          </Alert>
+        </HStack>
+      )}
       <Stepper step={step} />
       <FormProvider {...methods}>
         <HStack

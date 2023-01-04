@@ -56,7 +56,7 @@ const Comment = ({
       marginTop={{ base: '0', md: '6' }}
       justifyContent={'center'}
       gap={'4'}
-      marginBottom={{ base: '6', md: '0' }}
+      marginBottom={{ base: '6', md: '6' }}
     >
       <FormControl isInvalid={Boolean(errors.musicalStyles)} id="musicalStyles">
         <FormLabel
