@@ -35,6 +35,7 @@ const RouteDetails = ({
         height={{ base: '100%', md: '400px' }}
         display={'flex'}
         marginTop={{ base: '6', md: '24' }}
+        marginBottom={'6'}
       >
         <VStack
           width={{ base: '320px', md: '420px', lg: '500px' }}

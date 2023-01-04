@@ -77,6 +77,7 @@ const CarDetails = ({
       marginTop={{ base: '0', md: '6' }}
       justifyContent={'center'}
       gap={{ base: '4', md: '16' }}
+      marginBottom={'6'}
     >
       <FormControl isInvalid={Boolean(errors.middleseat)} id="middleseat">
         <FormLabel

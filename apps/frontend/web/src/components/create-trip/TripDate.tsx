@@ -26,7 +26,7 @@ export default function TripDate() {
         display={'flex'}
         flexDirection={'column'}
         justifyContent={'start'}
-        marginBottom={{ base: '6', md: '6' }}
+        marginBottom={'6'}
         gap={{ base: '2', md: '6' }}
         marginTop={{ base: '0', md: '6' }}
       >

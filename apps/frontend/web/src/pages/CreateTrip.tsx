@@ -38,6 +38,7 @@ const CreateTrip = () => {
   }
 
   async function createTripSlice() {
+    setServerErrors([]);
     const middleseat = methods.getValues('middleseat');
     const musicalStyles = methods.getValues('musicalStyles');
     const comment = methods.getValues('comment');
@@ -122,9 +123,9 @@ const CreateTrip = () => {
           status="success"
           variant="subtle"
           textAlign="center"
-          height="220px"
-          width={'50%'}
+          width={{base: '95%', md:'50%'}}
           rounded={'8'}
+          height={'250px'}
         >
           <AlertIcon boxSize="40px" mr={0} />
           <AlertTitle mt={4} mb={1} fontSize="lg">
