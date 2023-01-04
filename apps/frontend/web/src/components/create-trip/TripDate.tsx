@@ -48,6 +48,7 @@ export default function TripDate() {
             fontSize={{ base: '16', md: '20' }}
             fontWeight={'light'}
             {...register('startingPoint', {
+              setValueAs: (value) => value.trim(),
               required: 'This is required',
               minLength: { value: 4, message: 'Minimum length is 4' },
               maxLength: { value: 255, message: 'Maximum length is 255' },
@@ -76,6 +77,7 @@ export default function TripDate() {
             fontSize={{ base: '16', md: '20' }}
             fontWeight={'light'}
             {...register('endingPoint', {
+              setValueAs: (value) => value.trim(),
               required: 'This is required',
               minLength: { value: 4, message: 'Minimum length is 4' },
               maxLength: { value: 255, message: 'Maximum length is 255' },
@@ -130,7 +132,7 @@ export default function TripDate() {
             </FormErrorMessage>
           </FormControl>
         </VStack>
-        <NextButton isDirty={isDirty} isValid={isValid}/>
+        <NextButton isDirty={isDirty} isValid={isValid} />
       </VStack>
       <Image
         src={backgroundImage}

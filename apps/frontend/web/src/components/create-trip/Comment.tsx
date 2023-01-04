@@ -25,7 +25,10 @@ const Comment = ({
   step: number;
   setStep: Dispatch<SetStateAction<number>>;
 }) => {
-  const { register, formState: { isDirty, isValid }, } = useFormContext();
+  const {
+    register,
+    formState: { isDirty, isValid },
+  } = useFormContext();
   const isSubmitting = useFormContext().formState.isSubmitting;
   const errors = useFormContext().formState.errors;
   const [musicalStyles, setMusicalStyles] = useState<MusicalStyle[]>([]);
@@ -105,7 +108,9 @@ const Comment = ({
           fontSize={{ base: '16', md: '20' }}
           fontWeight={'light'}
           backgroundColor={'#FEFEFE'}
-          {...register('comment', {})}
+          {...register('comment', {
+            setValueAs: (value) => value.trim(),
+          })}
         />
         <FormErrorMessage>
           {errors.comment && errors.comment.message?.toString()}

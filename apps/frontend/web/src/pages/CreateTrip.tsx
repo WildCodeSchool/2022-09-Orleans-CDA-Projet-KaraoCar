@@ -9,10 +9,11 @@ import TripDate from '../components/create-trip/TripDate';
 import { MusicalStyle } from '@libs/typings/src/interfaces/MusicalStyle';
 
 const CreateTrip = () => {
-  const methods = useForm({mode: 'onBlur'});
+  const methods = useForm({ mode: 'onBlur' });
   const [step, setStep] = useState(1);
 
-  function onSubmit() {
+  function onSubmit(values: any) {
+    console.log(values);
     if (step < 4) {
       setStep(step + 1);
     }
