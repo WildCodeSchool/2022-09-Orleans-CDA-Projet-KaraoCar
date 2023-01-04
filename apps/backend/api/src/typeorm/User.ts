@@ -1,3 +1,4 @@
+import { Text } from 'react-native';
 import {
   Column,
   CreateDateColumn,
@@ -34,10 +35,7 @@ export class User {
   })
   password: string;
 
-  @Column({
-    nullable: true,
-    default: null,
-  })
+  @Column({ type: 'text', nullable: true, default: null })
   description: string;
 
   @Column({
