@@ -83,7 +83,7 @@ const SearchBar = () => {
               <Button 
                 leftIcon={<GoSearch />} 
                 type='submit' 
-                width='500px' 
+                
                 isLoading={false} 
                 loadingText='Loading'
               >

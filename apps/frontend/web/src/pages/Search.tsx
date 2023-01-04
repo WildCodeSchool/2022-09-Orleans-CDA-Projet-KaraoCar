@@ -1,6 +1,6 @@
 import { Box, Center, Heading, HStack, VStack } from "@chakra-ui/react"
+import SearchBar from "../theme/components/SearchBar"
 
-import SearchBar from "../theme/components/searchBar";
 
 const Search = () => {
   
