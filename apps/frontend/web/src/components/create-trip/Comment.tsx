@@ -25,7 +25,7 @@ const Comment = ({
   step: number;
   setStep: Dispatch<SetStateAction<number>>;
 }) => {
-  const { register } = useFormContext();
+  const { register, formState: { isDirty, isValid }, } = useFormContext();
   const isSubmitting = useFormContext().formState.isSubmitting;
   const errors = useFormContext().formState.errors;
   const [musicalStyles, setMusicalStyles] = useState<MusicalStyle[]>([]);
@@ -73,7 +73,6 @@ const Comment = ({
           {musicalStyles.map((style) => (
             <Checkbox
               size={'lg'}
-              colorScheme="slateblue"
               key={style.id}
               value={style.id}
               {...register('musicalStyles', {
@@ -99,7 +98,7 @@ const Comment = ({
           {'Anything to add about your ride?'}
         </FormLabel>
         <Textarea
-          border={'2px solid #394E61'}
+          border={'2px solid slateblue'}
           height={{ base: '140px', md: '240px' }}
           id="comment"
           placeholder="Cats are welcome!"
@@ -117,7 +116,7 @@ const Comment = ({
         <Button
           width={{ base: '125px', md: '200px' }}
           height={{ base: '50px', md: '60px' }}
-          backgroundColor={'#394E61'}
+          backgroundColor={'slateblue'}
           colorScheme={'blue'}
           color={'white'}
           isLoading={isSubmitting}
@@ -126,6 +125,7 @@ const Comment = ({
           shadow={'0px 2px 2px rgba(0, 0, 0, 0.25)'}
           rightIcon={<IoCarSportSharp size={'24'} />}
           gap={{ base: '0', md: '4' }}
+          disabled={!isDirty || !isValid}
         >
           {'Publish'}
         </Button>

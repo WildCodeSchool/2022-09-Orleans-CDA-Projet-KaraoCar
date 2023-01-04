@@ -12,7 +12,10 @@ import NextButton from './components/NextButton';
 import backgroundImage from '../../assets/undraw_trip_date_background.svg';
 
 export default function TripDate() {
-  const { register } = useFormContext();
+  const {
+    register,
+    formState: { isDirty, isValid },
+  } = useFormContext();
   const errors = useFormContext().formState.errors;
 
   return (
@@ -38,7 +41,7 @@ export default function TripDate() {
           </FormLabel>
           <Input
             backgroundColor={'#F6F6F6'}
-            border={'2px solid #394E61'}
+            border={'2px solid slateblue'}
             height={{ base: '55px', md: '70px' }}
             id="startingPoint"
             placeholder="Orléans"
@@ -46,6 +49,7 @@ export default function TripDate() {
             fontWeight={'light'}
             {...register('startingPoint', {
               required: 'This is required',
+              minLength: { value: 4, message: 'Minimum length is 4' },
               maxLength: { value: 255, message: 'Maximum length is 255' },
             })}
           />
@@ -65,7 +69,7 @@ export default function TripDate() {
           </FormLabel>
           <Input
             backgroundColor={'#F6F6F6'}
-            border={'2px solid #394E61'}
+            border={'2px solid slateblue'}
             height={{ base: '55px', md: '70px' }}
             id="endingPoint"
             placeholder="Tours"
@@ -73,6 +77,7 @@ export default function TripDate() {
             fontWeight={'light'}
             {...register('endingPoint', {
               required: 'This is required',
+              minLength: { value: 4, message: 'Minimum length is 4' },
               maxLength: { value: 255, message: 'Maximum length is 255' },
             })}
           />
@@ -94,7 +99,7 @@ export default function TripDate() {
             <HStack width={'100%'}>
               <Input
                 backgroundColor={'#F6F6F6'}
-                border={'2px solid #394E61'}
+                border={'2px solid slateblue'}
                 type="date"
                 height={{ base: '55px', md: '70px' }}
                 id="date"
@@ -109,7 +114,7 @@ export default function TripDate() {
 
               <Input
                 backgroundColor={'#F6F6F6'}
-                border={'2px solid #394E61'}
+                border={'2px solid slateblue'}
                 type="time"
                 height={{ base: '55px', md: '70px' }}
                 id="time"
@@ -125,7 +130,7 @@ export default function TripDate() {
             </FormErrorMessage>
           </FormControl>
         </VStack>
-        <NextButton />
+        <NextButton isDirty={isDirty} isValid={isValid}/>
       </VStack>
       <Image
         src={backgroundImage}

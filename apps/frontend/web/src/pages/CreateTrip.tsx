@@ -6,12 +6,11 @@ import Comment from '../components/create-trip/Comment';
 import RouteDetails from '../components/create-trip/RouteDetails';
 import Stepper from '../components/create-trip/Stepper';
 import TripDate from '../components/create-trip/TripDate';
-import '../components/create-trip/trip.css';
 import { MusicalStyle } from '@libs/typings/src/interfaces/MusicalStyle';
 
 const CreateTrip = () => {
-  const methods = useForm();
-  const [step, setStep] = useState(3);
+  const methods = useForm({mode: 'onBlur'});
+  const [step, setStep] = useState(1);
 
   function onSubmit() {
     if (step < 4) {
@@ -62,6 +61,7 @@ const CreateTrip = () => {
       itineraryUrl: itineraryUrl, // to replace with google api values
       hasTolls: false, // to replace with google api values
     };
+
     try {
       const req = await fetch('http://localhost/api/trip-slices', {
         method: 'POST',

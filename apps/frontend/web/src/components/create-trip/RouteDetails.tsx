@@ -23,7 +23,10 @@ const RouteDetails = ({
   step: number;
   setStep: Dispatch<SetStateAction<number>>;
 }) => {
-  const { control } = useFormContext();
+  const {
+    control,
+    formState: { isDirty, isValid },
+  } = useFormContext();
   const errors = useFormContext().formState.errors;
 
   return (
@@ -62,7 +65,6 @@ const RouteDetails = ({
                   marginBottom={'4'}
                   fontWeight={'light'}
                   fontSize={{ base: '16', md: '20' }}
-                  colorScheme={'slateblue'}
                 >
                   <Stack>
                     <Radio size={'lg'} value="1">
@@ -95,7 +97,7 @@ const RouteDetails = ({
           />
           <HStack justifyContent={'center'} gap={'12'} paddingTop={'4'}>
             <PreviousButton step={step} setStep={setStep} />
-            <NextButton />
+            <NextButton isDirty={isDirty} isValid={isValid} />
           </HStack>
         </VStack>
         <Image // to replace with google maps

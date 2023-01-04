@@ -27,7 +27,12 @@ const CarDetails = ({
   step: number;
   setStep: Dispatch<SetStateAction<number>>;
 }) => {
-  const { control, register, setValue } = useFormContext();
+  const {
+    control,
+    register,
+    setValue,
+    formState: { isDirty, isValid },
+  } = useFormContext();
   const errors = useFormContext().formState.errors;
   const [totalSeat, setTotalSeat] = useState(1);
   const [price, setPrice] = useState(8);
@@ -94,12 +99,7 @@ const CarDetails = ({
                 gap={'12'}
                 marginTop={{ base: '2', md: '6' }}
               >
-                <Radio
-                  size={'lg'}
-                  value="true"
-                  fontWeight={'light'}
-                  colorScheme={'slateblue'}
-                >
+                <Radio size={'lg'} value="true" fontWeight={'light'}>
                   <Text
                     fontSize={{ base: '16', md: '20' }}
                     fontWeight={'light'}
@@ -107,12 +107,7 @@ const CarDetails = ({
                     {'Yes'}
                   </Text>
                 </Radio>
-                <Radio
-                  size={'lg'}
-                  value="false"
-                  fontWeight={'light'}
-                  colorScheme={'slateblue'}
-                >
+                <Radio size={'lg'} value="false" fontWeight={'light'}>
                   <Text
                     fontSize={{ base: '16', md: '20' }}
                     fontWeight={'light'}
@@ -148,7 +143,7 @@ const CarDetails = ({
             height={'48px'}
             width={'48px'}
             backgroundColor={'#FEFEFE'}
-            border={'1.5px solid #394E61'}
+            border={'1.5px solid slateblue'}
             rounded={'8px'}
           >
             -
@@ -175,7 +170,7 @@ const CarDetails = ({
             height={'48px'}
             width={'48px'}
             backgroundColor={'#FEFEFE'}
-            border={'1.5px solid #394E61'}
+            border={'1.5px solid slateblue'}
             rounded={'8px'}
           >
             +
@@ -201,7 +196,7 @@ const CarDetails = ({
             height={'48px'}
             width={'48px'}
             backgroundColor={'#FEFEFE'}
-            border={'1.5px solid #394E61'}
+            border={'1.5px solid slateblue'}
             rounded={'8px'}
             variant={'outline'}
           >
@@ -240,7 +235,7 @@ const CarDetails = ({
             onClick={() => incrementPrice()}
             height={'48px'}
             width={'48px'}
-            border={'1.5px solid #394E61'}
+            border={'1.5px solid slateblue'}
             backgroundColor={'#FEFEFE'}
             rounded={'8px'}
             variant={'outline'}
@@ -254,7 +249,7 @@ const CarDetails = ({
       </FormControl>
       <HStack gap={'12'}>
         <PreviousButton step={step} setStep={setStep} />
-        <NextButton />
+        <NextButton isDirty={isDirty} isValid={isValid} />
       </HStack>
       <Image
         src={backgroundImage}

@@ -6,7 +6,7 @@ const Stepper = ({ step }: { step: number }) => {
       <Flex width={'100%'} alignItems={'center'} justifyContent={'center'}>
         <VStack
           boxSize={{ base: '8', md: '12' }}
-          bgColor={step >= 1 ? '#394E61' : 'white'}
+          bgColor={step >= 1 ? 'slateblue' : 'white'}
           rounded={'100%'}
           justifyContent={'center'}
           border={'2px solid #8E8E8E'}
@@ -24,7 +24,7 @@ const Stepper = ({ step }: { step: number }) => {
             width={{ base: '70px', lg: '120px' }}
             zIndex={'-1'}
             height={'3px'}
-            backgroundColor={`${step > 1 && '#394E61'}`}
+            backgroundColor={`${step > 1 && 'slateblue'}`}
           ></Box>
         ) : (
           <Box
@@ -37,7 +37,7 @@ const Stepper = ({ step }: { step: number }) => {
 
         <VStack
           boxSize={{ base: '8', md: '12' }}
-          bgColor={step >= 2 ? '#394E61' : 'white'}
+          bgColor={step >= 2 ? 'slateblue' : 'white'}
           rounded={'100%'}
           justifyContent={'center'}
           border={'2px solid #8E8E8E'}
@@ -56,7 +56,7 @@ const Stepper = ({ step }: { step: number }) => {
             width={{ base: '70px', lg: '120px' }}
             zIndex={'-1'}
             height={'3px'}
-            backgroundColor={`${step > 2 && '#394E61'}`}
+            backgroundColor={`${step > 2 && 'slateblue'}`}
           ></Box>
         ) : (
           <Box
@@ -69,7 +69,7 @@ const Stepper = ({ step }: { step: number }) => {
 
         <VStack
           boxSize={{ base: '8', md: '12' }}
-          bgColor={step >= 3 ? '#394E61' : 'white'}
+          bgColor={step >= 3 ? 'slateblue' : 'white'}
           rounded={'100%'}
           justifyContent={'center'}
           border={'2px solid #8E8E8E'}
@@ -88,7 +88,7 @@ const Stepper = ({ step }: { step: number }) => {
             width={{ base: '70px', lg: '120px' }}
             zIndex={'-1'}
             height={'3px'}
-            backgroundColor={`${step > 3 && '#394E61'}`}
+            backgroundColor={`${step > 3 && 'slateblue'}`}
           ></Box>
         ) : (
           <Box
@@ -100,7 +100,7 @@ const Stepper = ({ step }: { step: number }) => {
         )}
         <VStack
           boxSize={{ base: '8', md: '12' }}
-          bgColor={step >= 4 ? '#394E61' : 'white'}
+          bgColor={step >= 4 ? 'slateblue' : 'white'}
           rounded={'100%'}
           justifyContent={'center'}
           border={'2px solid #8E8E8E'}
