@@ -12,7 +12,9 @@ export class TripSlice {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({
+    length: 255,
+  })
   startingPoint: string;
 
   @Column({ default: 0 })
@@ -21,7 +23,9 @@ export class TripSlice {
   @Column({ default: 0 })
   startingPointLng: number;
 
-  @Column()
+  @Column({
+    length: 255,
+  })
   endingPoint: string;
 
   @Column({ default: 0 })
@@ -42,7 +46,7 @@ export class TripSlice {
   @Column()
   price: number;
 
-  @Column()
+  @Column('text')
   itineraryUrl: string;
 
   @Column()

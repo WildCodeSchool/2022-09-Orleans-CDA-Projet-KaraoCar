@@ -32,7 +32,7 @@ export class Trip {
   })
   musicalStyles: MusicalStyle[];
 
-  @Column()
+  @Column('text')
   comment: string;
 
   @OneToMany(() => TripSlice, (tripSlice: TripSlice) => tripSlice.trip)
