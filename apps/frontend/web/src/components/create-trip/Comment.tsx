@@ -34,7 +34,7 @@ const Comment = ({
 
   const fetchMusicalStyles = async () => {
     try {
-      const response = await fetch('/api/musical-styles');
+      const response = await fetch(import.meta.env.VITE_API_HOST + 'api/musical-styles');
       const data = await response.json();
       setMusicalStyles(data);
     } catch (error) {

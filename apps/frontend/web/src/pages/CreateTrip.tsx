@@ -79,7 +79,7 @@ const CreateTrip = () => {
     };
 
     try {
-      const req = await fetch('http://localhost/api/trip-slices', {
+      const req = await fetch(import.meta.env.VITE_API_HOST  + 'api/trip-slices', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
