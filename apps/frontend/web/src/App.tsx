@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { SomeInterface, User } from '@libs/typings';
+import Vehicle from './components/vehicle/Vehicle';
 
 function App() {
   const [someData, setSomeData] = useState<SomeInterface>({
@@ -25,7 +26,7 @@ function App() {
     };
   }, []);
 
-  return <div className="App">{`${someData.someProperty}`}</div>;
+  return <Vehicle/>;
 }
 
 export default App;
