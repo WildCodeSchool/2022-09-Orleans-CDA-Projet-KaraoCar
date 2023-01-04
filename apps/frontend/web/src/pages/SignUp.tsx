@@ -45,7 +45,7 @@ function SignupForm() {
         return response.json();
       })
       .then((data) => {
-        // go to page
+        window.location.href = '/';
       })
       .catch((error) => {
         setError(error.message);
@@ -53,7 +53,7 @@ function SignupForm() {
   };
 
   return (
-    <Stack minH={'100vh'} direction={{ base: 'column', md: 'row' }}>
+    <Stack minH={'95vh'} direction={{ base: 'column', md: 'row' }}>
       <Flex
         flex={1}
         direction={'column'}
@@ -64,7 +64,6 @@ function SignupForm() {
         <Heading
           fontSize={'40px'}
           alignSelf={'center'}
-          fontFamily={'Lexend Deca'}
           fontWeight={900}
         >
           Already have an account?
@@ -78,13 +77,14 @@ function SignupForm() {
             _hover={{ backgroundColor: '#394E61', textColor: 'white' }}
             marginTop={'2rem'}
             height={'40px'}
-            width={'200px'}
+            width={'100px'}
             rounded={'8px'}
             type="submit"
             variant="solid"
             alignSelf={'center'}
+            boxShadow="0 4px 4px rgba(0, 0, 0, 0.25)"
           >
-            Login
+            Log in
           </Button>
         </Link>
       </Flex>
@@ -94,16 +94,16 @@ function SignupForm() {
             fontSize={'50px'}
             marginBottom={'5rem'}
             alignSelf={'center'}
-            fontFamily={'Lexend Deca'}
             fontWeight={900}
           >
-            Create Your Account
+            Create an account
           </Heading>
           <form onSubmit={handleSubmit}>
             <Grid templateColumns="1fr 1fr" gap={40}>
               <FormControl>
                 <FormLabel fontSize={'20px'}>Firstname</FormLabel>
                 <Input
+                  paddingLeft={'10px'}
                   rounded={'8px'}
                   border={'1px solid #000000'}
                   backgroundColor={'#fff'}
@@ -119,6 +119,7 @@ function SignupForm() {
               <FormControl>
                 <FormLabel fontSize={'20px'}>Lastname</FormLabel>
                 <Input
+                  paddingLeft={'10px'}
                   rounded={'8px'}
                   border={'1px solid #000000'}
                   backgroundColor={'#fff'}
@@ -137,6 +138,7 @@ function SignupForm() {
                 Email address
               </FormLabel>
               <Input
+                paddingLeft={'10px'}
                 rounded={'8px'}
                 border={'1px solid #000000'}
                 backgroundColor={'#fff'}
@@ -148,12 +150,11 @@ function SignupForm() {
                 onChange={(event) => setEmail(event.target.value)}
                 placeholder={'Johndoe@gmail.com'}
               />
-            </FormControl>
-            <FormControl>
               <FormLabel fontSize={'20px'} marginTop={'1rem'}>
                 Password
               </FormLabel>
               <Input
+                paddingLeft={'10px'}
                 rounded={'8px'}
                 border={'1px solid #000000'}
                 height={'50px'}
@@ -163,12 +164,11 @@ function SignupForm() {
                 onChange={(event) => setPassword(event.target.value)}
                 placeholder={'**********'}
               />
-            </FormControl>
-            <FormControl>
               <FormLabel fontSize={'20px'} marginTop={'1rem'}>
                 Confirm Password
               </FormLabel>
               <Input
+                paddingLeft={'10px'}
                 rounded={'8px'}
                 border={'1px solid #000000'}
                 backgroundColor={'#fff'}
@@ -195,8 +195,9 @@ function SignupForm() {
                 textColor={'#fff'}
                 variant="solid"
                 alignSelf={'center'}
+                boxShadow="0 4px 4px rgba(0, 0, 0, 0.25)"
               >
-                Create your account
+                Create an account
               </Button>
             </Stack>
           </form>
