@@ -9,7 +9,6 @@ import {
   Input,
   Stack,
   Link,
-  Icon,
 } from '@chakra-ui/react';
 import { HiUserAdd } from 'react-icons/hi';
 import { AiOutlineEnter } from 'react-icons/ai';
@@ -25,7 +24,7 @@ function SignupForm() {
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
 
-    fetch('http://localhost:3333/api/users/create', {
+    fetch('/api/users/create', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

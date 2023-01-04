@@ -23,7 +23,7 @@ const Login = () => {
   const handleSubmit = (event: any) => {
     event.preventDefault();
     console.log('handle');
-    fetch('http://localhost:3333/api/auth/login', {
+    fetch('/api/auth/login', {
       method: 'POST',
       body: JSON.stringify({ email, password }),
       headers: {
