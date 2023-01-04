@@ -31,7 +31,7 @@ const Stepper = ({ step }: { step: number }) => {
             width={{ base: '70px', lg: '120px' }}
             zIndex={'-1'}
             height={'1px'}
-            backgroundColor={'#384E61'}
+            backgroundColor={'#8E8E8E'}
           ></Box>
         )}
 
@@ -63,7 +63,7 @@ const Stepper = ({ step }: { step: number }) => {
             width={{ base: '70px', lg: '120px' }}
             zIndex={'-1'}
             height={'1px'}
-            backgroundColor={'#384E61'}
+            backgroundColor={'#8E8E8E'}
           ></Box>
         )}
 
@@ -95,7 +95,7 @@ const Stepper = ({ step }: { step: number }) => {
             width={{ base: '70px', lg: '120px' }}
             zIndex={'-1'}
             height={'1px'}
-            backgroundColor={'#384E61'}
+            backgroundColor={'#8E8E8E'}
           ></Box>
         )}
         <VStack
