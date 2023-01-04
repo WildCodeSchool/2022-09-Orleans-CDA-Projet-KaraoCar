@@ -45,7 +45,7 @@ const Login = () => {
       });
   };
   return (
-    <Stack  minH={'95vh'} direction={{ base: 'column', md: 'row' }}>
+    <Stack minH={'95vh'} direction={{ base: 'column', md: 'row' }}>
       <Flex p={10} flex={2} align={'center'} justify={'center'}>
         <Stack spacing={20} w={'full'} maxW={'md'}>
           <Heading
@@ -60,7 +60,7 @@ const Login = () => {
             <FormControl>
               <FormLabel fontSize={'20px'}>Email</FormLabel>
               <Input
-              paddingLeft={'10px'}
+                paddingLeft={'10px'}
                 rounded={'8px'}
                 border={'1px solid #000000'}
                 backgroundColor={'#fff'}
@@ -68,7 +68,7 @@ const Login = () => {
                 height={'50px'}
                 width={'500px'}
                 fontSize={'25px'}
-                type="email"
+                type={'email'}
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
                 placeholder={'johndoe@gmail.com'}
@@ -77,13 +77,13 @@ const Login = () => {
                 Password
               </FormLabel>
               <Input
-              paddingLeft={'10px'}
+                paddingLeft={'10px'}
                 rounded={'8px'}
                 border={'1px solid #000000'}
                 height={'50px'}
                 width={'500px'}
                 fontSize={'25px'}
-                type="password"
+                type={'password'}
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
                 placeholder={'**********'}
@@ -96,13 +96,13 @@ const Login = () => {
                   height={'45px'}
                   width={'120px'}
                   rounded={'8px'}
-                  type="submit"
+                  type={'submit'}
                   backgroundColor={'#394E61'}
                   _hover={{ backgroundColor: '#E4F2FF', textColor: 'black' }}
                   textColor={'#fff'}
-                  variant="solid"
+                  variant={'solid'}
                   alignSelf={'center'}
-                  boxShadow="0 4px 4px rgba(0, 0, 0, 0.25)"
+                  boxShadow={'0 4px 4px rgba(0, 0, 0, 0.25)'}
                 >
                   Login
                 </Button>
@@ -112,10 +112,10 @@ const Login = () => {
         </Stack>
       </Flex>
       <Box
-        position="fixed"
-        top="70%"
-        left="63%"
-        transform="translate(-50%, -50%)"
+        position={'fixed'}
+        top={'70%'}
+        left={'63%'}
+        transform={'translate(-50%, -50%)'}
       >
         <Img src="/loginimage.svg" />
       </Box>
@@ -126,11 +126,7 @@ const Login = () => {
         justify={'center'}
         backgroundColor={'#E4F2FF'}
       >
-        <Heading
-          fontSize={'40px'}
-          alignSelf={'center'}
-          fontWeight={900}
-        >
+        <Heading fontSize={'40px'} alignSelf={'center'} fontWeight={900}>
           New Here?
         </Heading>
         <Text alignSelf={'center'} fontFamily={'Lexend Deca'}>
@@ -147,10 +143,10 @@ const Login = () => {
             height={'40px'}
             width={'120px'}
             rounded={'8px'}
-            type="submit"
-            variant="solid"
+            type={'submit'}
+            variant={'solid'}
             alignSelf={'center'}
-            boxShadow="0 4px 4px rgba(0, 0, 0, 0.25)"
+            boxShadow={'0 4px 4px rgba(0, 0, 0, 0.25)'}
           >
             Sign Up
           </Button>

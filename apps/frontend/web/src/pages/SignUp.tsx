@@ -61,11 +61,7 @@ function SignupForm() {
         justify={'center'}
         backgroundColor={'#E4F2FF'}
       >
-        <Heading
-          fontSize={'40px'}
-          alignSelf={'center'}
-          fontWeight={900}
-        >
+        <Heading fontSize={'40px'} alignSelf={'center'} fontWeight={900}>
           Already have an account?
         </Heading>
         <Link href="/login">
@@ -79,10 +75,10 @@ function SignupForm() {
             height={'40px'}
             width={'100px'}
             rounded={'8px'}
-            type="submit"
-            variant="solid"
+            type={'submit'}
+            variant={'solid'}
             alignSelf={'center'}
-            boxShadow="0 4px 4px rgba(0, 0, 0, 0.25)"
+            boxShadow={'0 4px 4px rgba(0, 0, 0, 0.25)'}
           >
             Log in
           </Button>
@@ -99,7 +95,7 @@ function SignupForm() {
             Create an account
           </Heading>
           <form onSubmit={handleSubmit}>
-            <Grid templateColumns="1fr 1fr" gap={40}>
+            <Grid templateColumns={'1fr 1fr'} gap={40}>
               <FormControl>
                 <FormLabel fontSize={'20px'}>Firstname</FormLabel>
                 <Input
@@ -111,7 +107,7 @@ function SignupForm() {
                   height={'50px'}
                   width={'350px'}
                   fontSize={'25px'}
-                  type="string"
+                  type={'string'}
                   onChange={(event) => setFirstname(event.target.value)}
                   placeholder={'John'}
                 />
@@ -127,7 +123,7 @@ function SignupForm() {
                   height={'50px'}
                   width={'350px'}
                   fontSize={'25px'}
-                  type="string"
+                  type={'string'}
                   onChange={(event) => setLastname(event.target.value)}
                   placeholder={'Doe'}
                 />
@@ -146,7 +142,7 @@ function SignupForm() {
                 height={'50px'}
                 width={'740px'}
                 fontSize={'25px'}
-                type="email"
+                type={'email'}
                 onChange={(event) => setEmail(event.target.value)}
                 placeholder={'Johndoe@gmail.com'}
               />
@@ -193,9 +189,9 @@ function SignupForm() {
                 backgroundColor={'#394E61'}
                 _hover={{ backgroundColor: '#E4F2FF', textColor: 'black' }}
                 textColor={'#fff'}
-                variant="solid"
+                variant={'solid'}
                 alignSelf={'center'}
-                boxShadow="0 4px 4px rgba(0, 0, 0, 0.25)"
+                boxShadow={'0 4px 4px rgba(0, 0, 0, 0.25)'}
               >
                 Create an account
               </Button>
