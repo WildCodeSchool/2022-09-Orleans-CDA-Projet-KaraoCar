@@ -23,7 +23,7 @@ import { RxCrossCircled } from 'react-icons/rx';
 
 const CreateTrip = () => {
   const methods = useForm({ mode: 'onBlur' });
-  const [step, setStep] = useState(4);
+  const [step, setStep] = useState(1);
   const [isCreated, setCreated] = useState(false);
   const [serverErrors, setServerErrors] = useState<string[]>([]);
 
