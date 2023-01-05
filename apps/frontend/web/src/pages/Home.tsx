@@ -36,6 +36,7 @@ const InlineCard = ({
           src={image}
           w={'40%'}
           h={'80%'}
+          maxH={'150px'}
           alt={'card image'}
           alignSelf={'end'}
           objectFit={'contain'}
@@ -43,7 +44,6 @@ const InlineCard = ({
         <Flex
           paddingInlineStart={'10px'}
           flexDirection={'column'}
-          justifyContent={'space-between'}
         >
           <Heading size="lg" as={'h1'} marginBlockEnd={'20px'}>
             {title}
@@ -185,10 +185,10 @@ const Home = () => {
           image={SavingsSvg}
           title={'Save money on gas!'}
           bodyText={
-            'Lorem ipsum dolor sit ame consectetur adipiscing elit, sed do adipiscing elit, consectetur adipiscing elit'
+            'A great way to cut expenses on fuel because it allows you to split the cost of a trip with other people who are going the same direction.'
           }
           footerText={
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do'
+            'By carpooling, you can reduce your fuel consumption and also reduce wear and tear on your vehicle,'
           }
         />
         <Box
@@ -201,10 +201,10 @@ const Home = () => {
           image={EnvironmentSvg}
           title={'Help the planet!'}
           bodyText={
-            'Lorem ipsum dolor sit ame consectetur adipiscing elit, sed do adipiscing elit, consectetur adipiscing elit'
+            'When you drive alone in your car, you are using more fuel than you would if you were sharing the trip with other people.'
           }
           footerText={
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do'
+            'In addition to reducing emissions, carpooling can also help to reduce traffic congestion, which can have a positive impact on air quality and overall quality of life.'
           }
         />
       </Flex>
