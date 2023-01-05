@@ -1,16 +1,16 @@
-import { IsNotEmpty, Length, IsNumber, Min } from 'class-validator';
+import { IsNotEmpty, IsNumber, Min, MaxLength } from 'class-validator';
 import { Trip } from 'src/trips/entities/trip.entity';
 
 export class CreateTripSliceDto {
   @IsNotEmpty({ message: 'Starting point is required' })
-  @Length(4, 255, {
-    message: 'Starting point must be between 4 and 255 characters long',
+  @MaxLength(255, {
+    message: 'Starting point must be below 255 characters long',
   })
   startingPoint: string;
 
   @IsNotEmpty({ message: 'Ending point is required' })
-  @Length(4, 255, {
-    message: 'Ending point must be between 4 and 255 characters long',
+  @MaxLength(255, {
+    message: 'Ending point must be below 255 characters long',
   })
   endingPoint: string;
 

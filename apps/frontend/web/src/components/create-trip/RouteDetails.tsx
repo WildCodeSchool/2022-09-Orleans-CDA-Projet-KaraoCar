@@ -92,7 +92,7 @@ const RouteDetails = ({
             height={'100%'}
             rounded={'8px'}
             fit={'cover'}
-            display={{ base: 'block', md: 'none' }}
+            display={{ base: 'block', lg: 'none' }}
           />
           <HStack justifyContent={'center'} gap={'12'} paddingTop={'4'}>
             <PreviousButton step={step} setStep={setStep} />
@@ -102,10 +102,10 @@ const RouteDetails = ({
         <Image // to replace with google maps
           src={'./images/map.webp'}
           height={'100%'}
-          width={'600px'}
+          width={{base:'460px', xl: '600px'}}
           rounded={'8px'}
           fit={'cover'}
-          display={{ base: 'none', md: 'block' }}
+          display={{ base: 'none', lg: 'block' }}
         />
       </HStack>
     </>

@@ -7,9 +7,11 @@ import {
   HStack,
   VStack,
   Image,
+  InputLeftElement,
 } from '@chakra-ui/react';
 import NextButton from './components/NextButton';
 import backgroundImage from '../../assets/undraw_trip_date_background.svg';
+import { MdOutlineSearch } from 'react-icons/md';
 
 export default function TripDate() {
   const {
@@ -44,13 +46,12 @@ export default function TripDate() {
             border={'2px solid slateblue'}
             height={{ base: '55px', md: '70px' }}
             id="startingPoint"
-            placeholder="Orléans"
+            placeholder="🔍  Orléans"
             fontSize={{ base: '16', md: '20' }}
             fontWeight={'light'}
             {...register('startingPoint', {
               setValueAs: (value) => value.trim(),
               required: 'This is required',
-              minLength: { value: 4, message: 'Minimum length is 4' },
               maxLength: { value: 255, message: 'Maximum length is 255' },
             })}
           />
@@ -66,20 +67,19 @@ export default function TripDate() {
             fontWeight={'regular'}
             marginTop={{ base: '6', md: '6' }}
           >
-            {'Where are going to?'}
+            {'Where are you heading?'}
           </FormLabel>
           <Input
             backgroundColor={'#F6F6F6'}
             border={'2px solid slateblue'}
             height={{ base: '55px', md: '70px' }}
             id="endingPoint"
-            placeholder="Tours"
+            placeholder="🔍  Tours"
             fontSize={{ base: '16', md: '20' }}
             fontWeight={'light'}
             {...register('endingPoint', {
               setValueAs: (value) => value.trim(),
               required: 'This is required',
-              minLength: { value: 4, message: 'Minimum length is 4' },
               maxLength: { value: 255, message: 'Maximum length is 255' },
             })}
           />
