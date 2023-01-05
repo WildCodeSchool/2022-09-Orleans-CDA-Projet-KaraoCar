@@ -241,21 +241,21 @@ const Home = () => {
             imgSrc={'/images/feedback-jean-charles.jpg'}
             headingText={'Jean-Charles: I love singing while travelling'}
             descText={
-              'A little bit more infos lorem fdeo deka coresds A little bit more infos lorem fdeo deka coresds'
+              'I never thought I\'d find a carpooling website that also lets me sing my heart out, but this one does just that! The karaoke feature is a game changer and makes my commute so much more fun. Highly recommend for all the music lovers out there.'
             }
           />
           <ColumnCard
             imgSrc={'/images/feedback-claudette.jpg'}
             headingText={'Claudette: Best app to meet people!'}
             descText={
-              'A little bit more infos lorem fdeo deka coresds A little bit more infos lorem fdeo deka coresds'
+              'As a busy college student, Karaocar has been a lifesaver. It\'s so convenient to be able to schedule rides in advance, and I love that I can choose to carpool with people who have similar music taste. Highly recommend!'
             }
           />
           <ColumnCard
             imgSrc={'/images/feedback-brian.jpg'}
             headingText={'Brian: KaraoCar is the best'}
             descText={
-              'A little bit more infos lorem fdeo deka coresds A little bit more infos lorem fdeo deka coresds'
+              'I\'ve been using Karaocar website for a few weeks now and I\'m hooked. Not only do I save money on gas, but I also get to have a mini karaoke party on my way to work. So much better than a boring solo commute. Would definitely recommend to others looking for a fun and cost-effective way to travel.'
             }
           />
         </Flex>
