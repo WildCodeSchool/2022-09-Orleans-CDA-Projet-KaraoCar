@@ -14,6 +14,9 @@ const config = {
 
 const theme = extendTheme({
   config,
+  colors: {
+    slateblue: '#394E61',
+  },
   fonts: {
     heading: `'Lexend Deca', sans-serif`,
     body: `'Lexend Deca', sans-serif`,

@@ -76,7 +76,7 @@ const ColumnCard = ({
     <Card w={{ base: '100%', lg: '30%' }}>
       <CardBody
         p={'0'}
-        border={'1px solid #AAAAAA'}
+        border={'1px solid #cccccc'}
         borderTopRadius={'md'}
         shadow={'xl'}
       >
@@ -150,7 +150,7 @@ const Home = () => {
         >
           <Box
             as={'span'}
-            color={'#394E61'}
+            color={'slateblue'}
             fontSize={'3rem'}
             fontWeight={'semibold'}
           >
@@ -210,7 +210,7 @@ const Home = () => {
       </Flex>
       <Center
         w={'100%'}
-        backgroundColor={'#394E61'}
+        backgroundColor={'slateblue'}
         color={'#FFFFFF'}
       >
         <Heading size="lg" as={'h1'} marginInline={'24px'} paddingBlock={'28px'}>
