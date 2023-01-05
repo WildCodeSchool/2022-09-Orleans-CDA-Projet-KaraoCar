@@ -14,7 +14,7 @@ import {
   Text,
   VStack,
 } from '@chakra-ui/react';
-import { Dispatch, SetStateAction, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import NextButton from './components/NextButton';
 import PreviousButton from './components/PreviousButton';
 import { Controller, useForm, useFormContext } from 'react-hook-form';
@@ -31,41 +31,38 @@ const CarDetails = ({
     control,
     register,
     setValue,
+    getValues,
     formState: { isDirty, isValid },
   } = useFormContext();
   const errors = useFormContext().formState.errors;
-  const [totalSeat, setTotalSeat] = useState(1);
-  const [price, setPrice] = useState(8);
 
-  useForm({
-    defaultValues: {
-      totalSeat: 1,
-      price: 8,
-    },
-  });
+  const [totalSeat, setTotalSeat] = useState(() => Number(getValues('totalSeat')) || 1);
+  const [price, setPrice] = useState(() => Number(getValues('price')) || 5);
+
+  useEffect(() => {
+    setValue('totalSeat', totalSeat);
+    setValue('price', price);
+  }, [totalSeat, price]);
+
 
   const decrementSeats = () => {
     if (totalSeat > 1) {
-      setTotalSeat(totalSeat - 1);
-      setValue('totalSeat', totalSeat - 1);
+      setTotalSeat((prev) => prev - 1);
     }
   };
 
   const incrementSeats = () => {
-    setTotalSeat(totalSeat + 1);
-    setValue('totalSeat', totalSeat + 1);
+    setTotalSeat((prev) => prev + 1);
   };
 
   const decrementPrice = () => {
     if (price > 0.5) {
-      setPrice(price - 0.5);
-      setValue('price', price - 0.5);
+      setPrice((prev) => prev - 0.5);
     }
   };
 
   const incrementPrice = () => {
-    setPrice(price + 0.5);
-    setValue('price', price + 0.5);
+    setPrice((prev) => prev + 0.5);
   };
 
   return (

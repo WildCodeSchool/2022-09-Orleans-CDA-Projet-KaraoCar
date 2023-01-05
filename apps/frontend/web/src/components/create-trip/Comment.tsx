@@ -44,9 +44,7 @@ const Comment = ({
         );
         const data = await response.json();
         setMusicalStyles(data);
-      } catch (error) {
-        console.error(error);
-      }
+      } catch (error) {}
     };
 
     fetchMusicalStyles();
@@ -87,6 +85,7 @@ const Comment = ({
               size={'lg'}
               key={style.id}
               value={style.id}
+              id={'musicalStyle' + style.id}
               {...register('musicalStyles', {
                 required: 'Please select at least one musical style',
               })}

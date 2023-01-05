@@ -23,13 +23,13 @@ import { RxCrossCircled } from 'react-icons/rx';
 
 const CreateTrip = () => {
   const methods = useForm({ mode: 'onBlur' });
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(3);
   const [isCreated, setCreated] = useState(false);
   const [serverErrors, setServerErrors] = useState<string[]>([]);
 
   function onSubmit() {
     if (step < 4) {
-      setStep(step + 1);
+      setStep((prev) => prev + 1);
     }
     if (step === 4) {
       createTripSlice();
