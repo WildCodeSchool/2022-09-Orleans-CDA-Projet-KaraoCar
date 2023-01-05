@@ -1,5 +1,11 @@
 import { extendTheme } from '@chakra-ui/react';
 import { ButtonTheme } from './components/button';
+import '@fontsource/lexend-deca';
+import '@fontsource/lexend-deca/300.css';
+import '@fontsource/lexend-deca/400.css';
+import '@fontsource/lexend-deca/500.css';
+import '@fontsource/lexend-deca/600.css';
+import '@fontsource/lexend-deca/700.css';
 
 const config = {
   initialColorMode: 'light',
