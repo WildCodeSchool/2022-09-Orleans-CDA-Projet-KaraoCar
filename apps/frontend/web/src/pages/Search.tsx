@@ -1,5 +1,6 @@
 import { Box, Center, Flex, Heading, HStack, Img, VStack } from "@chakra-ui/react"
 import SearchBar from "../components/searchbar/SearchBar"
+import SearchCriteria from "../interfaces/SearchCriteriaInterface"
 
 
 const Search = () => {
@@ -14,7 +15,7 @@ const Search = () => {
                 <Img src="../../public/images/undraw_travel_booking.svg" w={'50%'} />
               </Flex>
               <Flex align="center" w={'50%'}>
-                <Heading fontSize='xl'>Search for a trip</Heading>
+                <Heading fontSize='4xl'>Search for a trip</Heading>
               </Flex>
           
         </Flex>

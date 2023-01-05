@@ -10,14 +10,31 @@ import {
   InputLeftElement,
   Select,
 } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
 import { BsCalendar3, BsGeoFill, BsPeopleFill } from 'react-icons/bs';
 import { GoSearch } from 'react-icons/go';
 import { HiMusicNote } from 'react-icons/hi';
 import { SlDirection } from 'react-icons/sl';
+import SearchCriteria from '../../interfaces/SearchCriteriaInterface';
+import TripList from '../triplist/TripList';
 
-const SearchBar = () => {
+
+const SearchBar = (searchCriteria: SearchCriteria) => {
   const today = new Date();
   const defaultDate = new Date(today).toISOString().split('T')[0];
+  const [criteria, setCriteria] = useState<SearchCriteria>({});
+
+  useEffect(() => {
+    searchCriteria ?
+      setCriteria(searchCriteria): 
+      setCriteria({dateDeparture: defaultDate});
+
+  }, [])
+  
+  useEffect(()=> {
+    console.log('criteres')
+    console.log(criteria);
+  }, [criteria])
 
   return (
     <>
@@ -91,7 +108,7 @@ const SearchBar = () => {
                 />
               </Center>
 
-              <Flex width={'15%'}>
+              <Flex width={'150px'}>
                 <InputGroup>
                   <InputLeftElement
                     pointerEvents="none"
@@ -118,7 +135,7 @@ const SearchBar = () => {
                 type="submit"
                 isLoading={false}
                 loadingText="Loading"
-                w={'20%'}
+                w={'250px'}
               >
                 Search
               </Button>
@@ -126,6 +143,8 @@ const SearchBar = () => {
           </FormControl>
         </Center>
       </HStack>
+
+      <TripList />
     </>
   );
 };
