@@ -17,10 +17,10 @@ export class TripSlice {
   })
   startingPoint: string;
 
-  @Column({ default: 0 })
+  @Column()
   startingPointLat: number;
 
-  @Column({ default: 0 })
+  @Column()
   startingPointLng: number;
 
   @Column({
@@ -28,10 +28,10 @@ export class TripSlice {
   })
   endingPoint: string;
 
-  @Column({ default: 0 })
+  @Column()
   endingPointLat: number;
 
-  @Column({ default: 0 })
+  @Column()
   endingPointLng: number;
 
   @Column()

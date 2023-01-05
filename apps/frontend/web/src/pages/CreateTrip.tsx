@@ -69,6 +69,10 @@ const CreateTrip = () => {
         comment: comment,
       },
       startingPoint: startingPoint,
+      startingPointLat: 0, // to replace with google api values
+      startingPointLng: 0, // to replace with google api values
+      endingPointLat: 0, // to replace with google api values
+      endingPointLng: 0, // to replace with google api values
       endingPoint: endingPoint,
       startingDateTime: dateTime,
       endingDateTime: endingDateTime,
