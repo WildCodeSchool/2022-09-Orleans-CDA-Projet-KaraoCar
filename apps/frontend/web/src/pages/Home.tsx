@@ -89,24 +89,24 @@ const ColumnCard = ({
           objectFit={'cover'}
         />
         <Flex
-          h={'calc(100% - 300px - 10px)'}
+          h={'calc(100% - 300px)'}
           paddingBlock={'20px'}
           flexDirection={'column'}
-          justifyContent={'space-between'}
         >
           <Heading
             size={'center'}
             textAlign={'center'}
             paddingInline={'10px'}
             fontSize={'3xl'}
+            flexGrow={'1'}
           >
             {headingText}
           </Heading>
-          <Box paddingInline={'20px'} marginBlockStart={'10px'}>
-            <Text border={'1px solid #AAAAAA'} padding={'20px'}>
+          <Flex marginInline={'24px'} marginBlockStart={'24px'} border={'1px solid #cccccc'} alignItems={'center'}>
+            <Text padding={'20px'}>
               {descText}
             </Text>
-          </Box>
+          </Flex>
         </Flex>
       </CardBody>
     </Card>
@@ -210,19 +210,17 @@ const Home = () => {
       </Flex>
       <Center
         w={'100%'}
-        h={'80px'}
         backgroundColor={'#394E61'}
         color={'#FFFFFF'}
       >
-        <Heading size="lg" as={'h1'}>
+        <Heading size="lg" as={'h1'} marginInline={'24px'} paddingBlock={'28px'}>
           {'Traveling without karaoke will never be the same!'}
         </Heading>
       </Center>
-      <Box w={'90%'} m={'auto'}>
+      <Box w={'90%'} m={'auto'} paddingBlock={'48px'}>
         <Flex
           justifyContent={'space-between'}
           w={'100%'}
-          paddingBlockStart={'150px'}
           paddingBlockEnd={'90px'}
           marginInline={'auto'}
         >
@@ -255,7 +253,7 @@ const Home = () => {
             imgSrc={'/images/feedback-brian.jpg'}
             headingText={'Brian: KaraoCar is the best'}
             descText={
-              'I\'ve been using Karaocar website for a few weeks now and I\'m hooked. Not only do I save money on gas, but I also get to have a mini karaoke party on my way to work. So much better than a boring solo commute. Would definitely recommend to others looking for a fun and cost-effective way to travel.'
+              'Not only do I save money on gas, but I also get to have a mini karaoke party on my way to work. So much better than a boring solo commute. Would definitely recommend to others looking for a fun and cost-effective way to travel.'
             }
           />
         </Flex>
