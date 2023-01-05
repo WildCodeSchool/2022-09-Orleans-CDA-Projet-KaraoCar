@@ -141,6 +141,7 @@ export default function TripDate() {
         bottom={'0'}
         right={'00'}
         zIndex={'-100'}
+        w={'46vw'}
       />
     </>
   );

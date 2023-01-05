@@ -151,6 +151,7 @@ const CarDetails = ({
             type={'number'}
             height={'60px'}
             rounded={'8px'}
+            backgroundColor={'#FEFEFE'}
             textAlign={'center'}
             id={'totalSeat'}
             fontSize={{ base: '16', md: '20' }}
@@ -205,6 +206,7 @@ const CarDetails = ({
               <Input
                 width={'100px'}
                 type={'number'}
+                backgroundColor={'#FEFEFE'}
                 height={'60px'}
                 rounded={'8px'}
                 textAlign={'center'}
@@ -256,6 +258,7 @@ const CarDetails = ({
         bottom={'0'}
         left={'00'}
         zIndex={'-100'}
+        w={'46vw'}
       />
     </VStack>
   );
