@@ -16,9 +16,9 @@
     "dev:mobile": "npm run dev:frontend:mobile",
     "dev:m": "npm run dev:mobile",
     "d:m": "npm run dev:mobile",
-    "dev": "concurrently -c \"auto\" \"npm:watch:*\" \"npm:dev:backend:*\" \"npm:dev:frontend:*(!mobile)\" \"npm run insert\"",
+    "dev": "concurrently -c \"auto\" \"npm:watch:*\" \"npm:dev:backend:*\" \"npm:dev:frontend:*(!mobile)\"",
     "d": "npm run dev",
-    "insert": "sleep 7 && node ./libs/inserts/src/index.js"
+    "insert": "node ./libs/inserts/src/index.js"
   },
   "workspaces": [
     "libs/inserts",
