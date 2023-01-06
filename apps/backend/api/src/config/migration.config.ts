@@ -14,8 +14,8 @@ export default new DataSource({
   port: +configService.get('DATABASE_PORT'),
   username: configService.get('DATABASE_USERNAME'),
   password: configService.get('DATABASE_PASSWORD'),
-  database: configService.get('DATABASE_NAME'),
-  synchronize: /true/.test(configService.get('DATABASE_SYNCHRONIZE')),
+  database: configService.get('DATABASE_MIGRATIONS_DB'),
+  synchronize: false,
   entities: [Trip, TripSlice, MusicalStyle],
   migrations: [__dirname + '/../migrations/*.ts'],
 });
