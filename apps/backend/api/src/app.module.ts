@@ -3,6 +3,9 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { MessagesModule } from './messages/messages.module';
+import { Message } from './messages/entities/message.entity';
+import { User } from './user/user.entity';
 
 @Module({
   imports: [
@@ -19,10 +22,11 @@ import { AppService } from './app.service';
         password: configService.get('DATABASE_PASSWORD'),
         database: configService.get('DATABASE_NAME'),
         synchronize: /true/.test(configService.get('DATABASE_SYNCHRONIZE')),
-        entities: [],
+        entities: [Message, User],
       }),
       inject: [ConfigService],
     }),
+    MessagesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
