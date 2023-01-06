@@ -1,4 +1,3 @@
-import { Text } from 'react-native';
 import {
   Column,
   CreateDateColumn,
@@ -8,10 +7,7 @@ import {
 
 @Entity()
 export class User {
-  @PrimaryGeneratedColumn({
-    type: 'int',
-    name: 'user_id',
-  })
+  @PrimaryGeneratedColumn()
   id: number;
 
   @Column({

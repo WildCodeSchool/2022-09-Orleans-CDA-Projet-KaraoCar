@@ -2,15 +2,16 @@ import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ConfigService } from '@nestjs/config';
+import * as cookieParser from 'cookie-parser';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   const configService = app.get(ConfigService);
-
   const NODE_ENV = configService.get('NODE_ENV') || 'development';
   const PORT = configService.get('PORT') || 3000;
-
+  const COOKIE_SECRET = configService.get('COOKIE_SECRET');
+  app.use(cookieParser(COOKIE_SECRET));
   app.setGlobalPrefix('api');
 
   Logger.log(

@@ -1,4 +1,4 @@
-import { SerializedUser } from './../../types/index';
+import { SerializedUser } from './types/index';
 import {
   Controller,
   Get,
@@ -14,15 +14,13 @@ import {
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
-import { UsersService } from 'src/users/services/users/users.service';
-import { UserNotFoundException } from 'src/users/exceptions/UserNotFoundException';
-import { CreateUserDto } from 'src/users/dto/CreateUser.dto';
+import { UsersService } from './users.service';
+import { UserNotFoundException } from './exceptions/user-not-found.exception';
+import { CreateUserDto } from './dto/create-user.dto';
 
 @Controller('users')
 export class UsersController {
-  constructor(
-    @Inject('USER_SERVICE') private readonly userService: UsersService,
-  ) {}
+  constructor(private readonly userService: UsersService) {}
 
   @UseInterceptors(ClassSerializerInterceptor)
   @Get('')

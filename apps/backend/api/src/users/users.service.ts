@@ -1,5 +1,5 @@
-import { CreateUserDto } from 'src/users/dto/CreateUser.dto';
-import { User as UserEntity } from '../../../typeorm';
+import { CreateUserDto } from './dto/create-user.dto';
+import { User as UserEntity } from '../entities';
 import {
   BadRequestException,
   ConflictException,
@@ -7,7 +7,7 @@ import {
   InternalServerErrorException,
 } from '@nestjs/common';
 import { plainToClass } from 'class-transformer';
-import { SerializedUser, User } from '../../types';
+import { SerializedUser, User } from './types';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { encodePassword } from 'src/utils/bcrypt';

@@ -33,8 +33,7 @@ const Login = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        if (data.token) {
-          localStorage.setItem('token', data.token);
+        if (data.status === 'SUCCESS') {
           console.log('SUCCESS');
           window.location.href = '/';
         } else {
