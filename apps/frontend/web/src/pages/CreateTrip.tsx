@@ -23,11 +23,13 @@ import { RxCrossCircled } from 'react-icons/rx';
 
 const CreateTrip = () => {
   const methods = useForm({ mode: 'onBlur' });
-  const [step, setStep] = useState(3);
+  const [step, setStep] = useState(1);
   const [isCreated, setCreated] = useState(false);
   const [serverErrors, setServerErrors] = useState<string[]>([]);
 
-  function onSubmit() {
+  function onSubmit(values: any) {
+    console.log(values);
+
     if (step < 4) {
       setStep((prev) => prev + 1);
     }
@@ -74,7 +76,7 @@ const CreateTrip = () => {
       endingPointLat: 0, // to replace with google api values
       endingPointLng: 0, // to replace with google api values
       endingPoint: endingPoint,
-      startingDateTime: dateTime,
+      startingDateTime: dateTimeToDate,
       endingDateTime: endingDateTime,
       totalSeat: totalSeat,
       price: price,
@@ -83,16 +85,23 @@ const CreateTrip = () => {
     };
 
     try {
-      const req = await fetch(import.meta.env.VITE_API_HOST  + 'api/trip-slices', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(tripSlice),
-      });
+      console.log(tripSlice)
+      const req = await fetch(
+        import.meta.env.VITE_API_HOST + 'api/trip-slices',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(tripSlice),
+        }
+      );
       const resp = await req.json();
-      setServerErrors(resp.message);
       const status = req.status;
+      setServerErrors(resp.message);
+      console.log(serverErrors);
+      status >= 400 && setStep(1);
+
       status === 201 && setCreated(true);
     } catch (err) {
       console.error(err);

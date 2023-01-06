@@ -1,4 +1,13 @@
-import { IsNotEmpty, IsNumber, Min, MaxLength } from 'class-validator';
+import { Transform } from 'class-transformer';
+import {
+  IsNotEmpty,
+  IsNumber,
+  Min,
+  MaxLength,
+  IsDateString,
+  MinDate,
+  IsDate,
+} from 'class-validator';
 import { Trip } from 'src/trips/entities/trip.entity';
 
 export class CreateTripSliceDto {
@@ -23,9 +32,19 @@ export class CreateTripSliceDto {
   endingPointLng: number;
 
   @IsNotEmpty({ message: 'Starting date time is required' })
+  @IsDate({ message: 'Invalid starting date time' })
+  @Transform(({ value }) => value && new Date(value))
+  @MinDate(new Date(), {
+    message: 'Starting date time must be greater than now',
+  })
   startingDateTime: Date;
 
   @IsNotEmpty({ message: 'Ending date time is required' })
+  @IsDate({ message: 'Invalid ending date time' })
+  @Transform(({ value }) => value && new Date(value))
+  @MinDate(new Date(), {
+    message: 'Ending date time must be greater than now',
+  })
   endingDateTime: Date;
 
   @IsNotEmpty({ message: 'Number of seat is required' })
