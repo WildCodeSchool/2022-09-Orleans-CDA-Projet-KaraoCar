@@ -15,7 +15,7 @@ export class Message {
   @Column()
   sendAt: Date;
 
-  @Column()
+  @Column({ type: 'text' })
   content: string;
 
   @ManyToOne(() => User, (user: User) => user.id)
@@ -26,6 +26,6 @@ export class Message {
   @JoinColumn()
   receiver: User;
 
-  @Column()
+  @Column({ nullable: true })
   readAt: Date;
 }
