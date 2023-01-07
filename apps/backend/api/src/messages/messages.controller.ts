@@ -21,6 +21,11 @@ export class MessagesController {
     return this.messagesService.findOne(+id);
   }
 
+  @Get('/conversations/:id')
+  findAllLastMessages(@Param('id') id: string) {
+    return this.messagesService.findAllLastMessages(+id);
+  }
+
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.messagesService.remove(+id);
