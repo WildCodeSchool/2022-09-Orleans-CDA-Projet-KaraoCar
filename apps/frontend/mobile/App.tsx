@@ -1,15 +1,15 @@
-import { StyleSheet, Text, View } from "react-native";
-import { useEffect, useState } from "react";
-import { StatusBar } from "expo-status-bar";
-import Constants from "expo-constants";
+import { StyleSheet, Text, View } from 'react-native';
+import { useEffect, useState } from 'react';
+import { StatusBar } from 'expo-status-bar';
+import Constants from 'expo-constants';
 
-import { SomeInterface, User } from "@libs/typings";
+import { SomeInterface, User } from '@libs/typings';
 
 const API_HOST = Constants.expoConfig?.extra?.API_HOST;
 
 export default function App() {
   const [someData, setSomeData] = useState<SomeInterface>({
-    someProperty: "someValue",
+    someProperty: 'someValue',
   });
 
   const user: Partial<User> = {};
@@ -43,8 +43,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
