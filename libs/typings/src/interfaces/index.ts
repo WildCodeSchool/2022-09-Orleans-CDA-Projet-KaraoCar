@@ -1,1 +1,1 @@
-export * from "./SomeInterface";
+export * from './SomeInterface';

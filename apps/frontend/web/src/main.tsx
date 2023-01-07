@@ -9,7 +9,7 @@ import Navbar from './components/navbar/Navbar';
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <ChakraProvider theme={theme}>
-        <RouterProvider router={router} />
+      <RouterProvider router={router} />
     </ChakraProvider>
   </React.StrictMode>
 );
