@@ -6,28 +6,24 @@ import { CreateMessageDto } from './dto/create-message.dto';
 export class MessagesController {
   constructor(private readonly messagesService: MessagesService) {}
 
-  @Post()
-  create(@Body() createMessageDto: CreateMessageDto) {
-    return this.messagesService.create(createMessageDto);
-  }
-
-  @Get()
-  findAll() {
-    return this.messagesService.findAll();
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.messagesService.findOne(+id);
-  }
+  // @Post()
+  // create(@Body() createMessageDto: CreateMessageDto) {
+  //   return this.messagesService.create(createMessageDto);
+  // }
 
   @Get('/conversations/:id')
   findAllLastMessages(@Param('id') id: string) {
     return this.messagesService.findAllLastMessages(+id);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.messagesService.remove(+id);
+  @Get(':userId/:chattingWithId')
+  findAllConversationMessages(
+    @Param('userId') userId: string,
+    @Param('chattingWithId') chattingWithId: string,
+  ) {
+    return this.messagesService.findAllConversationMessages(
+      +userId,
+      +chattingWithId,
+    );
   }
 }

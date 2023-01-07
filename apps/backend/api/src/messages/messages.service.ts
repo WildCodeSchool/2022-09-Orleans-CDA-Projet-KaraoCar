@@ -11,16 +11,38 @@ export class MessagesService {
     private readonly messageRepository: Repository<Message>,
   ) {}
 
-  create(createMessageDto: CreateMessageDto) {
-    return 'This action adds a new message';
-  }
-
-  findAll() {
-    return `This action returns all messages`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} message`;
+  async findAllConversationMessages(userId: number, chattingWithId: number) {
+    const messages = await this.messageRepository
+      .createQueryBuilder('message')
+      .innerJoinAndSelect('message.sender', 'sender')
+      .innerJoinAndSelect('message.receiver', 'receiver')
+      .where('message.sender = :userId', { userId: userId })
+      .andWhere('message.receiver = :chattingWithId', {
+        chattingWithId: chattingWithId,
+      })
+      .orWhere('message.sender = :chattingWithId', {
+        chattingWithId: chattingWithId,
+      })
+      .andWhere('message.receiver = :userId', {
+        userId: userId,
+      })
+      .select([
+        'message.id',
+        'message.sendAt',
+        'message.content',
+        'message.readAt',
+        'sender.id',
+        'sender.firstname',
+        'LEFT (sender.lastname, 1) AS sender_lastname',
+        'sender.photo',
+        'receiver.id',
+        'receiver.firstname',
+        'LEFT (receiver.lastname, 1) AS receiver_lastname',
+        'receiver.photo',
+      ])
+      .orderBy('message.sendAt', 'ASC')
+      .execute();
+    return messages;
   }
 
   async findAllLastMessages(id: number) {
@@ -62,9 +84,5 @@ export class MessagesService {
       .execute();
 
     return lastMessages;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} message`;
   }
 }
