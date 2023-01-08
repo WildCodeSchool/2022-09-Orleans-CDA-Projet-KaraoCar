@@ -12,6 +12,9 @@ const theme = extendTheme({
     heading: `'Lexend Deca', sans-serif`,
     body: `'Lexend Deca', sans-serif`,
   },
+  shadows: {
+    md2: '0 0 6px 0 rgba(0, 0, 0, 0.6)',
+  },
   components: {
     Button: ButtonTheme,
   },

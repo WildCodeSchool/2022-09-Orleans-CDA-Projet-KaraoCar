@@ -17,12 +17,14 @@ import { Conversation, Message } from '@libs/typings';
 const Chat = () => {
   const [conversations, setConversations] = useState<Conversation[]>([]);
   const [chattingWithUser, setChattingWithUser] = useState<number | null>(null);
-  const [chattingWithUserName, setChattingWithUserName] = useState<string>('');
   const [messages, setMessages] = useState<Message[]>([]);
   const [messageToSend, setMessageToSend] = useState<string>('');
+  const [isSideBarCollapsed, setIsSideBarCollapsed] = useState<boolean>(true);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const isScrollToBottomAllowedRef = useRef<boolean>(true);
+
+  const chattingWithUserName = useRef<string>('');
 
   //REPLACE THIS WITH AUTH LOGIC WHEN DONE
   const user = { id: 1 };
@@ -61,9 +63,9 @@ const Chat = () => {
       if (data.length > 0) {
         const chatterName =
           data[0].sender_id === user.id
-            ? `${data[0].receiver_firstname} ${data[0].receiver_lastname}`
-            : `${data[0].sender_firstname} ${data[0].sender_lastname}`;
-        setChattingWithUserName(chatterName);
+            ? `${data[0].receiver_firstname} ${data[0].receiver_lastname}.`
+            : `${data[0].sender_firstname} ${data[0].sender_lastname}.`;
+        chattingWithUserName.current = chatterName;
       }
     } catch (error) {}
   };
@@ -133,6 +135,8 @@ const Chat = () => {
     conversation.sender_id === user.id
       ? setChattingWithUser(conversation.receiver_id)
       : setChattingWithUser(conversation.sender_id);
+
+    setIsSideBarCollapsed(true);
 
     if (conversation.receiver_id === user.id && !conversation.message_readAt) {
       const markAsRead = async () => {
@@ -211,10 +215,7 @@ const Chat = () => {
 
   const conversationMessage = (conversation: Conversation) => {
     if (conversation.sender_id === user.id) {
-      if (conversation.message_content.length > 10) {
-        return `You: ${conversation.message_content.slice(0, 10)}...`;
-      }
-      return `You: ${conversation.message_content}`;
+      return `You: ${conversation.message_content.slice(0, 10)}...`;
     }
 
     if (conversation.message_content.length > 15) {
@@ -225,27 +226,80 @@ const Chat = () => {
   };
 
   return (
-    <Flex paddingBlockStart={'48px'} paddingBlockEnd={'24px'}>
-      <Box h={'calc(100vh - 80px - 48px - 24px)'} w={'25%'} maxW={'810px'}>
-        <Flex h={'100%'} flexDir={'column'} justifyContent={'space-between'}>
-          <Image src={ReadingTime} width={'80%'} marginInlineStart={'auto'} />
-          <Box paddingInline={'24px'}>
-            <Center>
-              <Text
-                paddingBlockEnd={'12px'}
-                fontSize={'24'}
-                fontWeight={'bold'}
-              >
-                {conversations.length > 0 ? 'Conversations' : 'No conversation'}
-              </Text>
-            </Center>
+    <Flex paddingBlockEnd={'24px'}>
+      <Box
+        h={'calc(100vh - 80px - 24px)'}
+        w={{ base: '80px', md: '25%' }}
+        maxW={'810px'}
+      >
+        <Flex
+          position={isSideBarCollapsed ? 'initial' : 'absolute'}
+          zIndex={isSideBarCollapsed ? 'initial' : '999'}
+          w={isSideBarCollapsed ? '100%' : 'fit-content'}
+          h={'calc(100vh - 80px)'}
+          flexDir={'column'}
+          justifyContent={{ base: 'start', md: 'space-between' }}
+          backgroundColor={'#72bde5'}
+          shadow={'md2'}
+        >
+          <Box
+            display={{ base: 'none', md: 'block' }}
+            paddingBlockStart={'48px'}
+            flexGrow={'1'}
+          >
+            <Image
+              src={ReadingTime}
+              width={'80%'}
+              maxW={'315px'}
+              marginInline={'auto'}
+            />
+          </Box>
+
+          <Center>
+            <Text
+              display={{
+                base: 'none',
+                md: 'block',
+              }}
+              paddingBlockEnd={'12px'}
+              fontSize={'24'}
+              fontWeight={'bold'}
+            >
+              {conversations.length > 0 ? 'Conversations' : 'No conversation'}
+            </Text>
+          </Center>
+          <Box display={{ base: 'inline', md: 'none' }} p={'24px'}>
+            <Button
+              w={'100%'}
+              marginInline={'auto'}
+              onClick={() => setIsSideBarCollapsed(!isSideBarCollapsed)}
+            >
+              {isSideBarCollapsed ? '>' : '<'}
+            </Button>
+          </Box>
+
+          <Box
+            paddingInline={{ base: '12px', md: '24px' }}
+            overflowY={'auto'}
+            overflowX={'hidden'}
+            maxH={{ base: '95%', md: '60%' }}
+          >
             {conversations.length > 0 &&
               conversations.map((conversation) => (
                 <Flex
-                  cursor={'pointer'}
                   key={conversation.message_id}
+                  cursor={'pointer'}
                   marginBlockEnd={'12px'}
                   p={'12px'}
+                  flexDir={{
+                    base: isSideBarCollapsed ? 'column' : 'row',
+                    lg: 'row',
+                  }}
+                  alignItems={{
+                    base: isSideBarCollapsed ? 'center' : 'start',
+                    lg: 'start',
+                  }}
+                  border={'1px solid #dfdfdf'}
                   borderRadius={'8'}
                   color={colorTextConversation(conversation)}
                   backgroundColor={conversationBackGroundColor(conversation)}
@@ -258,19 +312,69 @@ const Chat = () => {
                         ? `./images/${conversation.receiver_photo}`
                         : `./images/${conversation.sender_photo}`
                     }
+                    size={{ base: isSideBarCollapsed ? 'sm' : 'md', lg: 'md' }}
                   />
                   <Flex
-                    flexDir={'column'}
+                    display={{
+                      base: isSideBarCollapsed ? 'none' : 'block',
+                      md: 'block',
+                    }}
                     w={'100%'}
+                    flexDir={'column'}
                     paddingInlineStart={'8px'}
                   >
-                    <Flex w={'100%'} justifyContent={'space-between'}>
-                      <Text paddingInlineEnd={'8px'} whiteSpace={'nowrap'}>
-                        {conversation.sender_id === user.id
-                          ? `${conversation.receiver_firstname} ${conversation.receiver_lastname}`
-                          : `${conversation.sender_firstname} ${conversation.sender_lastname}`}
+                    <Flex
+                      w={'100%'}
+                      justifyContent={'space-between'}
+                      flexDir={{
+                        base: isSideBarCollapsed ? 'column-reverse' : 'row',
+                        lg: 'row',
+                      }}
+                      flexWrap={'wrap-reverse'}
+                    >
+                      <Flex
+                        w={{
+                          base: isSideBarCollapsed ? '100%' : '60%',
+                          lg: '60%',
+                        }}
+                      >
+                        <Text
+                          paddingInlineEnd={'8px'}
+                          whiteSpace={'nowrap'}
+                          overflow={'hidden'}
+                          textOverflow={'ellipsis'}
+                        >
+                          {conversation.sender_id === user.id
+                            ? conversation.receiver_firstname
+                            : conversation.sender_firstname}
+                        </Text>
+                        <Text
+                          paddingInlineEnd={'8px'}
+                          w={'fit-content'}
+                          flexGrow={{
+                            base: isSideBarCollapsed ? '0' : '1',
+                            lg: '1',
+                          }}
+                        >
+                          {conversation.sender_id === user.id
+                            ? conversation.receiver_lastname
+                            : conversation.sender_lastname}
+                          {'.'}
+                        </Text>
+                      </Flex>
+                      <Text
+                        textAlign={{
+                          base: isSideBarCollapsed ? 'center' : 'end',
+                          lg: 'end',
+                        }}
+                        marginBlockStart={{
+                          base: isSideBarCollapsed ? '10px' : '0',
+                          lg: '0',
+                        }}
+                        marginBlockEnd={'10px'}
+                      >
+                        {formatDate(conversation.message_sendAt)}
                       </Text>
-                      <Text>{formatDate(conversation.message_sendAt)}</Text>
                     </Flex>
                     <Text paddingBlockStart={'4px'}>
                       {conversationMessage(conversation)}
@@ -283,25 +387,22 @@ const Chat = () => {
       </Box>
       <Flex
         flexDir={'column'}
-        h={'calc(100vh - 80px - 48px - 24px)'}
+        h={'calc(100vh - 80px - 24px)'}
         w={'100%'}
-        maxW={'1000px'}
+        paddingInline={{ base: '8px', md: '24px' }}
         m={'auto'}
       >
         <Text
           w={'fit-content'}
           m={'auto'}
-          fontSize={'32'}
+          fontSize={{ base: '24', lg: '32' }}
           fontWeight={'bold'}
           paddingBlockStart={'48px'}
-          position={'absolute'}
-          top={'80px'}
-          left={'0'}
-          right={'0'}
+          textAlign={'center'}
         >
           {chattingWithUser
             ? `Chatting with ${
-                messages.length > 0 && `${chattingWithUserName}`
+                messages.length > 0 && chattingWithUserName.current
               }`
             : 'Messages'}
         </Text>
@@ -415,7 +516,7 @@ const Chat = () => {
             justifyContent={'center'}
             alignItems={'center'}
           >
-            <Text as={'h2'} fontSize={'xl'}>
+            <Text as={'h2'} fontSize={'xl'} textAlign={'center'}>
               {conversations.length > 0
                 ? 'Please select a conversation'
                 : 'You have no conversation'}
