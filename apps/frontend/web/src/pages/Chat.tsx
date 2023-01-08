@@ -19,6 +19,7 @@ const Chat = () => {
   const [chattingWithUser, setChattingWithUser] = useState<number | null>(null);
   const [chattingWithUserName, setChattingWithUserName] = useState<string>('');
   const [messages, setMessages] = useState<Message[]>([]);
+  const [messageToSend, setMessageToSend] = useState<string>('');
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -135,6 +136,32 @@ const Chat = () => {
     conversation.sender_id === user.id
       ? setChattingWithUser(conversation.receiver_id)
       : setChattingWithUser(conversation.sender_id);
+  };
+
+  const sendMessage = async () => {
+    try {
+      await fetch(`${import.meta.env.VITE_API_HOST}api/messages`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          sender: user.id,
+          receiver: chattingWithUser,
+          sendAt: new Date().toISOString(),
+          content: messageToSend,
+        }),
+      });
+
+      setMessageToSend('');
+      getMessages();
+    } catch (error) {}
+  };
+
+  const handleKeyUpInSend = (e: React.KeyboardEvent<HTMLElement>) => {
+    if (e.key === 'Enter') {
+      sendMessage();
+    }
   };
 
   const colorTextConversation = (conversation: Conversation) => {
@@ -346,11 +373,15 @@ const Chat = () => {
               <Input
                 placeholder={'Type your message here'}
                 borderRightRadius={'0'}
+                value={messageToSend}
+                onChange={(e) => setMessageToSend(e.target.value)}
+                onKeyUp={(e) => handleKeyUpInSend(e)}
               />
               <Button
                 paddingInline={'28px'}
                 rightIcon={<FiSend />}
                 borderLeftRadius={'0'}
+                onClick={() => sendMessage()}
               >
                 {'Send'}
               </Button>
