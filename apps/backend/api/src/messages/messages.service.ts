@@ -85,4 +85,15 @@ export class MessagesService {
 
     return lastMessages;
   }
+
+  async markAsRead(receiverId: number, senderId: number) {
+    const setRead = await this.messageRepository
+      .createQueryBuilder()
+      .update(Message)
+      .set({ readAt: new Date() })
+      .where('receiver = :receiverId', { receiverId: receiverId })
+      .andWhere('sender = :senderId', { senderId: senderId })
+      .execute();
+    return setRead;
+  }
 }
