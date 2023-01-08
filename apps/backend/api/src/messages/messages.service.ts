@@ -97,6 +97,7 @@ export class MessagesService {
       .set({ readAt: new Date() })
       .where('receiver = :receiverId', { receiverId: receiverId })
       .andWhere('sender = :senderId', { senderId: senderId })
+      .andWhere('readAt IS NULL')
       .execute();
     return setRead;
   }
