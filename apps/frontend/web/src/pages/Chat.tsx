@@ -115,6 +115,28 @@ const Chat = () => {
     } ${dateObject.getHours()}:${dateObject.getMinutes()}`;
   };
 
+  const handleConversationClick = (conversation: Conversation) => {
+    if (conversation.receiver_id === user.id && !conversation.message_readAt) {
+      const markAsRead = async () => {
+        try {
+          await fetch(
+            `${import.meta.env.VITE_API_HOST}api/messages/mark-as-read/${
+              conversation.receiver_id
+            }/${conversation.sender_id}`,
+            {
+              method: 'PATCH',
+            }
+          );
+          await getConversations();
+        } catch (error) {}
+      };
+      markAsRead();
+    }
+    conversation.sender_id === user.id
+      ? setChattingWithUser(conversation.receiver_id)
+      : setChattingWithUser(conversation.sender_id);
+  };
+
   const colorTextConversation = (conversation: Conversation) => {
     const chattingWith =
       conversation.sender_id === user.id
@@ -138,7 +160,7 @@ const Chat = () => {
       return '#394E61';
     }
 
-    if (conversation.message_readAt) {
+    if (conversation.message_readAt || conversation.sender_id === user.id) {
       return '#FFFFFF';
     }
 
@@ -171,11 +193,7 @@ const Chat = () => {
                   color={colorTextConversation(conversation)}
                   backgroundColor={conversationBackGroundColor(conversation)}
                   _hover={{ backgroundColor: '#E4F2FF', color: '#000000' }}
-                  onClick={() => {
-                    conversation.sender_id === user.id
-                      ? setChattingWithUser(conversation.receiver_id)
-                      : setChattingWithUser(conversation.sender_id);
-                  }}
+                  onClick={() => handleConversationClick(conversation)}
                 >
                   <Avatar
                     src={
