@@ -1,12 +1,4 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Param,
-  Delete,
-  Patch,
-} from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Patch } from '@nestjs/common';
 import { MessagesService } from './messages.service';
 import { CreateMessageDto } from './dto/create-message.dto';
 
@@ -14,10 +6,10 @@ import { CreateMessageDto } from './dto/create-message.dto';
 export class MessagesController {
   constructor(private readonly messagesService: MessagesService) {}
 
-  // @Post()
-  // create(@Body() createMessageDto: CreateMessageDto) {
-  //   return this.messagesService.create(createMessageDto);
-  // }
+  @Post()
+  create(@Body() createMessageDto: CreateMessageDto) {
+    return this.messagesService.create(createMessageDto);
+  }
 
   @Patch('mark-as-read/:receiverId/:senderId')
   markAsRead(

@@ -11,6 +11,10 @@ export class MessagesService {
     private readonly messageRepository: Repository<Message>,
   ) {}
 
+  create(createMessageDto: CreateMessageDto) {
+    return this.messageRepository.save(createMessageDto);
+  }
+
   async findAllConversationMessages(userId: number, chattingWithId: number) {
     const messages = await this.messageRepository
       .createQueryBuilder('message')
