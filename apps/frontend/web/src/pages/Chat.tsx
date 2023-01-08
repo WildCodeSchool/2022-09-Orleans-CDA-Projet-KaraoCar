@@ -22,6 +22,7 @@ const Chat = () => {
   const [messageToSend, setMessageToSend] = useState<string>('');
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const isScrollToBottomAllowedRef = useRef<boolean>(true);
 
   //REPLACE THIS WITH AUTH LOGIC WHEN DONE
   const user = { id: 1 };
@@ -40,7 +41,10 @@ const Chat = () => {
     } catch (error) {}
   };
 
-  const getMessages = async (abortController?: AbortController) => {
+  const getMessages = async (
+    abortController?: AbortController | null,
+    noScroll: boolean = true
+  ) => {
     try {
       const response = await fetch(
         `${import.meta.env.VITE_API_HOST}api/messages/${
@@ -52,8 +56,8 @@ const Chat = () => {
       );
       const data: Message[] = await response.json();
 
+      isScrollToBottomAllowedRef.current = noScroll;
       setMessages(data);
-
       if (data.length > 0) {
         const chatterName =
           data[0].sender_id === user.id
@@ -61,8 +65,6 @@ const Chat = () => {
             : `${data[0].sender_firstname} ${data[0].sender_lastname}`;
         setChattingWithUserName(chatterName);
       }
-
-      scrollToBottom();
     } catch (error) {}
   };
 
@@ -81,16 +83,21 @@ const Chat = () => {
       const abortController = new AbortController();
 
       getMessages(abortController);
-
       return () => {
         abortController.abort();
       };
     }
   }, [chattingWithUser]);
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView();
-  };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      getConversations();
+      if (chattingWithUser) {
+        getMessages(null, false);
+      }
+    }, 2000);
+    return () => clearInterval(interval);
+  }, [chattingWithUser]);
 
   const formatDate = (date: string) => {
     const dateObject = new Date(date);
@@ -116,7 +123,17 @@ const Chat = () => {
     } ${dateObject.getHours()}:${dateObject.getMinutes()}`;
   };
 
+  useEffect(() => {
+    if (isScrollToBottomAllowedRef.current) {
+      messagesEndRef.current?.scrollIntoView();
+    }
+  }, [messages]);
+
   const handleConversationClick = (conversation: Conversation) => {
+    conversation.sender_id === user.id
+      ? setChattingWithUser(conversation.receiver_id)
+      : setChattingWithUser(conversation.sender_id);
+
     if (conversation.receiver_id === user.id && !conversation.message_readAt) {
       const markAsRead = async () => {
         try {
@@ -128,14 +145,11 @@ const Chat = () => {
               method: 'PATCH',
             }
           );
-          await getConversations();
+          getConversations();
         } catch (error) {}
       };
       markAsRead();
     }
-    conversation.sender_id === user.id
-      ? setChattingWithUser(conversation.receiver_id)
-      : setChattingWithUser(conversation.sender_id);
   };
 
   const sendMessage = async () => {
@@ -155,6 +169,7 @@ const Chat = () => {
 
       setMessageToSend('');
       getMessages();
+      getConversations();
     } catch (error) {}
   };
 
@@ -192,6 +207,21 @@ const Chat = () => {
     }
 
     return '#D9D9D9';
+  };
+
+  const conversationMessage = (conversation: Conversation) => {
+    if (conversation.sender_id === user.id) {
+      if (conversation.message_content.length > 10) {
+        return `You: ${conversation.message_content.slice(0, 10)}...`;
+      }
+      return `You: ${conversation.message_content}`;
+    }
+
+    if (conversation.message_content.length > 15) {
+      return `You: ${conversation.message_content.slice(0, 15)}...`;
+    }
+
+    return conversation.message_content;
   };
 
   return (
@@ -243,16 +273,7 @@ const Chat = () => {
                       <Text>{formatDate(conversation.message_sendAt)}</Text>
                     </Flex>
                     <Text paddingBlockStart={'4px'}>
-                      {conversation.sender_id === user.id
-                        ? conversation.message_content.length > 10
-                          ? `You: ${conversation.message_content.slice(
-                              0,
-                              10
-                            )}...`
-                          : conversation.message_content
-                        : conversation.message_content.length > 15
-                        ? `${conversation.message_content.slice(0, 15)}...`
-                        : conversation.message_content}
+                      {conversationMessage(conversation)}
                     </Text>
                   </Flex>
                 </Flex>
