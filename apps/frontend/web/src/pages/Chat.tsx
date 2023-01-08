@@ -240,7 +240,7 @@ const Chat = () => {
           flexDir={'column'}
           justifyContent={{ base: 'start', md: 'space-between' }}
           backgroundColor={'#72bde5'}
-          shadow={'md2'}
+          shadow={'mdRight'}
         >
           <Box
             display={{ base: 'none', md: 'block' }}

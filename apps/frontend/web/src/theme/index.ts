@@ -13,7 +13,7 @@ const theme = extendTheme({
     body: `'Lexend Deca', sans-serif`,
   },
   shadows: {
-    md2: '0 0 6px 0 rgba(0, 0, 0, 0.6)',
+    mdRight: '0 3px 6px 0 rgba(0, 0, 0, 0.5)',
   },
   components: {
     Button: ButtonTheme,
