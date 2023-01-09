@@ -96,7 +96,7 @@ const ChatWithUser = ({
                       borderRadius={'8'}
                       p={'3px'}
                       src={`./uploads/profiles/${message.receiver_photo}`}
-                      fallbackSrc={'./uploads/profiles/profile-placeholder.png'}
+                      fallbackSrc={'./images/profile-placeholder.png'}
                       backgroundColor={'white'}
                     />
                   </Flex>
@@ -115,6 +115,7 @@ const ChatWithUser = ({
                   >
                     <Text
                       fontSize={'20'}
+                      fontWeight={'light'}
                       color={
                         message.receiver_id === user.id ? '#FFFFFF' : '#000000'
                       }
@@ -128,6 +129,7 @@ const ChatWithUser = ({
           </Box>
           <Flex shadow={'lg'}>
             <Input
+              fontWeight={'light'}
               placeholder={'Type your message here'}
               borderRightRadius={'0'}
               value={messageToSend}

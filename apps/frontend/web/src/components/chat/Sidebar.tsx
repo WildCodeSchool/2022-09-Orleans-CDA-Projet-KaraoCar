@@ -95,7 +95,7 @@ const Sidebar = ({
   return (
     <Box
       h={'calc(100vh - 80px - 24px)'}
-      w={{ base: '80px', md: '25%' }}
+      w={{ base: '80px', md: '35%' }}
       maxW={'810px'}
     >
       <Flex
@@ -174,6 +174,7 @@ const Sidebar = ({
                   base: isSideBarCollapsed ? 'center' : 'start',
                   lg: 'start',
                 }}
+                fontWeight={'light'}
                 border={'1px solid #dfdfdf'}
                 borderRadius={'8'}
                 color={colorTextConversation(conversation)}
