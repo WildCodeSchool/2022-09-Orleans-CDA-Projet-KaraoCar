@@ -38,7 +38,7 @@ const Navbar = () => {
     profile: '#',
     messages: '#',
     search: '#',
-    create: '#',
+    create: '/create-trip',
     myTrips: '#',
   };
 
