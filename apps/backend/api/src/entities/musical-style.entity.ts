@@ -7,8 +7,8 @@ export class MusicalStyle {
   id: number;
 
   @Column({ nullable: true })
-  name?: string;
+  name: string;
 
   @ManyToMany(() => Trip, (trip: Trip) => trip.musicalStyles)
-  trips?: Trip[];
+  trips: Trip[];
 }

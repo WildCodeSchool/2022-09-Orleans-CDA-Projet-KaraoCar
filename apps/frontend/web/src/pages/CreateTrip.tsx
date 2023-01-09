@@ -52,7 +52,7 @@ const CreateTrip = () => {
     const dateTimeToDate = new Date(dateTime);
     const itineraryUrl = methods.getValues('itineraryUrl');
     const endingDateTime = new Date(dateTimeToDate.getTime() + 6000000); // to replace with google api values
-    const music: MusicalStyle[] = [];
+    const music: Partial<MusicalStyle>[] = [];
 
     for (let i = 0; i < musicalStyles.length; i++) {
       const musicStyle = {
