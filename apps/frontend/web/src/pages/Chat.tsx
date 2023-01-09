@@ -9,8 +9,6 @@ import {
   Center,
 } from '@chakra-ui/react';
 import { useRef, useEffect, useState } from 'react';
-
-import { FiSend } from 'react-icons/fi';
 import { Conversation, Message } from '@libs/typings';
 import Sidebar from '../components/chat/Sidebar';
 import ChatWithUser from '../components/chat/ChatWithUser';
@@ -24,8 +22,7 @@ const Chat = () => {
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const isScrollToBottomAllowedRef = useRef<boolean>(true);
-
-  const chattingWithUserName = useRef<string>('');
+  const chattingWithUserNameRef = useRef<string>('');
 
   //REPLACE THIS WITH AUTH LOGIC WHEN DONE
   const user = { id: 1 };
@@ -66,7 +63,7 @@ const Chat = () => {
           data[0].sender_id === user.id
             ? `${data[0].receiver_firstname} ${data[0].receiver_lastname}.`
             : `${data[0].sender_firstname} ${data[0].sender_lastname}.`;
-        chattingWithUserName.current = chatterName;
+        chattingWithUserNameRef.current = chatterName;
       }
     } catch (error) {}
   };
@@ -175,7 +172,7 @@ const Chat = () => {
         user={user}
         messages={messages}
         chattingWithUser={chattingWithUser}
-        chattingWithUserName={chattingWithUserName.current}
+        chattingWithUserName={chattingWithUserNameRef.current}
         messagesEndRef={messagesEndRef}
         handleKeyUpInSend={handleKeyUpInSend}
         setMessageToSend={setMessageToSend}
