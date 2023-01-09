@@ -9,6 +9,9 @@ import {
   Stack,
   Text,
   Link,
+  Box,
+  Img,
+  calc,
 } from '@chakra-ui/react';
 import { useForm } from 'react-hook-form';
 import { AiOutlineEnter } from 'react-icons/ai';
@@ -47,8 +50,8 @@ const Login = () => {
         }
       });
   };
-  return (
-    <Stack minH={'95vh'} direction={{ base: 'column', lg: 'row' }}>
+  return (  
+    <Stack h='calc(100vh - 80px)' direction={{ base: 'column', lg: 'row' }}>
       <Flex flex={2} direction={'column'} justify={'center'} align={'center'}>
         <Heading margin={'5px'} marginBottom={'5rem'}>
           Log in to your account
@@ -125,6 +128,37 @@ const Login = () => {
           </FormControl>
         </form>
       </Flex>
+
+
+
+
+
+
+
+
+
+
+
+
+      <Box
+        position={'absolute'}
+        bottom={'0'}
+        left={'61vw'}
+        transform={'translate(-50%, 0%)'}
+      >
+        <Img src="/loginimage.svg"
+        height={'25rem'}
+        display={{base:'none', lg: 'block'}}></Img>
+      </Box>
+    
+
+
+
+
+
+
+
+
       <Flex
         flex={1}
         backgroundColor={'#E4F2FF'}
