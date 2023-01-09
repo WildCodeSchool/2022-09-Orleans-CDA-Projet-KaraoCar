@@ -4,7 +4,7 @@
   "main": "src/index.js",
   "license": "MIT",
   "type": "module",
-  "dependencies": {
-    "dotenv": "^16.0.3"
+  "scripts": {
+    "insert": "node src/index.js"
   }
 }

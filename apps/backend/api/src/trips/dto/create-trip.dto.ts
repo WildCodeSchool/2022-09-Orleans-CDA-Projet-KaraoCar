@@ -14,5 +14,5 @@ export class CreateTripDto {
   @IsArray()
   musicalStyles: MusicalStyle[];
 
-  comment: string;
+  comment?: string;
 }

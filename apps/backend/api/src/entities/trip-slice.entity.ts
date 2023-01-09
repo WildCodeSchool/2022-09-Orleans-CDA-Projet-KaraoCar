@@ -55,6 +55,5 @@ export class TripSlice {
   @ManyToOne(() => Trip, (trip: Trip) => trip.tripSlices, {
     cascade: ['insert', 'update'],
   })
-  @JoinColumn()
   trip: Trip;
 }

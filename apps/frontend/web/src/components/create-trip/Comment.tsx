@@ -36,12 +36,9 @@ const Comment = ({
     const abortController = new AbortController();
     const fetchMusicalStyles = async () => {
       try {
-        const response = await fetch(
-          `${import.meta.env.VITE_API_HOST}api/musical-styles`,
-          {
-            signal: abortController.signal,
-          }
-        );
+        const response = await fetch(`/api/musical-styles`, {
+          signal: abortController.signal,
+        });
         const data = await response.json();
         setMusicalStyles(data);
       } catch (error) {}

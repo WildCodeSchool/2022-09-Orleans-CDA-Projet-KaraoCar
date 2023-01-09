@@ -27,8 +27,6 @@ export class Trip {
   )
   @JoinTable({
     name: 'trip_musical_style',
-    joinColumn: { name: 'tripId', referencedColumnName: 'id' },
-    inverseJoinColumn: { name: 'musicalStyleId', referencedColumnName: 'id' },
   })
   musicalStyles: MusicalStyle[];
 

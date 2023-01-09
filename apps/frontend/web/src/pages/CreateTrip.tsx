@@ -66,36 +66,33 @@ const CreateTrip = () => {
     const tripSlice = {
       trip: {
         carId: 1, // to replace once user part is done
-        middleseat: middleseat,
+        middleseat,
         musicalStyles: music,
-        comment: comment,
+        comment,
       },
-      startingPoint: startingPoint,
+      startingPoint,
       startingPointLat: 0, // to replace with google api values
       startingPointLng: 0, // to replace with google api values
       endingPointLat: 0, // to replace with google api values
       endingPointLng: 0, // to replace with google api values
-      endingPoint: endingPoint,
+      endingPoint,
       startingDateTime: dateTimeToDate,
-      endingDateTime: endingDateTime,
-      totalSeat: totalSeat,
-      price: price,
-      itineraryUrl: itineraryUrl, // to replace with google api values
+      endingDateTime,
+      totalSeat,
+      price,
+      itineraryUrl, // to replace with google api values
       hasTolls: false, // to replace with google api values
     };
 
     try {
       console.log(tripSlice);
-      const req = await fetch(
-        `${import.meta.env.VITE_API_HOST}api/trip-slices`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(tripSlice),
-        }
-      );
+      const req = await fetch(`/api/trip-slices`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(tripSlice),
+      });
       const resp = await req.json();
       const status = req.status;
       setServerErrors(resp.message);

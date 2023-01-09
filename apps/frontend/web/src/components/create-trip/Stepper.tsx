@@ -19,22 +19,12 @@ const Stepper = ({ step }: { step: number }) => {
             {'1'}
           </Text>
         </VStack>
-        {step > 1 ? (
-          <Box
-            width={{ base: '70px', lg: '120px' }}
-            zIndex={'-1'}
-            height={'3px'}
-            backgroundColor={`${step > 1 && 'slateblue'}`}
-          ></Box>
-        ) : (
-          <Box
-            width={{ base: '70px', lg: '120px' }}
-            zIndex={'-1'}
-            height={'1px'}
-            backgroundColor={'#8E8E8E'}
-          ></Box>
-        )}
-
+        <Box
+          width={{ base: '70px', lg: '120px' }}
+          zIndex={'-1'}
+          height={step > 1 ? '3px' : '1px'}
+          backgroundColor={step > 1 ? 'slateblue' : '#8E8E8E'}
+        ></Box>
         <VStack
           boxSize={{ base: '8', md: '12' }}
           bgColor={step >= 2 ? 'slateblue' : 'white'}
@@ -51,21 +41,12 @@ const Stepper = ({ step }: { step: number }) => {
             {'2'}
           </Text>
         </VStack>
-        {step > 2 ? (
-          <Box
-            width={{ base: '70px', lg: '120px' }}
-            zIndex={'-1'}
-            height={'3px'}
-            backgroundColor={`${step > 2 && 'slateblue'}`}
-          ></Box>
-        ) : (
-          <Box
-            width={{ base: '70px', lg: '120px' }}
-            zIndex={'-1'}
-            height={'1px'}
-            backgroundColor={'#8E8E8E'}
-          ></Box>
-        )}
+        <Box
+          width={{ base: '70px', lg: '120px' }}
+          zIndex={'-1'}
+          height={step > 2 ? '3px' : '1px'}
+          backgroundColor={step > 2 ? 'slateblue' : '#8E8E8E'}
+        ></Box>
 
         <VStack
           boxSize={{ base: '8', md: '12' }}
@@ -83,21 +64,12 @@ const Stepper = ({ step }: { step: number }) => {
             {'3'}
           </Text>
         </VStack>
-        {step > 3 ? (
-          <Box
-            width={{ base: '70px', lg: '120px' }}
-            zIndex={'-1'}
-            height={'3px'}
-            backgroundColor={`${step > 3 && 'slateblue'}`}
-          ></Box>
-        ) : (
-          <Box
-            width={{ base: '70px', lg: '120px' }}
-            zIndex={'-1'}
-            height={'1px'}
-            backgroundColor={'#8E8E8E'}
-          ></Box>
-        )}
+        <Box
+          width={{ base: '70px', lg: '120px' }}
+          zIndex={'-1'}
+          height={step > 3 ? '3px' : '1px'}
+          backgroundColor={step > 3 ? 'slateblue' : '#8E8E8E'}
+        ></Box>
         <VStack
           boxSize={{ base: '8', md: '12' }}
           bgColor={step >= 4 ? 'slateblue' : 'white'}

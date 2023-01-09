@@ -9,7 +9,9 @@ const NextButton = ({
   isValid: boolean;
   isDirty: boolean;
 }) => {
-  const isSubmitting = useFormContext().formState.isSubmitting;
+  const {
+    formState: { isSubmitting },
+  } = useFormContext();
   return (
     <Button
       width={{ base: '130px', md: '160px' }}
