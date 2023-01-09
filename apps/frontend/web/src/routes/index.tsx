@@ -1,6 +1,6 @@
 import { createBrowserRouter, Outlet } from 'react-router-dom';
-import App from '../App';
 import Navbar from '../components/navbar/Navbar';
+import Home from '../pages/Home';
 import Chat from '../pages/Chat';
 
 const NavLayout = () => (
@@ -16,7 +16,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <App />,
+        element: <Home />,
       },
       {
         path: '/chat',
