@@ -37,7 +37,7 @@ const Comment = ({
     const fetchMusicalStyles = async () => {
       try {
         const response = await fetch(
-          import.meta.env.VITE_API_HOST + 'api/musical-styles',
+          `${import.meta.env.VITE_API_HOST}api/musical-styles`,
           {
             signal: abortController.signal,
           }
