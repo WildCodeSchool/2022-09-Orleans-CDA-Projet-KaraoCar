@@ -79,31 +79,30 @@ const Login = () => {
               </Text>
             )}
 
-            
-              <FormLabel fontSize={'20px'} marginTop={'1rem'}>
-                Password
-              </FormLabel>
-              <Input
-                {...register('password', {
-                  required: 'this is required',
-                })}
-                paddingLeft={'10px'}
-                rounded={'8px'}
-                border={'1px solid #000000'}
-                height={'50px'}
-                maxWidth={{ base: '18rem', md: '24rem', lg: '40rem' }}
-                fontSize={'25px'}
-                type={'password'}
-                value={password}
-                onChange={(event) => setPassword(event.target.value)}
-                placeholder={'**********'}
-              />
-              {errors.password && (
-                <Text color={'red'} paddingTop={'5px'}>
-                  Password is required.
-                </Text>
-              )}
-            
+            <FormLabel fontSize={'20px'} marginTop={'1rem'}>
+              Password
+            </FormLabel>
+            <Input
+              {...register('password', {
+                required: 'this is required',
+              })}
+              paddingLeft={'10px'}
+              rounded={'8px'}
+              border={'1px solid #000000'}
+              height={'50px'}
+              maxWidth={{ base: '18rem', md: '24rem', lg: '40rem' }}
+              fontSize={'25px'}
+              type={'password'}
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+              placeholder={'**********'}
+            />
+            {errors.password && (
+              <Text color={'red'} paddingTop={'5px'}>
+                Password is required.
+              </Text>
+            )}
+
             <Stack spacing={6}>
               <Button
                 mt={4}
@@ -133,7 +132,9 @@ const Login = () => {
         align={'center'}
         justify={'center'}
       >
-        <Heading padding={'5px'}>New Here?</Heading>
+        <Heading padding={'5px'} fontSize={{ base: '24px', md: '25px' }}>
+          New Here?
+        </Heading>
         <Text
           paddingLeft={'10px'}
           maxW={{ base: '15rem', md: '26rem', lg: '22rem' }}
