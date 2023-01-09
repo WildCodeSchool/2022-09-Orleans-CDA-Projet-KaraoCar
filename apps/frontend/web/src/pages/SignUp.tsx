@@ -9,7 +9,9 @@ import {
   Input,
   Stack,
   Link,
+  Text,
 } from '@chakra-ui/react';
+import { useForm } from 'react-hook-form';
 import { HiUserAdd } from 'react-icons/hi';
 import { AiOutlineEnter } from 'react-icons/ai';
 
@@ -20,10 +22,13 @@ function SignupForm() {
   const [confirm_password, setConfirm_password] = useState('');
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-
+  const onSubmit = () => {
     fetch('/api/users/create', {
       method: 'POST',
       headers: {
@@ -93,11 +98,14 @@ function SignupForm() {
           >
             Create an account
           </Heading>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <Grid templateColumns={'1fr 1fr'} gap={40}>
               <FormControl>
                 <FormLabel fontSize={'20px'}>Firstname</FormLabel>
                 <Input
+                  {...register('firstname', {
+                    required: 'this is required',
+                  })}
                   paddingLeft={'10px'}
                   rounded={'8px'}
                   border={'1px solid #000000'}
@@ -110,10 +118,18 @@ function SignupForm() {
                   onChange={(event) => setFirstname(event.target.value)}
                   placeholder={'John'}
                 />
+                {errors.firstname && (
+                  <Text color={'red'} paddingTop={'5px'}>
+                    Firstname is required.
+                  </Text>
+                )}
               </FormControl>
               <FormControl>
                 <FormLabel fontSize={'20px'}>Lastname</FormLabel>
                 <Input
+                  {...register('lastname', {
+                    required: 'this is required',
+                  })}
                   paddingLeft={'10px'}
                   rounded={'8px'}
                   border={'1px solid #000000'}
@@ -126,6 +142,11 @@ function SignupForm() {
                   onChange={(event) => setLastname(event.target.value)}
                   placeholder={'Doe'}
                 />
+                {errors.lastname && (
+                  <Text color={'red'} paddingTop={'5px'}>
+                    Lastname is required.
+                  </Text>
+                )}
               </FormControl>
             </Grid>
             <FormControl>
@@ -133,6 +154,9 @@ function SignupForm() {
                 Email address
               </FormLabel>
               <Input
+                {...register('email', {
+                  required: 'this is required',
+                })}
                 paddingLeft={'10px'}
                 rounded={'8px'}
                 border={'1px solid #000000'}
@@ -145,10 +169,18 @@ function SignupForm() {
                 onChange={(event) => setEmail(event.target.value)}
                 placeholder={'Johndoe@gmail.com'}
               />
+              {errors.email && (
+                <Text color={'red'} paddingTop={'5px'}>
+                  Email is required.
+                </Text>
+              )}
               <FormLabel fontSize={'20px'} marginTop={'1rem'}>
                 Password
               </FormLabel>
               <Input
+                {...register('password', {
+                  required: 'this is required',
+                })}
                 paddingLeft={'10px'}
                 rounded={'8px'}
                 border={'1px solid #000000'}
@@ -159,10 +191,19 @@ function SignupForm() {
                 onChange={(event) => setPassword(event.target.value)}
                 placeholder={'**********'}
               />
+              {errors.password && (
+                <Text color={'red'} paddingTop={'5px'}>
+                  Password is required.
+                </Text>
+              )}
               <FormLabel fontSize={'20px'} marginTop={'1rem'}>
                 Confirm Password
               </FormLabel>
+
               <Input
+                {...register('confirm_password', {
+                  required: 'this is required',
+                })}
                 paddingLeft={'10px'}
                 rounded={'8px'}
                 border={'1px solid #000000'}
@@ -175,6 +216,11 @@ function SignupForm() {
                 onChange={(event) => setConfirm_password(event.target.value)}
                 placeholder={'**********'}
               />
+              {errors.confirm_password && (
+                <Text color={'red'} paddingTop={'5px'}>
+                  You must confirm your password.
+                </Text>
+              )}
             </FormControl>
             <Stack spacing={6}>
               <Button

@@ -12,6 +12,7 @@ import {
   Box,
   Img,
 } from '@chakra-ui/react';
+import { useForm } from 'react-hook-form';
 import { AiOutlineEnter } from 'react-icons/ai';
 import { HiUserAdd } from 'react-icons/hi';
 
@@ -20,8 +21,13 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  const handleSubmit = (event: any) => {
-    event.preventDefault();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (event: any) => {
     console.log('handle');
     fetch('/api/auth/login', {
       method: 'POST',
@@ -55,10 +61,13 @@ const Login = () => {
           >
             Log in to your account
           </Heading>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <FormControl>
               <FormLabel fontSize={'20px'}>Email</FormLabel>
               <Input
+                {...register('email', {
+                  required: 'this is required',
+                })}
                 paddingLeft={'10px'}
                 rounded={'8px'}
                 border={'1px solid #000000'}
@@ -72,10 +81,18 @@ const Login = () => {
                 onChange={(event) => setEmail(event.target.value)}
                 placeholder={'johndoe@gmail.com'}
               />
+              {errors.email && (
+                <Text color={'red'} paddingTop={'5px'}>
+                  Email is required.
+                </Text>
+              )}
               <FormLabel fontSize={'20px'} marginTop={'1rem'}>
                 Password
               </FormLabel>
               <Input
+                {...register('password', {
+                  required: 'this is required',
+                })}
                 paddingLeft={'10px'}
                 rounded={'8px'}
                 border={'1px solid #000000'}
@@ -87,6 +104,11 @@ const Login = () => {
                 onChange={(event) => setPassword(event.target.value)}
                 placeholder={'**********'}
               />
+              {errors.password && (
+                <Text color={'red'} paddingTop={'5px'}>
+                  Password is required.
+                </Text>
+              )}
               <Stack spacing={6}>
                 <Button
                   mt={4}
