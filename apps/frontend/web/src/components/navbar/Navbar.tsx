@@ -48,6 +48,7 @@ const Navbar = () => {
         as={'nav'}
         position={'sticky'}
         top={'0'}
+        zIndex={'9999'}
         h={'80px'}
         w={'100%'}
         backgroundColor={'#fdfdff'}
