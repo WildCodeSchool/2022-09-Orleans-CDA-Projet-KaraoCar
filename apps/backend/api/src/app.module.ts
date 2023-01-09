@@ -6,9 +6,6 @@ import { AppService } from './app.service';
 import { TripsModule } from './trips/trips.module';
 import { TripSlicesModule } from './trip-slices/trip-slices.module';
 import { MusicalStylesModule } from './musical-styles/musical-styles.module';
-import { Trip } from './entities/trip.entity';
-import { TripSlice } from './entities/trip-slice.entity';
-import { MusicalStyle } from './entities/musical-style.entity';
 import entities from './entities';
 
 @Module({
