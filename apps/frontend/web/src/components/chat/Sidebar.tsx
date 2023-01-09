@@ -100,7 +100,7 @@ const Sidebar = ({
     >
       <Flex
         position={isSideBarCollapsed ? 'initial' : 'absolute'}
-        zIndex={isSideBarCollapsed ? 'initial' : '999'}
+        zIndex={isSideBarCollapsed ? 'initial' : '99'}
         w={isSideBarCollapsed ? '100%' : 'fit-content'}
         h={'calc(100vh - 80px)'}
         flexDir={'column'}
@@ -144,6 +144,7 @@ const Sidebar = ({
             position={'absolute'}
             top={'calc(50vh - 80px)'}
             right={'-20px'}
+            zIndex={'50'}
             marginInline={'auto'}
             borderRadius={'50'}
             onClick={() => setIsSideBarCollapsed(!isSideBarCollapsed)}
