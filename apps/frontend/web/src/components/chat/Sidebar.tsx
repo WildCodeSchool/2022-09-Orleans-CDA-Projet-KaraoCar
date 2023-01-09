@@ -134,10 +134,18 @@ const Sidebar = ({
             {conversations.length > 0 && 'Conversations'}
           </Text>
         </Center>
-        <Box display={{ base: 'inline', md: 'none' }} p={'24px'}>
+        <Box
+          display={{ base: 'inline', md: 'none' }}
+          position={'relative'}
+          h={'20px'}
+        >
           <Button
-            w={'100%'}
+            w={'20px'}
+            position={'absolute'}
+            top={'calc(50vh - 80px)'}
+            right={'-20px'}
             marginInline={'auto'}
+            borderRadius={'50'}
             onClick={() => setIsSideBarCollapsed(!isSideBarCollapsed)}
           >
             {isSideBarCollapsed ? '>' : '<'}
