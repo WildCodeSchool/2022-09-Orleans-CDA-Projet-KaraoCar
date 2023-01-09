@@ -21,7 +21,7 @@ import entities from './entities';
         password: configService.get('DATABASE_PASSWORD'),
         database: configService.get('DATABASE_NAME'),
         synchronize: /true/.test(configService.get('DATABASE_SYNCHRONIZE')),
-        entities: entities,
+        entities,
       }),
       inject: [ConfigService],
     }),

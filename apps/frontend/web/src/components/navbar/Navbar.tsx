@@ -36,7 +36,7 @@ const Navbar = () => {
     login: '#',
     register: '#',
     profile: '#',
-    message: '/chat',
+    messages: '/chat',
     search: '#',
     create: '#',
     myTrips: '#',
