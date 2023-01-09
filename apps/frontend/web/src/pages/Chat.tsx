@@ -10,9 +10,10 @@ import {
 } from '@chakra-ui/react';
 import { useRef, useEffect, useState } from 'react';
 
-import ReadingTime from '../assets/undraw_reading_time.svg';
 import { FiSend } from 'react-icons/fi';
 import { Conversation, Message } from '@libs/typings';
+import Sidebar from '../components/chat/Sidebar';
+import ChatWithUser from '../components/chat/ChatWithUser';
 
 const Chat = () => {
   const [conversations, setConversations] = useState<Conversation[]>([]);
@@ -101,30 +102,6 @@ const Chat = () => {
     return () => clearInterval(interval);
   }, [chattingWithUser]);
 
-  const formatDate = (date: string) => {
-    const dateObject = new Date(date);
-
-    const months = [
-      'Jan',
-      'Feb',
-      'Mar',
-      'Apr',
-      'May',
-      'Jun',
-      'Jul',
-      'Aug',
-      'Sep',
-      'Oct',
-      'Nov',
-      'Dec',
-    ];
-    const monthIndex = dateObject.getMonth();
-
-    return `${dateObject.getDate()} ${
-      months[monthIndex]
-    } ${dateObject.getHours()}:${dateObject.getMinutes()}`;
-  };
-
   useEffect(() => {
     if (isScrollToBottomAllowedRef.current) {
       messagesEndRef.current?.scrollIntoView();
@@ -183,347 +160,28 @@ const Chat = () => {
     }
   };
 
-  const colorTextConversation = (conversation: Conversation) => {
-    const chattingWith =
-      conversation.sender_id === user.id
-        ? conversation.receiver_id
-        : conversation.sender_id;
-
-    if (chattingWith === chattingWithUser) {
-      return '#FFFFFF';
-    }
-
-    return '#000000';
-  };
-
-  const conversationBackGroundColor = (conversation: Conversation) => {
-    const chattingWith =
-      conversation.sender_id === user.id
-        ? conversation.receiver_id
-        : conversation.sender_id;
-
-    if (chattingWith === chattingWithUser) {
-      return '#394E61';
-    }
-
-    if (conversation.message_readAt || conversation.sender_id === user.id) {
-      return '#FFFFFF';
-    }
-
-    return '#D9D9D9';
-  };
-
-  const conversationMessage = (conversation: Conversation) => {
-    if (conversation.sender_id === user.id) {
-      return `You: ${conversation.message_content.slice(0, 10)}...`;
-    }
-
-    if (conversation.message_content.length > 15) {
-      return `You: ${conversation.message_content.slice(0, 15)}...`;
-    }
-
-    return conversation.message_content;
-  };
-
   return (
     <Flex paddingBlockEnd={'24px'}>
-      <Box
-        h={'calc(100vh - 80px - 24px)'}
-        w={{ base: '80px', md: '25%' }}
-        maxW={'810px'}
-      >
-        <Flex
-          position={isSideBarCollapsed ? 'initial' : 'absolute'}
-          zIndex={isSideBarCollapsed ? 'initial' : '999'}
-          w={isSideBarCollapsed ? '100%' : 'fit-content'}
-          h={'calc(100vh - 80px)'}
-          flexDir={'column'}
-          justifyContent={{ base: 'start', md: 'space-between' }}
-          backgroundColor={'#72bde5'}
-          shadow={'mdRight'}
-        >
-          <Box
-            display={{ base: 'none', md: 'block' }}
-            paddingBlockStart={'48px'}
-            flexGrow={'1'}
-          >
-            <Image
-              src={ReadingTime}
-              width={'80%'}
-              maxW={'315px'}
-              marginInline={'auto'}
-            />
-          </Box>
-
-          <Center>
-            <Text
-              display={{
-                base: 'none',
-                md: 'block',
-              }}
-              paddingBlockEnd={'12px'}
-              fontSize={'24'}
-              fontWeight={'bold'}
-            >
-              {conversations.length > 0 ? 'Conversations' : 'No conversation'}
-            </Text>
-          </Center>
-          <Box display={{ base: 'inline', md: 'none' }} p={'24px'}>
-            <Button
-              w={'100%'}
-              marginInline={'auto'}
-              onClick={() => setIsSideBarCollapsed(!isSideBarCollapsed)}
-            >
-              {isSideBarCollapsed ? '>' : '<'}
-            </Button>
-          </Box>
-
-          <Box
-            paddingInline={{ base: '12px', md: '24px' }}
-            overflowY={'auto'}
-            overflowX={'hidden'}
-            maxH={{ base: '95%', md: '60%' }}
-          >
-            {conversations.length > 0 &&
-              conversations.map((conversation) => (
-                <Flex
-                  key={conversation.message_id}
-                  cursor={'pointer'}
-                  marginBlockEnd={'12px'}
-                  p={'12px'}
-                  flexDir={{
-                    base: isSideBarCollapsed ? 'column' : 'row',
-                    lg: 'row',
-                  }}
-                  alignItems={{
-                    base: isSideBarCollapsed ? 'center' : 'start',
-                    lg: 'start',
-                  }}
-                  border={'1px solid #dfdfdf'}
-                  borderRadius={'8'}
-                  color={colorTextConversation(conversation)}
-                  backgroundColor={conversationBackGroundColor(conversation)}
-                  _hover={{ backgroundColor: '#E4F2FF', color: '#000000' }}
-                  onClick={() => handleConversationClick(conversation)}
-                >
-                  <Avatar
-                    src={
-                      conversation.sender_id === user.id
-                        ? `./images/${conversation.receiver_photo}`
-                        : `./images/${conversation.sender_photo}`
-                    }
-                    size={{ base: isSideBarCollapsed ? 'sm' : 'md', lg: 'md' }}
-                  />
-                  <Flex
-                    display={{
-                      base: isSideBarCollapsed ? 'none' : 'block',
-                      md: 'block',
-                    }}
-                    w={'100%'}
-                    flexDir={'column'}
-                    paddingInlineStart={'8px'}
-                  >
-                    <Flex
-                      w={'100%'}
-                      justifyContent={'space-between'}
-                      flexDir={{
-                        base: isSideBarCollapsed ? 'column-reverse' : 'row',
-                        lg: 'row',
-                      }}
-                      flexWrap={'wrap-reverse'}
-                    >
-                      <Flex
-                        w={{
-                          base: isSideBarCollapsed ? '100%' : '60%',
-                          lg: '60%',
-                        }}
-                      >
-                        <Text
-                          paddingInlineEnd={'8px'}
-                          whiteSpace={'nowrap'}
-                          overflow={'hidden'}
-                          textOverflow={'ellipsis'}
-                        >
-                          {conversation.sender_id === user.id
-                            ? conversation.receiver_firstname
-                            : conversation.sender_firstname}
-                        </Text>
-                        <Text
-                          paddingInlineEnd={'8px'}
-                          w={'fit-content'}
-                          flexGrow={{
-                            base: isSideBarCollapsed ? '0' : '1',
-                            lg: '1',
-                          }}
-                        >
-                          {conversation.sender_id === user.id
-                            ? conversation.receiver_lastname
-                            : conversation.sender_lastname}
-                          {'.'}
-                        </Text>
-                      </Flex>
-                      <Text
-                        textAlign={{
-                          base: isSideBarCollapsed ? 'center' : 'end',
-                          lg: 'end',
-                        }}
-                        marginBlockStart={{
-                          base: isSideBarCollapsed ? '10px' : '0',
-                          lg: '0',
-                        }}
-                        marginBlockEnd={'10px'}
-                      >
-                        {formatDate(conversation.message_sendAt)}
-                      </Text>
-                    </Flex>
-                    <Text paddingBlockStart={'4px'}>
-                      {conversationMessage(conversation)}
-                    </Text>
-                  </Flex>
-                </Flex>
-              ))}
-          </Box>
-        </Flex>
-      </Box>
-      <Flex
-        flexDir={'column'}
-        h={'calc(100vh - 80px - 24px)'}
-        w={'100%'}
-        paddingInline={{ base: '8px', md: '24px' }}
-        m={'auto'}
-      >
-        <Text
-          w={'fit-content'}
-          m={'auto'}
-          fontSize={{ base: '24', lg: '32' }}
-          fontWeight={'bold'}
-          paddingBlockStart={'48px'}
-          textAlign={'center'}
-        >
-          {chattingWithUser
-            ? `Chatting with ${
-                messages.length > 0 && chattingWithUserName.current
-              }`
-            : 'Messages'}
-        </Text>
-        {chattingWithUser ? (
-          <>
-            <Box
-              flexGrow={'1'}
-              overflow={'auto'}
-              minH={'500px'}
-              marginBlockEnd={'24px'}
-              marginBlockStart={'96px'}
-            >
-              {messages.length > 0 &&
-                messages.map((message) => (
-                  <Flex
-                    key={message.message_id}
-                    paddingBlockStart={'12px'}
-                    paddingBlockEnd={'12px'}
-                    flexDir={
-                      message.receiver_id === user.id ? 'row' : 'row-reverse'
-                    }
-                    alignItems={'end'}
-                  >
-                    <Flex
-                      position={'relative'}
-                      h={'42px'}
-                      w={'42px'}
-                      minW={'42px'}
-                      borderRadius={'8px 8px 0 8px'}
-                      alignItems={'end'}
-                    >
-                      <Box
-                        h={'30%'}
-                        w={'30%'}
-                        marginInlineStart={
-                          message.receiver_id === user.id ? 'auto' : '0'
-                        }
-                        marginInlineEnd={
-                          message.receiver_id === user.id ? '0' : 'auto'
-                        }
-                        backgroundColor={
-                          message.receiver_id === user.id
-                            ? '#394E61'
-                            : '#E4F2FF'
-                        }
-                      ></Box>
-                      <Image
-                        h={'42px'}
-                        minW={'42px'}
-                        position={'absolute'}
-                        top={'0'}
-                        left={'0'}
-                        zIndex={'1'}
-                        borderRadius={'8'}
-                        p={'3px'}
-                        src={`./images/${message.receiver_photo}`}
-                        fallbackSrc={'./images/profile-placeholder.png'}
-                        backgroundColor={'white'}
-                      />
-                    </Flex>
-                    <Flex
-                      p={'12px'}
-                      maxW={'80%'}
-                      backgroundColor={
-                        message.receiver_id === user.id ? '#394E61' : '#E4F2FF'
-                      }
-                      alignItems={'end'}
-                      borderRadius={
-                        message.receiver_id === user.id
-                          ? '8px 8px 8px 0'
-                          : '8px 8px 0 8px'
-                      }
-                    >
-                      <Text
-                        fontSize={'20'}
-                        color={
-                          message.receiver_id === user.id
-                            ? '#FFFFFF'
-                            : '#000000'
-                        }
-                      >
-                        {message.message_content}
-                      </Text>
-                    </Flex>
-                  </Flex>
-                ))}
-              <Box ref={messagesEndRef}></Box>
-            </Box>
-            <Flex shadow={'lg'}>
-              <Input
-                placeholder={'Type your message here'}
-                borderRightRadius={'0'}
-                value={messageToSend}
-                onChange={(e) => setMessageToSend(e.target.value)}
-                onKeyUp={(e) => handleKeyUpInSend(e)}
-              />
-              <Button
-                paddingInline={'28px'}
-                rightIcon={<FiSend />}
-                borderLeftRadius={'0'}
-                onClick={() => sendMessage()}
-              >
-                {'Send'}
-              </Button>
-            </Flex>{' '}
-          </>
-        ) : (
-          <Flex
-            h={'100%'}
-            w={'100%'}
-            justifyContent={'center'}
-            alignItems={'center'}
-          >
-            <Text as={'h2'} fontSize={'xl'} textAlign={'center'}>
-              {conversations.length > 0
-                ? 'Please select a conversation'
-                : 'You have no conversation'}
-            </Text>
-          </Flex>
-        )}
-      </Flex>
+      <Sidebar
+        conversations={conversations}
+        user={user}
+        chattingWithUser={chattingWithUser}
+        isSideBarCollapsed={isSideBarCollapsed}
+        setIsSideBarCollapsed={setIsSideBarCollapsed}
+        handleConversationClick={handleConversationClick}
+      />
+      <ChatWithUser
+        conversations={conversations}
+        user={user}
+        messages={messages}
+        chattingWithUser={chattingWithUser}
+        chattingWithUserName={chattingWithUserName.current}
+        messagesEndRef={messagesEndRef}
+        handleKeyUpInSend={handleKeyUpInSend}
+        setMessageToSend={setMessageToSend}
+        messageToSend={messageToSend}
+        sendMessage={sendMessage}
+      />
     </Flex>
   );
 };
