@@ -83,7 +83,7 @@ const Login = () => {
               />
               {errors.email && (
                 <Text color={'red'} paddingTop={'5px'}>
-                  Email is required.
+                  A valid email is required.
                 </Text>
               )}
               <FormLabel fontSize={'20px'} marginTop={'1rem'}>

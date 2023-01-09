@@ -120,7 +120,7 @@ function SignupForm() {
                 />
                 {errors.firstname && (
                   <Text color={'red'} paddingTop={'5px'}>
-                    Firstname is required.
+                    Firstname is required with atleast 3 characters
                   </Text>
                 )}
               </FormControl>
@@ -144,7 +144,7 @@ function SignupForm() {
                 />
                 {errors.lastname && (
                   <Text color={'red'} paddingTop={'5px'}>
-                    Lastname is required.
+                    Lastname is required with atleast 3 characters
                   </Text>
                 )}
               </FormControl>
@@ -171,7 +171,7 @@ function SignupForm() {
               />
               {errors.email && (
                 <Text color={'red'} paddingTop={'5px'}>
-                  Email is required.
+                  A valid email is required
                 </Text>
               )}
               <FormLabel fontSize={'20px'} marginTop={'1rem'}>
@@ -193,7 +193,7 @@ function SignupForm() {
               />
               {errors.password && (
                 <Text color={'red'} paddingTop={'5px'}>
-                  Password is required.
+                  Password is required and must be atleast 10 characters long
                 </Text>
               )}
               <FormLabel fontSize={'20px'} marginTop={'1rem'}>
@@ -218,7 +218,7 @@ function SignupForm() {
               />
               {errors.confirm_password && (
                 <Text color={'red'} paddingTop={'5px'}>
-                  You must confirm your password.
+                  You must confirm your password
                 </Text>
               )}
             </FormControl>
