@@ -41,10 +41,7 @@ const InlineCard = ({
           alignSelf={'end'}
           objectFit={'contain'}
         />
-        <Flex
-          paddingInlineStart={'10px'}
-          flexDirection={'column'}
-        >
+        <Flex paddingInlineStart={'10px'} flexDirection={'column'}>
           <Heading size="lg" as={'h1'} marginBlockEnd={'20px'}>
             {title}
           </Heading>
@@ -102,10 +99,13 @@ const ColumnCard = ({
           >
             {headingText}
           </Heading>
-          <Flex marginInline={'24px'} marginBlockStart={'24px'} border={'1px solid #cccccc'} alignItems={'center'}>
-            <Text padding={'20px'}>
-              {descText}
-            </Text>
+          <Flex
+            marginInline={'24px'}
+            marginBlockStart={'24px'}
+            border={'1px solid #cccccc'}
+            alignItems={'center'}
+          >
+            <Text padding={'20px'}>{descText}</Text>
           </Flex>
         </Flex>
       </CardBody>
@@ -208,12 +208,13 @@ const Home = () => {
           }
         />
       </Flex>
-      <Center
-        w={'100%'}
-        backgroundColor={'slateblue'}
-        color={'#FFFFFF'}
-      >
-        <Heading size="lg" as={'h1'} marginInline={'24px'} paddingBlock={'28px'}>
+      <Center w={'100%'} backgroundColor={'slateblue'} color={'#FFFFFF'}>
+        <Heading
+          size="lg"
+          as={'h1'}
+          marginInline={'24px'}
+          paddingBlock={'28px'}
+        >
           {'Traveling without karaoke will never be the same!'}
         </Heading>
       </Center>
@@ -239,14 +240,14 @@ const Home = () => {
             imgSrc={'/images/feedback-jean-charles.jpg'}
             headingText={'Jean-Charles: I love singing while travelling'}
             descText={
-              'I never thought I\'d find a carpooling website that also lets me sing my heart out, but this one does just that! The karaoke feature is a game changer and makes my commute so much more fun. Highly recommend for all the music lovers out there.'
+              "I never thought I'd find a carpooling website that also lets me sing my heart out, but this one does just that! The karaoke feature is a game changer and makes my commute so much more fun. Highly recommend for all the music lovers out there."
             }
           />
           <ColumnCard
             imgSrc={'/images/feedback-claudette.jpg'}
             headingText={'Claudette: Best app to meet people!'}
             descText={
-              'As a busy college student, Karaocar has been a lifesaver. It\'s so convenient to be able to schedule rides in advance, and I love that I can choose to carpool with people who have similar music taste. Highly recommend!'
+              "As a busy college student, Karaocar has been a lifesaver. It's so convenient to be able to schedule rides in advance, and I love that I can choose to carpool with people who have similar music taste. Highly recommend!"
             }
           />
           <ColumnCard
