@@ -141,7 +141,7 @@ const Chat = () => {
           sender: user.id,
           receiver: chattingWithUser,
           sendAt: new Date().toISOString(),
-          content: messageToSend,
+          content: messageToSend.trim(),
         }),
       });
 
