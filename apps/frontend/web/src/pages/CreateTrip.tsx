@@ -18,7 +18,7 @@ import Comment from '../components/create-trip/Comment';
 import RouteDetails from '../components/create-trip/RouteDetails';
 import Stepper from '../components/create-trip/Stepper';
 import TripDate from '../components/create-trip/TripDate';
-import { MusicalStyle } from '@libs/typings';
+import { MusicalStyle } from '@apps/backend-api';
 import { RxCrossCircled } from 'react-icons/rx';
 
 const CreateTrip = () => {
@@ -27,9 +27,7 @@ const CreateTrip = () => {
   const [isCreated, setCreated] = useState(false);
   const [serverErrors, setServerErrors] = useState<string[]>([]);
 
-  function onSubmit(values: any) {
-    console.log(values);
-
+  function onSubmit() {
     if (step < 4) {
       setStep((prev) => prev + 1);
     }

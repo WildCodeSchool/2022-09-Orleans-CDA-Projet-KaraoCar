@@ -5,3 +5,4 @@ import { Trip } from './trip.entity';
 const entities = [MusicalStyle, TripSlice, Trip];
 
 export default entities;
+export { MusicalStyle, TripSlice, Trip };

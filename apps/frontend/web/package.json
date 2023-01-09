@@ -21,7 +21,8 @@
     "react-router-dom": "^6.4.5"
   },
   "workspaceDependencies": [
-    "libs/typings"
+    "libs/typings",
+    "apps/backend-api"
   ],
   "devDependencies": {
     "@types/node": "^18.11.9",

@@ -14,7 +14,7 @@ import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import PreviousButton from './components/PreviousButton';
 import { IoCarSportSharp } from 'react-icons/io5';
-import { MusicalStyle } from '@libs/typings';
+import { MusicalStyle } from '@apps/backend-api';
 import backgroundImage from '../../assets/undraw_comment_background.svg';
 
 const Comment = ({
