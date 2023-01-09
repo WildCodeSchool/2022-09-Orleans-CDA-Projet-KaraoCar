@@ -20,12 +20,9 @@ const Chat = () => {
 
   const getConversations = async (abortController?: AbortController) => {
     try {
-      const response = await fetch(
-        `${import.meta.env.VITE_API_HOST}api/messages/conversations/${user.id}`,
-        {
-          signal: abortController?.signal,
-        }
-      );
+      const response = await fetch(`/api/messages/conversations/${user.id}`, {
+        signal: abortController?.signal,
+      });
       const data = await response.json();
 
       setConversations(data);
@@ -38,9 +35,7 @@ const Chat = () => {
   ) => {
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_HOST}api/messages/${
-          user.id
-        }/${chattingWithUser}`,
+        `/api/messages/${user.id}/${chattingWithUser}`,
         {
           signal: abortController?.signal,
         }
@@ -107,9 +102,7 @@ const Chat = () => {
       const markAsRead = async () => {
         try {
           await fetch(
-            `${import.meta.env.VITE_API_HOST}api/messages/mark-as-read/${
-              conversation.receiver_id
-            }/${conversation.sender_id}`,
+            `/api/messages/mark-as-read/${conversation.receiver_id}/${conversation.sender_id}`,
             {
               method: 'PATCH',
             }
@@ -123,7 +116,7 @@ const Chat = () => {
 
   const sendMessage = async () => {
     try {
-      await fetch(`${import.meta.env.VITE_API_HOST}api/messages`, {
+      await fetch(`/api/messages`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
