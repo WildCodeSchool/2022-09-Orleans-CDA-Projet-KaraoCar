@@ -18,7 +18,7 @@ import Comment from '../components/create-trip/Comment';
 import RouteDetails from '../components/create-trip/RouteDetails';
 import Stepper from '../components/create-trip/Stepper';
 import TripDate from '../components/create-trip/TripDate';
-import { MusicalStyle } from '@libs/typings/src/interfaces/MusicalStyle';
+import { MusicalStyle } from '@libs/typings';
 import { RxCrossCircled } from 'react-icons/rx';
 
 const CreateTrip = () => {

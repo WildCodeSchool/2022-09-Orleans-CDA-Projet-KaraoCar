@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateTripSliceDto } from './dto/create-trip-slice.dto';
 import { UpdateTripSliceDto } from './dto/update-trip-slice.dto';
-import { TripSlice } from './entities/trip-slice.entity';
+import { TripSlice } from '../entities/trip-slice.entity';
 
 @Injectable()
 export class TripSlicesService {

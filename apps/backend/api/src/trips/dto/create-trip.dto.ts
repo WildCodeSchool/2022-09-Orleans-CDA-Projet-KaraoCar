@@ -1,5 +1,5 @@
 import { IsArray, IsBoolean, IsNotEmpty, IsNumber } from 'class-validator';
-import { MusicalStyle } from 'src/musical-styles/entities/musical-style.entity';
+import { MusicalStyle } from 'src/entities/musical-style.entity';
 
 export class CreateTripDto {
   @IsNotEmpty()

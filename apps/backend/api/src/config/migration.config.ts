@@ -1,9 +1,7 @@
 import { ConfigService } from '@nestjs/config';
 import { config } from 'dotenv';
-import { MusicalStyle } from '../musical-styles/entities/musical-style.entity';
-import { TripSlice } from '../trip-slices/entities/trip-slice.entity';
-import { Trip } from '../trips/entities/trip.entity';
 import { DataSource } from 'typeorm';
+import entities from 'src/entities';
 
 config();
 const configService = new ConfigService();
@@ -16,6 +14,6 @@ export default new DataSource({
   password: configService.get('DATABASE_PASSWORD'),
   database: configService.get('DATABASE_MIGRATIONS_DB'),
   synchronize: false,
-  entities: [Trip, TripSlice, MusicalStyle],
+  entities: entities,
   migrations: [__dirname + '/../migrations/*.ts'],
 });

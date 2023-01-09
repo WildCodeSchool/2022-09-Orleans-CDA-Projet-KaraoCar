@@ -6,9 +6,10 @@ import { AppService } from './app.service';
 import { TripsModule } from './trips/trips.module';
 import { TripSlicesModule } from './trip-slices/trip-slices.module';
 import { MusicalStylesModule } from './musical-styles/musical-styles.module';
-import { Trip } from './trips/entities/trip.entity';
-import { TripSlice } from './trip-slices/entities/trip-slice.entity';
-import { MusicalStyle } from './musical-styles/entities/musical-style.entity';
+import { Trip } from './entities/trip.entity';
+import { TripSlice } from './entities/trip-slice.entity';
+import { MusicalStyle } from './entities/musical-style.entity';
+import entities from './entities';
 
 @Module({
   imports: [
@@ -25,7 +26,7 @@ import { MusicalStyle } from './musical-styles/entities/musical-style.entity';
         password: configService.get('DATABASE_PASSWORD'),
         database: configService.get('DATABASE_NAME'),
         synchronize: /true/.test(configService.get('DATABASE_SYNCHRONIZE')),
-        entities: [Trip, TripSlice, MusicalStyle],
+        entities: entities,
       }),
       inject: [ConfigService],
     }),

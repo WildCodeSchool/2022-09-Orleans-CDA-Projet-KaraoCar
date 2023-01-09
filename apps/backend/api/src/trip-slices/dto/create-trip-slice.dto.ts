@@ -7,7 +7,7 @@ import {
   MinDate,
   IsDate,
 } from 'class-validator';
-import { Trip } from 'src/trips/entities/trip.entity';
+import { Trip } from 'src/entities/trip.entity';
 
 export class CreateTripSliceDto {
   @IsNotEmpty({ message: 'Starting point is required' })

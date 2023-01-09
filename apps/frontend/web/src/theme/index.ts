@@ -13,7 +13,7 @@ const config = {
 };
 
 const theme = extendTheme({
-  ...config,
+  config,
   colors: {
     slateblue: '#394E61',
   },

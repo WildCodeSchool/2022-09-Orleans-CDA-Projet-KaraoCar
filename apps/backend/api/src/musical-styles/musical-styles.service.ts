@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateMusicalStyleDto } from './dto/create-musical-style.dto';
 import { UpdateMusicalStyleDto } from './dto/update-musical-style.dto';
-import { MusicalStyle } from './entities/musical-style.entity';
+import { MusicalStyle } from '../entities/musical-style.entity';
 
 @Injectable()
 export class MusicalStylesService {

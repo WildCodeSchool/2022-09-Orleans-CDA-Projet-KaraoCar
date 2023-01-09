@@ -1,4 +1,4 @@
-import { Trip } from '../../trips/entities/trip.entity';
+import { Trip } from './trip.entity';
 import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
