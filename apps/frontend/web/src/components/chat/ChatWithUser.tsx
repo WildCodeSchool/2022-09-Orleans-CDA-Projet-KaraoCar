@@ -95,8 +95,8 @@ const ChatWithUser = ({
                       zIndex={'1'}
                       borderRadius={'8'}
                       p={'3px'}
-                      src={`./images/${message.receiver_photo}`}
-                      fallbackSrc={'./images/profile-placeholder.png'}
+                      src={`./uploads/profiles/${message.receiver_photo}`}
+                      fallbackSrc={'./uploads/profiles/profile-placeholder.png'}
                       backgroundColor={'white'}
                     />
                   </Flex>

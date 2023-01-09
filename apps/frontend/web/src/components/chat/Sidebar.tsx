@@ -184,8 +184,8 @@ const Sidebar = ({
                 <Avatar
                   src={
                     conversation.sender_id === user.id
-                      ? `./images/${conversation.receiver_photo}`
-                      : `./images/${conversation.sender_photo}`
+                      ? `./uploads/profiles/${conversation.receiver_photo}`
+                      : `./uploads/profiles/${conversation.sender_photo}`
                   }
                   size={{ base: isSideBarCollapsed ? 'sm' : 'md', lg: 'md' }}
                 />
