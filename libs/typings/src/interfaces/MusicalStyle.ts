@@ -1,4 +1,4 @@
 export interface MusicalStyle {
-    id: number;
-    name?: string;
+  id: number;
+  name?: string;
 }

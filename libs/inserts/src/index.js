@@ -1,3 +1,3 @@
-import  insertMusicalStyles from './scripts/musicalStyle.js';
+import insertMusicalStyles from './scripts/musicalStyle.js';
 
 insertMusicalStyles();

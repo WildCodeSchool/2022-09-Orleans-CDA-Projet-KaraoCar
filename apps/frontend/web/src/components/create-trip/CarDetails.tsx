@@ -36,14 +36,15 @@ const CarDetails = ({
   } = useFormContext();
   const errors = useFormContext().formState.errors;
 
-  const [totalSeat, setTotalSeat] = useState(() => Number(getValues('totalSeat')) || 1);
+  const [totalSeat, setTotalSeat] = useState(
+    () => Number(getValues('totalSeat')) || 1
+  );
   const [price, setPrice] = useState(() => Number(getValues('price')) || 5);
 
   useEffect(() => {
     setValue('totalSeat', totalSeat);
     setValue('price', price);
   }, [totalSeat, price]);
-
 
   const decrementSeats = () => {
     if (totalSeat > 1) {

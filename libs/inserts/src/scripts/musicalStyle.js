@@ -17,7 +17,7 @@ const insertMusicalStyles = async () => {
   const musicalStyles = await fetch(
     `${process.env.VITE_API_HOST}api/musical-styles`
   );
-    const data = await musicalStyles.json();
+  const data = await musicalStyles.json();
 
   if (data.length === 0) {
     for (let i = 0; i < musicalStylesToInsert.length; i++) {

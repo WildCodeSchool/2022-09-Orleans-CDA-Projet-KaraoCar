@@ -1,4 +1,7 @@
 # Add files here to ignore them from prettier formatting
 
-/dist
-/coverage
+dist
+build
+coverage
+.expo
+.vscode

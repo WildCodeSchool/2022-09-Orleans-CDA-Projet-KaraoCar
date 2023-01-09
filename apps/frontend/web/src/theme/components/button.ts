@@ -7,7 +7,7 @@ const base = defineStyle({
     bg: '#212C36',
     _disabled: {
       bg: '#394E61',
-    }
+    },
   },
 });
 

@@ -36,7 +36,7 @@ const Navbar = () => {
     login: '#',
     register: '#',
     profile: '#',
-    message: '#',
+    messages: '#',
     search: '#',
     create: '/create-trip',
     myTrips: '#',
@@ -46,8 +46,11 @@ const Navbar = () => {
     <>
       <HStack
         as={'nav'}
+        position={'sticky'}
+        top={'0'}
         h={'80px'}
         w={'100%'}
+        backgroundColor={'#fdfdff'}
         paddingInline={'12px'}
         shadow={'md'}
       >
@@ -114,9 +117,11 @@ const Navbar = () => {
                       </Link>
                     </MenuList>
                   </Menu>
-                  <Button fontSize={'xl'} leftIcon={<MdOutlineChat />}>
-                    {'Message'}
-                  </Button>
+                  <Link to={links.messages}>
+                    <Button fontSize={'xl'} leftIcon={<MdOutlineChat />}>
+                      {'Messages'}
+                    </Button>
+                  </Link>
                   <NavLink to={links.profile} end>
                     <Avatar
                       size={'lg'}
@@ -182,7 +187,7 @@ const Navbar = () => {
               <>
                 <Flex flexDir={'column'} color={'#FFFFFF'}>
                   <Box borderBlockStart={'1px solid #FFFFFF'}></Box>
-                  <Link to={links.message}>
+                  <Link to={links.messages}>
                     <Flex
                       w={'100%'}
                       gap={'8px'}
@@ -193,7 +198,7 @@ const Navbar = () => {
                       bg={'#394E61'}
                     >
                       <MdOutlineChat />
-                      {'Message'}
+                      {'Messages'}
                     </Flex>
                   </Link>
                   <Box borderBlockStart={'1px solid #FFFFFF'}></Box>
@@ -272,7 +277,7 @@ const Navbar = () => {
                   color={'#FFFFFF'}
                 >
                   <Box borderBlockStart={'1px solid #FFFFFF'}></Box>
-                  <Link to={links.message}>
+                  <Link to={links.login}>
                     <Flex
                       w={'100%'}
                       gap={'8px'}
@@ -286,7 +291,7 @@ const Navbar = () => {
                     </Flex>
                   </Link>
                   <Box borderBlockStart={'1px solid #FFFFFF'}></Box>
-                  <Link to={links.message}>
+                  <Link to={links.register}>
                     <Flex
                       w={'100%'}
                       gap={'8px'}

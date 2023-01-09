@@ -102,7 +102,7 @@ const RouteDetails = ({
         <Image // to replace with google maps
           src={'./images/map.webp'}
           height={'100%'}
-          width={{base:'460px', xl: '600px'}}
+          width={{ base: '460px', xl: '600px' }}
           rounded={'8px'}
           fit={'cover'}
           display={{ base: 'none', lg: 'block' }}
