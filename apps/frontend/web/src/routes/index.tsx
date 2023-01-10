@@ -16,7 +16,7 @@ const router = createBrowserRouter([
     element: <NavLayout />,
     children: [
       {
-        path: '/search',
+        path: '/search-trip',
         element: <Search />,
       },
       {

@@ -8,7 +8,6 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import SearchBar from '../components/searchbar/SearchBar';
-import SearchCriteria from '../interfaces/SearchCriteriaInterface';
 
 const Search = () => {
   const pageName = 'Search for a trip';
