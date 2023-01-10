@@ -1,4 +1,4 @@
-export interface Message {
+export type Conversation = {
   message_id: number;
   message_sendAt: string;
   message_content: string;
@@ -11,4 +11,4 @@ export interface Message {
   receiver_photo: string;
   sender_lastname: string;
   receiver_lastname: string;
-}
+};
