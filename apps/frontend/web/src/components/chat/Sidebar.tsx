@@ -70,7 +70,7 @@ const Sidebar = ({
         : conversation.sender_id;
 
     if (chattingWith === chattingWithUser) {
-      return '#394E61';
+      return 'slateblue';
     }
 
     if (conversation.message_readAt || conversation.sender_id === user.id) {

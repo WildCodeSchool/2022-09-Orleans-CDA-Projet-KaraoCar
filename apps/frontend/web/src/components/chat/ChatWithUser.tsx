@@ -83,7 +83,9 @@ const ChatWithUser = ({
                         message.receiver_id === user.id ? '0' : 'auto'
                       }
                       backgroundColor={
-                        message.receiver_id === user.id ? '#394E61' : '#E4F2FF'
+                        message.receiver_id === user.id
+                          ? 'slateblue'
+                          : '#E4F2FF'
                       }
                     ></Box>
                     <Image
@@ -104,7 +106,7 @@ const ChatWithUser = ({
                     p={'12px'}
                     maxW={'80%'}
                     backgroundColor={
-                      message.receiver_id === user.id ? '#394E61' : '#E4F2FF'
+                      message.receiver_id === user.id ? 'slateblue' : '#E4F2FF'
                     }
                     alignItems={'end'}
                     borderRadius={
