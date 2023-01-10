@@ -3,9 +3,12 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import entities from './entities';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
+import { TripsModule } from './trips/trips.module';
+import { TripSlicesModule } from './trip-slices/trip-slices.module';
+import { MusicalStylesModule } from './musical-styles/musical-styles.module';
+import entities from './entities';
 
 @Module({
   imports: [
@@ -22,10 +25,13 @@ import { AuthModule } from './auth/auth.module';
         password: configService.get('DATABASE_PASSWORD'),
         database: configService.get('DATABASE_NAME'),
         synchronize: /true/.test(configService.get('DATABASE_SYNCHRONIZE')),
-        entities: entities,
+        entities,
       }),
       inject: [ConfigService],
     }),
+    TripsModule,
+    TripSlicesModule,
+    MusicalStylesModule,
     UsersModule,
     AuthModule,
   ],

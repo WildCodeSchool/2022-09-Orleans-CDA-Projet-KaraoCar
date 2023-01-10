@@ -1,4 +1,4 @@
-import { Logger } from '@nestjs/common';
+import { Logger, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ConfigService } from '@nestjs/config';
@@ -10,6 +10,8 @@ async function bootstrap() {
   const configService = app.get(ConfigService);
   const NODE_ENV = configService.get('NODE_ENV') || 'development';
   const PORT = configService.get('PORT') || 3000;
+
+  app.useGlobalPipes(new ValidationPipe());
   const COOKIE_SECRET = configService.get('COOKIE_SECRET');
   app.use(cookieParser(COOKIE_SECRET));
   app.setGlobalPrefix('api');

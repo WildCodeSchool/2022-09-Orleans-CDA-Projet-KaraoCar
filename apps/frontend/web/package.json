@@ -12,14 +12,17 @@
     "@chakra-ui/react": "^2.4.3",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@fontsource/lexend-deca": "^4.5.12",
     "framer-motion": "^7.6.19",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.40.0",
     "react-icons": "^4.7.1",
     "react-router-dom": "^6.4.5"
   },
   "workspaceDependencies": [
-    "libs/typings"
+    "libs/typings",
+    "apps/backend-api"
   ],
   "devDependencies": {
     "@types/node": "^18.11.9",
