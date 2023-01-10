@@ -4,6 +4,8 @@ import { Conversation, Message } from '@libs/typings';
 import Sidebar from '../components/chat/Sidebar';
 import ChatWithUser from '../components/chat/ChatWithUser';
 
+const REFRESH_INTERVAl = 10000;
+
 const Chat = () => {
   const [conversations, setConversations] = useState<Conversation[]>([]);
   const [chattingWithUser, setChattingWithUser] = useState<number | null>(null);
@@ -81,7 +83,7 @@ const Chat = () => {
       if (chattingWithUser) {
         getMessages(null, false);
       }
-    }, 2000);
+    }, REFRESH_INTERVAl);
     return () => clearInterval(interval);
   }, [chattingWithUser]);
 
