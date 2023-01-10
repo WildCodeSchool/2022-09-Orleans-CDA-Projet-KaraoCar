@@ -2,6 +2,8 @@ import { createBrowserRouter, Outlet } from 'react-router-dom';
 import CreateTrip from '../pages/CreateTrip';
 import Navbar from '../components/navbar/Navbar';
 import Home from '../pages/Home';
+import SignUp from '../pages/SignUp';
+import Login from '../pages/Login';
 
 const NavLayout = () => (
   <>
@@ -21,6 +23,14 @@ const router = createBrowserRouter([
       {
         path: '/create-trip',
         element: <CreateTrip />,
+      },
+      {
+        path: '/login',
+        element: <Login />,
+      },
+      {
+        path: '/signup',
+        element: <SignUp />,
       },
     ],
   },
