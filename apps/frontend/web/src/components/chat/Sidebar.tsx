@@ -94,6 +94,10 @@ const Sidebar = ({
 
   return (
     <Box
+      display={{
+        base: conversations.length > 0 ? 'block' : 'none',
+        md: 'block',
+      }}
       h={'calc(100vh - 80px - 24px)'}
       w={{ base: '80px', md: '35%' }}
       maxW={'810px'}
