@@ -6,6 +6,7 @@ import { AppService } from './app.service';
 import { TripsModule } from './trips/trips.module';
 import { TripSlicesModule } from './trip-slices/trip-slices.module';
 import { MusicalStylesModule } from './musical-styles/musical-styles.module';
+import { MessagesModule } from './messages/messages.module';
 import entities from './entities';
 
 @Module({
@@ -30,6 +31,7 @@ import entities from './entities';
     TripsModule,
     TripSlicesModule,
     MusicalStylesModule,
+    MessagesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

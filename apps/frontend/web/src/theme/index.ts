@@ -27,6 +27,9 @@ const theme = extendTheme({
     medium: 600,
     semibold: 700,
   },
+  shadows: {
+    mdRight: '0 3px 6px 0 rgba(0, 0, 0, 0.5)',
+  },
   components: {
     Button: ButtonTheme,
   },
