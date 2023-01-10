@@ -4,8 +4,8 @@ const base = defineStyle({
   bg: '#394E61',
   color: '#FFFFFF',
   _hover: {
-    bg: '#212C36'
-  }
+    bg: '#212C36',
+  },
 });
 
 const outline = defineStyle({
@@ -14,8 +14,8 @@ const outline = defineStyle({
   borderColor: '#394E61',
   _hover: {
     color: '#212C36',
-    borderColor: '#212C36'
-  }
+    borderColor: '#212C36',
+  },
 });
 
 export const ButtonTheme = {
@@ -24,6 +24,6 @@ export const ButtonTheme = {
     outline: outline,
   },
   defaultProps: {
-    variant: 'base'
-  }
+    variant: 'base',
+  },
 };

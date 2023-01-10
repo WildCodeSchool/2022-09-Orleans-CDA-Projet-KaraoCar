@@ -1,7 +1,7 @@
 import { createBrowserRouter, Outlet } from 'react-router-dom';
-import App from '../App';
 import Navbar from '../components/navbar/Navbar';
-import Search from '../pages/Search'
+import Search from '../pages/Search';
+import Home from '../pages/Home';
 
 const NavLayout = () => (
   <>
@@ -20,7 +20,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/',
-        element: <App />,
+        element: <Home />,
       },
     ],
   },

@@ -1,3 +1,3 @@
-export * from "./interfaces";
+export * from './interfaces';
 
-export * from "./entities";
+export * from './entities';
