@@ -1,0 +1,10 @@
+{
+  "name": "@libs/insert",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "insert": "node src/index.js"
+  }
+}

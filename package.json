@@ -6,9 +6,9 @@
   "private": true,
   "scripts": {
     "prepare": "husky install",
-    "format": "npx prettier --write .",
-    "format:check": "npx prettier --check .",
-    "env:cp": "cp ./.env ./apps/frontend/web/.env && cp ./.env ./apps/frontend/mobile/.env && cp ./.env ./apps/backend/api/.env",
+    "format": "npx prettier --write . !./deployment/db",
+    "format:check": "npx prettier --check . !./deployment/db",
+    "env:cp": "cp ./.env ./apps/frontend/web/.env && cp ./.env ./apps/frontend/mobile/.env && cp ./.env ./apps/backend/api/.env && cp ./.env ./libs/inserts/.env",
     "watch:env": "nodemon --watch ./.env --exec \"npm run env:cp\"",
     "build:frontend:web": "npm run build --workspace=apps/frontend/web",
     "build:backend:api": "docker build -f ./apps/backend/api/Dockerfile -t backend-api .",
@@ -20,9 +20,11 @@
     "dev:m": "npm run dev:mobile",
     "d:m": "npm run dev:mobile",
     "dev": "concurrently -c \"auto\" \"npm:watch:*\" \"npm:dev:backend:*\" \"npm:dev:frontend:*(!mobile)\"",
-    "d": "npm run dev"
+    "d": "npm run dev",
+    "add:data": "npm run insert -w libs/inserts"
   },
   "workspaces": [
+    "libs/inserts",
     "libs/typings",
     "apps/backend/api",
     "apps/frontend/web",

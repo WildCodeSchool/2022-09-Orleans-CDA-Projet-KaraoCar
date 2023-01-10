@@ -1,4 +1,5 @@
 import { createBrowserRouter, Outlet } from 'react-router-dom';
+import CreateTrip from '../pages/CreateTrip';
 import Navbar from '../components/navbar/Navbar';
 import Search from '../pages/Search';
 import Home from '../pages/Home';
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home />,
+      },
+      {
+        path: '/create-trip',
+        element: <CreateTrip />,
       },
     ],
   },

@@ -2,14 +2,17 @@ import { defineStyle } from '@chakra-ui/react';
 
 const base = defineStyle({
   bg: '#394E61',
-  color: '#FFFFFF',
+  color: '#FEFEFE',
   _hover: {
     bg: '#212C36',
+    _disabled: {
+      bg: '#394E61',
+    },
   },
 });
 
 const outline = defineStyle({
-  bg: '#FFFFFF',
+  bg: '#FEFEFE',
   color: '#394E61',
   borderColor: '#394E61',
   _hover: {
