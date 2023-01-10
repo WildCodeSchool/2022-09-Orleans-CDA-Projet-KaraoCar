@@ -21,6 +21,12 @@ const theme = extendTheme({
     heading: `'Lexend Deca', sans-serif`,
     body: `'Lexend Deca', sans-serif`,
   },
+  fontWeights: {
+    light: 300,
+    regular: 400,
+    medium: 600,
+    semibold: 700,
+  },
   shadows: {
     mdRight: '0 3px 6px 0 rgba(0, 0, 0, 0.5)',
   },

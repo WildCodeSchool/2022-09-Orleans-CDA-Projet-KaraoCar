@@ -3,6 +3,9 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { TripsModule } from './trips/trips.module';
+import { TripSlicesModule } from './trip-slices/trip-slices.module';
+import { MusicalStylesModule } from './musical-styles/musical-styles.module';
 import { MessagesModule } from './messages/messages.module';
 import entities from './entities';
 
@@ -25,6 +28,9 @@ import entities from './entities';
       }),
       inject: [ConfigService],
     }),
+    TripsModule,
+    TripSlicesModule,
+    MusicalStylesModule,
     MessagesModule,
   ],
   controllers: [AppController],

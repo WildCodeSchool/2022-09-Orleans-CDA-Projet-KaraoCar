@@ -1,4 +1,5 @@
 import { createBrowserRouter, Outlet } from 'react-router-dom';
+import CreateTrip from '../pages/CreateTrip';
 import Navbar from '../components/navbar/Navbar';
 import Home from '../pages/Home';
 import Chat from '../pages/Chat';
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home />,
+      },
+      {
+        path: '/create-trip',
+        element: <CreateTrip />,
       },
       {
         path: '/chat',
